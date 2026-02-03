@@ -1,82 +1,3 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//   const params = new URLSearchParams(window.location.search);
-//   const slug = params.get("module");
-
-//   const module = modules.find((m) => m.name.replace(/\s+/g, "-") === slug);
-//   if (!module) return;
-
-//   // BASIC DATA
-//   document.getElementById("module-title").textContent = module.name;
-//   document.getElementById("module-description").textContent =
-//     module.description;
-//   document.getElementById("module-video").src = module.video;
-
-//   // SLIDER
-//   const book = document.getElementById("book");
-//   book.innerHTML = "";
-//   module.images.forEach((img) => {
-//     const page = document.createElement("div");
-//     page.className = "page";
-//     page.innerHTML = `<img src="../../${img}" alt="${module.name}" />`;
-//     book.appendChild(page);
-//   });
-
-//   // QUIZ
-//   let currentQuestion = 0;
-//   const questionEl = document.getElementById("quiz-question");
-//   const optionsEl = document.getElementById("quiz-options");
-//   const progressFill = document.getElementById("quiz-progress-fill");
-//   const progressText = document.getElementById("quiz-progress-text");
-
-//   function renderQuestion() {
-//     const q = module.quiz[currentQuestion];
-//     questionEl.textContent = q.question;
-//     optionsEl.innerHTML = "";
-
-//     q.options.forEach((option, i) => {
-//       optionsEl.innerHTML += `
-//         <div class="option">
-//           <input type="radio" name="answer" id="opt${i}">
-//           <label for="opt${i}" class="option-label">
-//             <span class="option-letter">${String.fromCharCode(65 + i)}</span>
-//             <span class="option-text">${option}</span>
-//           </label>
-//         </div>
-//       `;
-//     });
-
-//     progressFill.style.width = `${((currentQuestion + 1) / module.quiz.length) * 100}%`;
-//     progressText.textContent = `Question ${currentQuestion + 1} of ${module.quiz.length}`;
-//   }
-
-//   renderQuestion();
-
-//   document.querySelector(".hint-btn").onclick = () => {
-//     alert(module.quiz[currentQuestion].hint || "No hint available");
-//   };
-
-//   document.querySelector(".next-btn").onclick = () => {
-//     if (currentQuestion < module.quiz.length - 1) {
-//       currentQuestion++;
-//       renderQuestion();
-//     }
-//   };
-
-//   document.querySelector(".check-btn").onclick = () => {
-//     const selected = document.querySelector("input[name='answer']:checked");
-//     if (!selected) return alert("Choose an answer");
-
-//     const index = parseInt(selected.id.replace("opt", ""));
-//     const answer = module.quiz[currentQuestion].options[index];
-
-//     alert(
-//       answer === module.quiz[currentQuestion].correct_answer
-//         ? "Correct ✅"
-//         : "Wrong ❌",
-//     );
-//   };
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("module");
@@ -89,6 +10,18 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("module-description").textContent =
     module.description;
   document.getElementById("module-video").src = module.video;
+
+  // LEARNING OBJECTIVES
+  const objectivesEl = document.getElementById("module-objectives");
+  objectivesEl.innerHTML = "";
+
+  module.objectives.forEach((objective, index) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+    <span>${objective}</span>
+  `;
+    objectivesEl.appendChild(li);
+  });
 
   // SLIDER
   const book = document.getElementById("book");

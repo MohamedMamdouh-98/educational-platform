@@ -13,7 +13,14 @@
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="../../assets/css/styles.css" />
     <link rel="stylesheet" href="../../assets/css/modules.css" />
-
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <title>Responsive sidebar Menu | Dark/Light Mode - Bedimcode</title>
@@ -53,8 +60,13 @@
 
             <div class="sidebar__list">
               <a href="../home/" class="sidebar__link">
-                <i class="ri-crosshair-2-line"></i>
-                <span>Goals</span>
+                <i class="ri-flag-2-fill"></i>
+                <span>objectives</span>
+              </a>
+
+              <a href="../../pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>pre-assessments</span>
               </a>
 
               <a href="../../modules/" class="sidebar__link active-link">
@@ -93,15 +105,13 @@
       <div class="module-details" id="module-details">
         <div class="container">
           <div class="lesson-content">
-            <!-- SLIDER / BOOK -->
-            <section class="slider-section">
-              <div class="slider-container">
-                <div class="book-wrapper" id="book-container">
-                  <div id="book"></div>
-                </div>
+            <!-- LEARNING OBJECTIVES -->
+            <section class="objectives-section">
+              <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+              <div class="objectives-container">
+                <div class="objectives-list" id="module-objectives"></div>
               </div>
             </section>
-
             <!-- VIDEO -->
             <section class="video-section">
               <h2><i class="fas fa-play-circle"></i> Video Tutorial</h2>
@@ -125,6 +135,15 @@
                 <div class="video-info">
                   <h3 id="module-title"></h3>
                   <p id="module-description"></p>
+                </div>
+              </div>
+            </section>
+
+            <!-- SLIDER / BOOK -->
+            <section class="slider-section">
+              <div class="slider-container">
+                <div class="book-wrapper" id="book-container">
+                  <div id="book"></div>
                 </div>
               </div>
             </section>

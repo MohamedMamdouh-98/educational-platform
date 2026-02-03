@@ -12,6 +12,7 @@
 
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/modules.css" />
 
     <title>Responsive sidebar Menu | Dark/Light Mode - Bedimcode</title>
   </head>
@@ -19,7 +20,7 @@
     <!--=============== HEADER ===============-->
     <header class="header" id="header">
       <div class="header__container">
-        <a href="../home/" class="header__logo">
+        <a href="#" class="header__logo">
           <i class="ri-cloud-fill"></i>
           <span>LOGO</span>
         </a>
@@ -46,18 +47,20 @@
 
         <div class="sidebar__content">
           <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
             <div class="sidebar__list">
-              <a href="../home/" class="sidebar__link active-link">
+              <a href="../home/" class="sidebar__link">
                 <i class="ri-flag-2-fill"></i>
                 <span>objectives</span>
               </a>
 
-              <a href="../pre-assessments/" class="sidebar__link">
+              <a href="/pre-assessments/" class="sidebar__link active-link">
                 <i class="ri-file-list-3-fill"></i>
                 <span>pre-assessments</span>
               </a>
 
-              <a href="../modules/" class="sidebar__link">
+              <a href="/modules/" class="sidebar__link">
                 <i class="ri-book-open-fill"></i>
                 <span>Modules</span>
               </a>
@@ -89,13 +92,21 @@
     </nav>
 
     <!--=============== MAIN ===============-->
-    <main class="main container" id="main">
-      <h1>Page Content</h1>
+    <main class="main" id="main">
+      <div class="container">
+        <div class="units-grid" id="units-grid-assessment"></div>
+
+        <div class="footer">
+          <p>© 2023 Educational Units System. All rights reserved.</p>
+        </div>
+      </div>
     </main>
 
     <!--=============== MAIN JS ===============-->
     <script src="../assets/js/auth-guard.js"></script>
 
+    <script src="../data/pre-assessments-data.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/pre-assessments.js"></script>
   </body>
 </html>

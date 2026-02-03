@@ -11,7 +11,17 @@
     />
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <title>Responsive sidebar Menu | Dark/Light Mode - Bedimcode</title>
   </head>
@@ -19,7 +29,7 @@
     <!--=============== HEADER ===============-->
     <header class="header" id="header">
       <div class="header__container">
-        <a href="../home/" class="header__logo">
+        <a href="#" class="header__logo">
           <i class="ri-cloud-fill"></i>
           <span>LOGO</span>
         </a>
@@ -35,7 +45,7 @@
       <div class="sidebar__container">
         <div class="sidebar__user">
           <div class="sidebar__img">
-            <img src="../assets/img/user.png" alt="image" />
+            <img src="../../assets/img/user.png" alt="image" />
           </div>
 
           <div class="sidebar__info">
@@ -46,18 +56,20 @@
 
         <div class="sidebar__content">
           <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
             <div class="sidebar__list">
-              <a href="../home/" class="sidebar__link active-link">
+              <a href="../home/" class="sidebar__link">
                 <i class="ri-flag-2-fill"></i>
                 <span>objectives</span>
               </a>
 
-              <a href="../pre-assessments/" class="sidebar__link">
+              <a href="/pre-assessments/" class="sidebar__link active-link">
                 <i class="ri-file-list-3-fill"></i>
                 <span>pre-assessments</span>
               </a>
 
-              <a href="../modules/" class="sidebar__link">
+              <a href="/modules/" class="sidebar__link">
                 <i class="ri-book-open-fill"></i>
                 <span>Modules</span>
               </a>
@@ -89,13 +101,24 @@
     </nav>
 
     <!--=============== MAIN ===============-->
-    <main class="main container" id="main">
-      <h1>Page Content</h1>
+    <main class="main" id="main">
+      <div class="container">
+        <div class="units-grid" id="units-grid-assessment"></div>
+
+        <div class="footer">
+          <p>© 2023 Educational Units System. All rights reserved.</p>
+        </div>
+      </div>
     </main>
 
     <!--=============== MAIN JS ===============-->
-    <script src="../assets/js/auth-guard.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../assets/js/auth-guard.js"></script>
 
-    <script src="../assets/js/main.js"></script>
+    <script src="../../data/pre-assessments-data.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <!-- <script src="../../assets/js/modules.js"></script> -->
+    <script src="../../assets/js/pre-assessment-details.js"></script>
+    <script src="../../assets/js/turn.min.js"></script>
   </body>
 </html>

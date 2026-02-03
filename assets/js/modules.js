@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     </div>
     <div class="unit-icon">
-      <i class="fas fa-code"></i>
+      <img src="${module.module_img}" alt="icone">
     </div>
     <h3>${module.name}</h3>
     <div class="unit-description">${module.description}</div>
