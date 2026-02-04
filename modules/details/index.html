@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../assets/img/favicon/favicon.png"
+    />
     <!--=============== REMIXICONS ===============-->
     <link
       rel="stylesheet"
@@ -60,13 +64,13 @@
 
             <div class="sidebar__list">
               <a href="../home/" class="sidebar__link">
-                <i class="ri-flag-2-fill"></i>
-                <span>objectives</span>
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
               </a>
 
               <a href="../../pre-assessments/" class="sidebar__link">
                 <i class="ri-file-list-3-fill"></i>
-                <span>pre-assessments</span>
+                <span>Pre-Assessments</span>
               </a>
 
               <a href="../../modules/" class="sidebar__link active-link">
@@ -76,7 +80,7 @@
 
               <a href="#" class="sidebar__link">
                 <i class="ri-file-list-3-fill"></i>
-                <span>Post-test</span>
+                <span>Post Assessment</span>
               </a>
             </div>
           </div>
@@ -140,13 +144,60 @@
             </section>
 
             <!-- SLIDER / BOOK -->
-            <section class="slider-section">
+            <!-- <section class="slider-section">
               <div class="slider-container">
                 <div class="book-wrapper" id="book-container">
                   <div id="book"></div>
                 </div>
               </div>
-            </section>
+            </section> -->
+
+            <div class="guide-section">
+              <div class="guide-icon">
+                <i class="fas fa-book-open"></i>
+              </div>
+
+              <h1 class="guide-title">Your Digital Textbook Is Ready</h1>
+
+              <p class="guide-description">
+                This course includes a digital textbook that contains all the
+                essential learning content. To view the book, simply use the
+                button below.
+              </p>
+
+              <div class="guide-instruction">
+                <div class="instruction-icon">1</div>
+                <h3>How to Access the Book</h3>
+                <p>
+                  Click the button below to open the digital textbook. The book
+                  will be displayed in an interactive view where you can read
+                  and navigate through all course materials.
+                </p>
+              </div>
+
+              <button class="guide-button">
+                Open Digital Textbook
+                <i class="fas fa-arrow-right"></i>
+              </button>
+
+              <div class="guide-note">
+                <i class="fas fa-info-circle"></i>
+                Note: Please ensure you have an active internet connection to
+                load the textbook properly.
+              </div>
+            </div>
+
+            <div class="book-modal" id="bookModal">
+              <div class="book-modal__overlay"></div>
+
+              <div class="book-modal__content">
+                <button class="book-modal__close">&times;</button>
+
+                <div class="book-wrapper" id="book-container">
+                  <div id="book"></div>
+                </div>
+              </div>
+            </div>
 
             <!-- QUIZ -->
             <section class="quiz-section">
@@ -185,12 +236,11 @@
             </section>
           </div>
         </div>
-
-        <div class="footer">
-          <p>© 2023 Educational Platform. All rights reserved.</p>
-        </div>
       </div>
     </main>
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!--=============== MAIN JS ===============-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -202,7 +252,7 @@
     <script src="../../assets/js/module-details.js"></script>
     <script src="../../assets/js/turn.min.js"></script>
 
-    <script>
+    <!-- <script>
       function initBook() {
         const screenWidth = $(window).width();
         let bookWidth, bookHeight, displayMode;
@@ -219,8 +269,8 @@
           displayMode = "double";
         } else {
           // شاشات كبيرة (Desktop)
-          bookWidth = 500;
-          bookHeight = 400;
+          bookWidth = 650;
+          bookHeight = 550;
           displayMode = "double";
         }
 
@@ -242,6 +292,84 @@
 
       $(window).on("resize", function () {
         initBook();
+      });
+    </script> -->
+
+    <!--==================================-->
+    <script>
+      function initBook() {
+        const $book = $("#book");
+
+        // ❌ ما تهيّئش الكتاب وهو مخفي
+        if (!$book.is(":visible")) return;
+
+        const screenWidth = $(window).width();
+        let bookWidth, bookHeight, displayMode;
+
+        if (screenWidth < 576) {
+          // موبايل
+          bookWidth = screenWidth - 20;
+          bookHeight = bookWidth * 1.4;
+          displayMode = "single";
+        } else if (screenWidth < 992) {
+          // تابلت
+          bookWidth = screenWidth * 0.9;
+          bookHeight = bookWidth * 0.6;
+          displayMode = "double";
+        } else {
+          // Desktop
+          bookWidth = 650;
+          bookHeight = 550;
+          displayMode = "double";
+        }
+
+        // إعادة التهيئة لو كان شغال قبل كده
+        if ($book.data("turn")) {
+          $book.turn("destroy");
+        }
+
+        $book.turn({
+          width: bookWidth,
+          height: bookHeight,
+          autoCenter: true,
+          display: displayMode,
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const openBtn = document.querySelector(".guide-button");
+        const modal = document.getElementById("bookModal");
+        const closeBtn = modal.querySelector(".book-modal__close");
+        const overlay = modal.querySelector(".book-modal__overlay");
+
+        openBtn.addEventListener("click", () => {
+          modal.classList.add("active");
+          document.body.classList.add("modal-open");
+
+          // ⏱️ انتظر المودال يظهر
+          setTimeout(() => {
+            initBook();
+          }, 100);
+        });
+
+        function closeModal() {
+          modal.classList.remove("active");
+          document.body.classList.remove("modal-open");
+        }
+
+        closeBtn.addEventListener("click", closeModal);
+        overlay.addEventListener("click", closeModal);
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeModal();
+        });
+      });
+
+      // إعادة الحساب عند تغيير حجم الشاشة
+      $(window).on("resize", function () {
+        if ($("#book").is(":visible")) {
+          initBook();
+        }
       });
     </script>
   </body>

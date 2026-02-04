@@ -79,3 +79,48 @@ if (logoutButton) {
 } else {
   console.error("Logout button not found!");
 }
+
+// Book Modal;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const openBtn = document.querySelector(".guide-button");
+  const modal = document.getElementById("bookModal");
+  const closeBtn = modal.querySelector(".book-modal__close");
+  const overlay = modal.querySelector(".book-modal__overlay");
+
+  openBtn.addEventListener("click", () => {
+    modal.classList.add("active");
+    // document.body.classList.add("modal-open");
+  });
+
+  function closeModal() {
+    modal.classList.remove("active");
+    document.body.classList.remove("modal-open");
+  }
+
+  closeBtn.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollBtn.classList.add("show");
+    } else {
+      scrollBtn.classList.remove("show");
+    }
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+});

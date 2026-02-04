@@ -2,12 +2,12 @@ const modules = [
   {
     id: 1,
     module_number: 1,
-    name: "Introduction to Digital Learning",
+    name: "TPACK Model",
     description:
       "This module introduces the basic concepts of digital learning and its importance in modern education.",
     progress_rate: 50,
     module_img: "../../assets/img/Picture1.png",
-    images: [
+    book_images: [
       "../../assets/img/cav1.png",
       "../../assets/img/cav2.png",
       "../../assets/img/cav1.png",
@@ -56,12 +56,12 @@ const modules = [
   {
     id: 2,
     module_number: 2,
-    name: "Learning Management Systems",
+    name: "Digital Teaching Skills",
     description:
       "This module explains how Learning Management Systems (LMS) help organize and deliver online courses efficiently.",
     progress_rate: 30,
     module_img: "../../assets/img/Picture2.png",
-    images: ["images/module2/img1.jpg", "images/module2/img2.jpg"],
+    book_images: ["images/module2/img1.jpg", "images/module2/img2.jpg"],
     video: "videos/module2.mp4",
     quiz: [
       {
@@ -100,12 +100,12 @@ const modules = [
   {
     id: 3,
     module_number: 3,
-    name: "Digital Content Creation",
+    name: "Mathematics Content Analysis",
     description:
       "Learn how to create engaging digital content including videos, images, and interactive materials.",
     progress_rate: 70,
     module_img: "../../assets/img/Picture3.png",
-    images: ["images/module3/img1.jpg", "images/module3/img2.jpg"],
+    book_images: ["images/module3/img1.jpg", "images/module3/img2.jpg"],
     video: "videos/module3.mp4",
     quiz: [
       {
@@ -140,12 +140,12 @@ const modules = [
   {
     id: 4,
     module_number: 4,
-    name: "Online Assessment Tools",
+    name: "Behavioral Learning Objectives",
     description:
       "Explore tools and techniques for conducting assessments online effectively.",
     progress_rate: 20,
     module_img: "../../assets/img/Picture4.png",
-    images: ["images/module4/img1.jpg", "images/module4/img2.jpg"],
+    book_images: ["images/module4/img1.jpg", "images/module4/img2.jpg"],
     video: "videos/module4.mp4",
     quiz: [
       {
@@ -174,12 +174,182 @@ const modules = [
   {
     id: 5,
     module_number: 5,
-    name: "Student Engagement Strategies",
+    name: "Digital Warm-Up Strategies for Mathematics Lessons",
     description:
       "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
     progress_rate: 90,
     module_img: "../../assets/img/Picture5.png",
-    images: ["images/module5/img1.jpg", "images/module5/img2.jpg"],
+    book_images: ["images/module5/img1.jpg", "images/module5/img2.jpg"],
+    video: "videos/module5.mp4",
+    quiz: [
+      {
+        question: "Which method increases student engagement?",
+        options: [
+          "Interactive activities",
+          "Long lectures",
+          "No feedback",
+          "Passive learning",
+        ],
+        correct_answer: "Interactive activities",
+        hint: "Students participate actively here.",
+      },
+    ],
+    objectives: [
+      "Implement interactive learning activities",
+      "Foster online community and collaboration",
+      "Use gamification to enhance engagement",
+      "Design engaging discussion forums",
+      "Create interactive virtual classrooms",
+      "Monitor and measure student engagement levels",
+      "Apply feedback techniques to motivate learners",
+      "Address challenges in digital learning engagement",
+    ],
+  },
+  {
+    id: 6,
+    module_number: 6,
+    name: "Digital Teaching Strategies",
+    description:
+      "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
+    progress_rate: 90,
+    module_img: "../../assets/img/Picture6.png",
+    book_images: ["images/module5/img1.jpg", "images/module5/img2.jpg"],
+    video: "videos/module5.mp4",
+    quiz: [
+      {
+        question: "Which method increases student engagement?",
+        options: [
+          "Interactive activities",
+          "Long lectures",
+          "No feedback",
+          "Passive learning",
+        ],
+        correct_answer: "Interactive activities",
+        hint: "Students participate actively here.",
+      },
+    ],
+    objectives: [
+      "Implement interactive learning activities",
+      "Foster online community and collaboration",
+      "Use gamification to enhance engagement",
+      "Design engaging discussion forums",
+      "Create interactive virtual classrooms",
+      "Monitor and measure student engagement levels",
+      "Apply feedback techniques to motivate learners",
+      "Address challenges in digital learning engagement",
+    ],
+  },
+  {
+    id: 7,
+    module_number: 7,
+    name: "Digital Representation of Mathematical Content",
+    description:
+      "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
+    progress_rate: 90,
+    module_img: "../../assets/img/Picture7.png",
+    book_images: ["images/module5/img1.jpg", "images/module5/img2.jpg"],
+    video: "videos/module5.mp4",
+    quiz: [
+      {
+        question: "Which method increases student engagement?",
+        options: [
+          "Interactive activities",
+          "Long lectures",
+          "No feedback",
+          "Passive learning",
+        ],
+        correct_answer: "Interactive activities",
+        hint: "Students participate actively here.",
+      },
+    ],
+    objectives: [
+      "Implement interactive learning activities",
+      "Foster online community and collaboration",
+      "Use gamification to enhance engagement",
+      "Design engaging discussion forums",
+      "Create interactive virtual classrooms",
+      "Monitor and measure student engagement levels",
+      "Apply feedback techniques to motivate learners",
+      "Address challenges in digital learning engagement",
+    ],
+  },
+  {
+    id: 8,
+    module_number: 8,
+    name: "classroom & time management",
+    description:
+      "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
+    progress_rate: 90,
+    module_img: "../../assets/img/Picture8.png",
+    book_images: ["images/module5/img1.jpg", "images/module5/img2.jpg"],
+    video: "videos/module5.mp4",
+    quiz: [
+      {
+        question: "Which method increases student engagement?",
+        options: [
+          "Interactive activities",
+          "Long lectures",
+          "No feedback",
+          "Passive learning",
+        ],
+        correct_answer: "Interactive activities",
+        hint: "Students participate actively here.",
+      },
+    ],
+    objectives: [
+      "Implement interactive learning activities",
+      "Foster online community and collaboration",
+      "Use gamification to enhance engagement",
+      "Design engaging discussion forums",
+      "Create interactive virtual classrooms",
+      "Monitor and measure student engagement levels",
+      "Apply feedback techniques to motivate learners",
+      "Address challenges in digital learning engagement",
+    ],
+  },
+  {
+    id: 9,
+    module_number: 9,
+    name: "Digital Lesson Closure methods",
+    description:
+      "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
+    progress_rate: 90,
+    module_img: "../../assets/img/Picture9.png",
+    book_images: ["images/module5/img1.jpg", "images/module5/img2.jpg"],
+    video: "videos/module5.mp4",
+    quiz: [
+      {
+        question: "Which method increases student engagement?",
+        options: [
+          "Interactive activities",
+          "Long lectures",
+          "No feedback",
+          "Passive learning",
+        ],
+        correct_answer: "Interactive activities",
+        hint: "Students participate actively here.",
+      },
+    ],
+    objectives: [
+      "Implement interactive learning activities",
+      "Foster online community and collaboration",
+      "Use gamification to enhance engagement",
+      "Design engaging discussion forums",
+      "Create interactive virtual classrooms",
+      "Monitor and measure student engagement levels",
+      "Apply feedback techniques to motivate learners",
+      "Address challenges in digital learning engagement",
+    ],
+  },
+  {
+    id: 10,
+    module_number: 10,
+    name: "Digital Evaluation",
+    description:
+      "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
+    progress_rate: 90,
+    module_img: "../../assets/img/Picture10.png",
+    book_images: ["images/module5/img1.jpg", "images/module5/img2.jpg"],
     video: "videos/module5.mp4",
     quiz: [
       {

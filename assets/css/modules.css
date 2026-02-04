@@ -488,6 +488,7 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   padding: 25px;
   transition: transform 0.3s ease;
+  margin-bottom: 17px;
 }
 
 .quiz-section:hover {
@@ -627,7 +628,7 @@
 .quiz-actions {
   display: flex;
   gap: 15px;
-  margin-top: 30px;
+  margin: 30px 0;
 }
 
 .quiz-btn {
@@ -697,15 +698,6 @@
   }
 }
 
-.footer {
-  text-align: center;
-  margin-top: 50px;
-  padding: 25px;
-  color: #636e72;
-  font-size: 0.9rem;
-  border-top: 1px solid #e9ecef;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .options-grid {
@@ -760,40 +752,6 @@
   .video-container {
     padding-bottom: 56.25%;
   }
-}
-
-#book {
-  margin-left: 0 !important;
-  margin-inline-start: auto !important;
-  margin-inline-end: auto !important;
-  max-width: 100%;
-  box-shadow:
-    0 15px 30px rgba(0, 0, 0, 0.35),
-    0 5px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 6px;
-}
-
-@media screen and (max-width: 992px) {
-  #book {
-    width: 100% !important;
-  }
-  .slider-container {
-    padding: 0 !important;
-  }
-}
-
-.page {
-  overflow: hidden;
-}
-
-.page {
-  background: #fff;
-}
-
-.page img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .result-container {
@@ -876,6 +834,9 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  min-height: 50px;
 }
 
 .result-warning i {
@@ -1120,4 +1081,412 @@
     height: 32px;
     font-size: 0.9rem;
   }
+}
+
+/**************************************************/
+
+.guide-section {
+  width: 100%;
+  /* max-width: 700px; */
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 15px 30px rgba(93, 64, 55, 0.12);
+  border: 1px solid #e8e0d8;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.guide-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(to right, #bc8f8f, #f5deb3, #bc8f8f);
+}
+
+.guide-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #f5f1eb 0%, #e8e0d8 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  border: 2px solid #d7ccc8;
+  box-shadow: 0 8px 16px rgba(93, 64, 55, 0.08);
+}
+
+.guide-icon i {
+  font-size: 2.2rem;
+  color: #8d6e63;
+}
+
+.guide-title {
+  color: #4e342e;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.guide-description {
+  color: #8d6e63;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.guide-instruction {
+  background-color: #f9f5f0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-left: 4px solid #8d6e63;
+  text-align: left;
+  position: relative;
+}
+
+.instruction-icon {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 32px;
+  height: 32px;
+  background-color: #6d4c41;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(109, 76, 65, 0.15);
+}
+
+.guide-instruction h3 {
+  color: #4e342e;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.guide-instruction p {
+  color: #8d6e63;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.guide-button {
+  padding: 16px 40px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #8d6e63 0%, #6d4c41 100%);
+  color: white;
+  margin: 0 auto;
+  box-shadow: 0 8px 20px rgba(109, 76, 65, 0.2);
+  position: relative;
+  overflow: hidden;
+  min-width: 240px;
+}
+
+.guide-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(109, 76, 65, 0.25);
+  background: linear-gradient(135deg, #9c7c72 0%, #7d5c51 100%);
+}
+
+.guide-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(109, 76, 65, 0.2);
+}
+
+.guide-button i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.guide-button:hover i {
+  transform: translateX(4px);
+}
+
+.guide-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: translateX(-100%);
+}
+
+.guide-button:hover::after {
+  animation: shine 1.2s ease;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.guide-note {
+  margin-top: 25px;
+  color: #a1887f;
+  font-size: 0.9rem;
+  font-style: italic;
+  background-color: #f5f1eb;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px dashed #d7ccc8;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.guide-note i {
+  margin-right: 6px;
+  color: #8d6e63;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .guide-section {
+    padding: 35px 25px;
+    max-width: 100%;
+  }
+
+  .guide-title {
+    font-size: 1.6rem;
+  }
+
+  .guide-description {
+    font-size: 1rem;
+  }
+
+  .guide-button {
+    padding: 14px 0;
+    font-size: 1rem;
+    min-width: 220px;
+    /* width: 100%; */
+  }
+
+  .guide-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+  }
+
+  .guide-icon i {
+    font-size: 1.9rem;
+  }
+
+  .guide-instruction {
+    padding: 18px;
+  }
+}
+@media (max-width: 600px) {
+  .guide-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .guide-section {
+    padding: 30px 20px;
+    max-width: 100%;
+  }
+
+  .guide-title {
+    font-size: 1.5rem;
+  }
+
+  .guide-description {
+    font-size: 0.95rem;
+  }
+
+  .guide-instruction {
+    padding: 16px;
+  }
+
+  .guide-button {
+    padding: 13px 0;
+    font-size: 0.95rem;
+    min-width: 200px;
+  }
+
+  .guide-icon {
+    width: 65px;
+    height: 65px;
+  }
+
+  .guide-icon i {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .guide-button {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .guide-title {
+    font-size: 1.4rem;
+  }
+
+  .guide-instruction h3 {
+    font-size: 1.1rem;
+  }
+
+  .guide-note {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+  }
+}
+
+/* Animation for section entrance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.guide-section {
+  animation: fadeIn 0.6s ease-out;
+}
+/*book-modal;;;;;;;;;;;;;;;;;;;;*/
+.book-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 9999;
+}
+
+/* body.modal-open {
+  overflow: hidden;
+} */
+
+.book-modal.active {
+  display: block;
+}
+
+.book-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.book-modal__content {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 5px auto;
+  background: #00000003;
+  border-radius: 12px;
+  padding: 20px;
+  overflow: auto;
+  animation: modalFade 0.3s ease;
+  overflow: hidden;
+}
+
+.book-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 97px;
+  font-size: 49px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.book-placeholder {
+  margin-top: 20px;
+  padding: 40px;
+  border: 2px dashed #ccc;
+  text-align: center;
+  color: #666;
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.book-wrapper {
+  height: 100%;
+  display: grid;
+  /* place-items: center; */
+}
+#book {
+  margin-left: 0 !important;
+  margin-inline-start: auto !important;
+  margin-inline-end: auto !important;
+  max-width: 100%;
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.35),
+    0 5px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  background: #fff;
+  /* scale: 1.5; */
+}
+
+@media screen and (max-width: 992px) {
+  #book {
+    width: 100% !important;
+  }
+  .slider-container {
+    padding: 0 !important;
+  }
+}
+
+.page {
+  overflow: hidden;
+  user-select: none;
+}
+
+.page {
+  background: #fff;
+}
+
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

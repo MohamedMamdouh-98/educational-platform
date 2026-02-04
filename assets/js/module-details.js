@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // SLIDER
   const book = document.getElementById("book");
   book.innerHTML = "";
-  module.images.forEach((img) => {
+  module.book_images.forEach((img) => {
     const page = document.createElement("div");
     page.className = "page";
     page.innerHTML = `<img src="../../${img}" alt="${module.name}" />`;
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to display the result with confetti for correct answers
   function showResult(isCorrect, correctAnswer) {
     resultEl.innerHTML = "";
-    resultEl.className = "result-container";
+    resultEl.className = "result-correct";
 
     if (isCorrect) {
       // Displaying the success message

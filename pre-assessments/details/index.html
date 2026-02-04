@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../assets/img/favicon/favicon.png"
+    />
     <!--=============== REMIXICONS ===============-->
     <link
       rel="stylesheet"
@@ -12,7 +16,8 @@
 
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="../../assets/css/styles.css" />
-    <link rel="stylesheet" href="../../assets/css/modules.css" />
+    <!-- <link rel="stylesheet" href="../../assets/css/modules.css" /> -->
+    <link rel="stylesheet" href="../../assets/css/assessments-details.css" />
     <!-- Font Awesome 6 -->
     <link
       rel="stylesheet"
@@ -59,14 +64,14 @@
             <!-- <h3 class="sidebar__title">MANAGE</h3> -->
 
             <div class="sidebar__list">
-              <a href="../home/" class="sidebar__link">
-                <i class="ri-flag-2-fill"></i>
-                <span>objectives</span>
+              <a href="../../home/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
               </a>
 
               <a href="/pre-assessments/" class="sidebar__link active-link">
                 <i class="ri-file-list-3-fill"></i>
-                <span>pre-assessments</span>
+                <span>Pre-Assessments</span>
               </a>
 
               <a href="/modules/" class="sidebar__link">
@@ -76,7 +81,7 @@
 
               <a href="#" class="sidebar__link">
                 <i class="ri-file-list-3-fill"></i>
-                <span>Post-test</span>
+                <span>Post Assessment</span>
               </a>
             </div>
           </div>
@@ -104,12 +109,11 @@
     <main class="main" id="main">
       <div class="container">
         <div class="units-grid" id="units-grid-assessment"></div>
-
-        <div class="footer">
-          <p>© 2023 Educational Units System. All rights reserved.</p>
-        </div>
       </div>
     </main>
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!--=============== MAIN JS ===============-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

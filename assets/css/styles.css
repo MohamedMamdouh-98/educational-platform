@@ -3,7 +3,8 @@
 
 /*=============== VARIABLES CSS ===============*/
 :root {
-  --header-height: 3.5rem;
+  /* --header-height: 3.5rem; */
+  --header-height: 2.5rem;
 
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
@@ -379,7 +380,8 @@ body.dark-theme {
 
   .main {
     padding-left: 340px;
-    padding-top: 8rem;
+    /* padding-top: 8rem; */
+    padding-top: 5rem;
     transition: padding 0.4s;
   }
 
@@ -387,4 +389,40 @@ body.dark-theme {
   .left-pd {
     padding-left: 114px;
   }
+}
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b7355, #d2b48c);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(60px);
+  transition: all 0.35s ease;
+
+  z-index: 999;
+}
+
+#scrollTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+#scrollTopBtn:hover {
+  background: linear-gradient(135deg, #a47148, #6b4a34);
+  transform: translateX(-4px);
 }

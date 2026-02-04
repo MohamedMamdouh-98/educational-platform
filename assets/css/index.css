@@ -64,13 +64,18 @@ body {
   text-align: start;
 }
 
-.card .img img {
-  width: 70px;
-  height: 70px;
+.card .img {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  object-fit: cover;
   border: 2px solid #a17b63;
   margin-bottom: 10px;
+  overflow: hidden;
+}
+.card .img img {
+  height: 100%;
+  width: 100%;
+  /* object-fit: cover; */
 }
 
 .card .name {
@@ -113,7 +118,7 @@ body {
 
 .supervisors strong {
   position: relative;
-  font-size: 18px;
+  font-size: 19px;
 }
 .supervisors strong::after {
   content: "";
@@ -241,4 +246,12 @@ body {
   .image-section::after {
     height: 75%;
   }
+}
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 25px;
+  color: #636e72;
+  font-size: 0.9rem;
+  border-top: 1px solid #e9ecef;
 }
