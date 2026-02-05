@@ -272,6 +272,7 @@ body.dark-theme {
 .sidebar__theme {
   width: 100%;
   font-size: 1.25rem;
+  display: none;
 }
 
 .sidebar__theme span {
