@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const progressFill = document.getElementById("quiz-progress-fill");
   const progressText = document.getElementById("quiz-progress-text");
   const hintBtn = document.getElementById("hint-btn");
+  const prevBtn = document.getElementById("prev-btn");
   const nextBtn = document.getElementById("next-btn");
   const checkBtn = document.getElementById("check-btn");
   const resultEl = document.getElementById("quiz-result");
@@ -81,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Re-enable control buttons
     checkBtn.disabled = false;
     checkBtn.innerHTML = '<i class="fas fa-check-circle"></i> Check Answer';
+    prevBtn.disabled = currentQuestion === 0;
   }
 
   // Function to display the result
@@ -242,6 +244,13 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
       resultEl.style.display = "block";
       nextBtn.disabled = true;
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentQuestion > 0) {
+      currentQuestion--;
+      renderQuestion();
     }
   });
 
