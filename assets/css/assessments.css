@@ -197,7 +197,7 @@
   }
 
   .card-button {
-    padding: 14px;
+    padding: 14px 0;
     font-size: 1.05rem;
   }
 }
@@ -223,7 +223,7 @@
   }
 
   .card-button {
-    padding: 13px;
+    padding: 13px 0;
     font-size: 1rem;
   }
 }
@@ -248,7 +248,7 @@
   }
 
   .card-button {
-    padding: 14px;
+    padding: 14px 0;
   }
 }
 
@@ -272,7 +272,7 @@
   }
 
   .card-button {
-    padding: 12px;
+    padding: 12px 0;
     font-size: 0.95rem;
   }
 }

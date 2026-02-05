@@ -19,7 +19,9 @@ const modules = [
       "../../assets/img/cav1.png",
       "../../assets/img/cav2.png",
     ],
-    video: "https://www.youtube.com/embed/k4OQMhA7heo?si=K8mVQe0RSmpQPJcv",
+    // video: "https://drive.google.com/file/d/1ksvwgB3dg7VPCR35mgRgzzMdeGh8Xxsp/view?usp=sharing",
+    video:
+      "https://drive.google.com/file/d/1ksvwgB3dg7VPCR35mgRgzzMdeGh8Xxsp/preview",
     quiz: [
       {
         question: "What is the main goal of digital learning?",
