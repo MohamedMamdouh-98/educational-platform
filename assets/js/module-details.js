@@ -15,11 +15,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const objectivesEl = document.getElementById("module-objectives");
   objectivesEl.innerHTML = "";
 
-  module.objectives.forEach((objective, index) => {
+  module.objectives.forEach((objective) => {
     const li = document.createElement("li");
-    li.innerHTML = `
-    <span>${objective}</span>
-  `;
+
+    // هدف عادي (نص)
+    if (typeof objective === "string") {
+      li.innerHTML = `<span>${objective}</span>`;
+    }
+    // هدف فيه ليست داخلية
+    else if (typeof objective === "object" && objective.items) {
+      li.innerHTML = `<span>${objective.title}</span>`;
+
+      const subUl = document.createElement("ul");
+      subUl.classList.add("objectives-sub");
+
+      objective.items.forEach((item) => {
+        const subLi = document.createElement("li");
+        subLi.textContent = item;
+        subUl.appendChild(subLi);
+      });
+
+      li.appendChild(subUl);
+    }
+
     objectivesEl.appendChild(li);
   });
 
@@ -39,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const optionsEl = document.getElementById("quiz-options");
   const progressFill = document.getElementById("quiz-progress-fill");
   const progressText = document.getElementById("quiz-progress-text");
-  const hintBtn = document.getElementById("hint-btn");
+  // const hintBtn = document.getElementById("hint-btn");
   const prevBtn = document.getElementById("prev-btn");
   const nextBtn = document.getElementById("next-btn");
   const checkBtn = document.getElementById("check-btn");
@@ -83,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     checkBtn.disabled = false;
     checkBtn.innerHTML = '<i class="fas fa-check-circle"></i> Check Answer';
     prevBtn.disabled = currentQuestion === 0;
+    nextBtn.disabled = currentQuestion === module.quiz.length - 1;
   }
 
   // Function to display the result
@@ -211,39 +230,46 @@ document.addEventListener("DOMContentLoaded", () => {
   renderQuestion();
 
   // إضافة أحداث النقر
-  hintBtn.addEventListener("click", () => {
-    const hint =
-      module.quiz[currentQuestion].hint ||
-      "No hint available for this question.";
-    resultEl.innerHTML = `
-            <div class="result-hint">
-                <i class="fas fa-lightbulb"></i>
-                <div>
-                    <h3>Hint 💡</h3>
-                    <p>${hint}</p>
-                </div>
-            </div>
-        `;
-    resultEl.style.display = "block";
-  });
+  // hintBtn.addEventListener("click", () => {
+  //   const hint =
+  //     module.quiz[currentQuestion].hint ||
+  //     "No hint available for this question.";
+  //   resultEl.innerHTML = `
+  //           <div class="result-hint">
+  //               <i class="fas fa-lightbulb"></i>
+  //               <div>
+  //                   <h3>Hint 💡</h3>
+  //                   <p>${hint}</p>
+  //               </div>
+  //           </div>
+  //       `;
+  //   resultEl.style.display = "block";
+  // });
+
+  // nextBtn.addEventListener("click", () => {
+  //   if (currentQuestion < module.quiz.length - 1) {
+  //     currentQuestion++;
+  //     renderQuestion();
+  //   } else {
+  //     // عرض نتيجة الاختبار الكامل
+  //     resultEl.innerHTML = `
+  //               <div class="result-complete">
+  //                   <i class="fas fa-trophy"></i>
+  //                   <div>
+  //                       <h3>Quiz Complete! 🎉</h3>
+  //                       <p>You have completed all questions in this module.</p>
+  //                   </div>
+  //               </div>
+  //           `;
+  //     resultEl.style.display = "block";
+  //     nextBtn.disabled = true;
+  //   }
+  // });
 
   nextBtn.addEventListener("click", () => {
     if (currentQuestion < module.quiz.length - 1) {
       currentQuestion++;
       renderQuestion();
-    } else {
-      // عرض نتيجة الاختبار الكامل
-      resultEl.innerHTML = `
-                <div class="result-complete">
-                    <i class="fas fa-trophy"></i>
-                    <div>
-                        <h3>Quiz Complete! 🎉</h3>
-                        <p>You have completed all questions in this module.</p>
-                    </div>
-                </div>
-            `;
-      resultEl.style.display = "block";
-      nextBtn.disabled = true;
     }
   });
 

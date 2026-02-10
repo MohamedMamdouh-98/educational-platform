@@ -24,7 +24,7 @@ body {
   content: "";
   width: 74%;
   height: 95%;
-  background-image: url(assets/img/Rectangle.png);
+  background-image: url(../img/Rectangle.png);
   background-size: cover;
   background-position: center;
   position: absolute;
@@ -236,11 +236,6 @@ body {
 
   .supervisors strong {
     font-size: 15px;
-  }
-
-  .card .img img {
-    width: 60px;
-    height: 60px;
   }
 
   .image-section::after {
