@@ -26,37 +26,44 @@
 
       body {
         background: linear-gradient(145deg, #5e3e2b 0%, #7e5a40 100%);
-        min-height: 100vh;
+        height: 100vh;
+        width: 100vw;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 20px;
+        padding: 12px;
+        overflow: hidden;
       }
 
       .main-card {
         background: #faefdd;
-        padding: 30px 25px 45px;
-        border-radius: 80px 80px 70px 70px;
-        box-shadow: 0 25px 35px rgba(34, 19, 8, 0.8);
-        max-width: 1100px;
+        padding: 16px 18px 20px;
+        border-radius: 40px 40px 35px 35px;
+        box-shadow: 0 20px 30px rgba(34, 19, 8, 0.8);
+        max-width: 800px;
         width: 100%;
-        border: 10px solid #a67b5b;
+        height: 96vh;
+        max-height: 700px;
+        border: 6px solid #a67b5b;
         position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
       .main-card::after {
         content: "⚘⚘⚘";
         position: absolute;
-        bottom: -20px;
+        bottom: -12px;
         left: 50%;
         transform: translateX(-50%);
         background: #dbbc9e;
         color: #543b28;
-        font-size: 28px;
-        letter-spacing: 16px;
-        padding: 6px 40px;
-        border-radius: 60px;
-        box-shadow: inset 0 -4px 0 #7a5a44;
+        font-size: 16px;
+        letter-spacing: 12px;
+        padding: 4px 28px;
+        border-radius: 40px;
+        box-shadow: inset 0 -3px 0 #7a5a44;
         border: 2px solid #f3dabc;
       }
 
@@ -64,34 +71,37 @@
         text-align: center;
         color: #5a3e2b;
         font-weight: 800;
-        font-size: 2.4rem;
+        font-size: 1.7rem;
         margin-top: 0;
-        margin-bottom: 30px;
-        text-shadow: 4px 4px 0 #e7d2b5;
-        letter-spacing: 2px;
+        margin-bottom: 5px;
+        text-shadow: 2px 2px 0 #e7d2b5;
+        letter-spacing: 1px;
         word-break: break-word;
+        line-height: 1.2;
       }
 
       h1 i {
         color: #8b5a2b;
-        margin: 0 12px;
-        filter: drop-shadow(2px 4px 2px #b49475);
+        margin: 0 6px;
+        font-size: 1.5rem;
+        filter: drop-shadow(2px 2px 2px #b49475);
       }
 
-      /* wheel container - bigger */
+      /* wheel container - perfectly fit */
       .wheel-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 100%;
+        flex: 0 1 auto;
       }
 
       .canvas-container {
         position: relative;
-        width: 550px;
-        height: 550px;
-        margin: 0 auto 30px;
+        width: min(380px, 45vh);
+        height: min(380px, 45vh);
+        margin: 0 auto 8px;
       }
 
       canvas {
@@ -99,10 +109,10 @@
         height: 100%;
         display: block;
         border-radius: 50%;
-        border: 16px solid #8f6b4b;
+        border: 8px solid #8f6b4b;
         box-shadow:
-          inset 0 0 0 8px #efdecb,
-          0 22px 35px rgba(44, 26, 8, 0.8);
+          inset 0 0 0 5px #efdecb,
+          0 15px 25px rgba(44, 26, 8, 0.8);
         transition: transform 0.08s;
         background: #b89474;
         cursor: pointer;
@@ -114,158 +124,200 @@
 
       .pointer {
         position: absolute;
-        top: -28px;
+        top: -18px;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 70px;
+        font-size: 44px;
         color: #62371e;
         text-shadow:
-          0 14px 10px #2d1e12,
-          0 0 0 6px #fbebd2;
+          0 10px 8px #2d1e12,
+          0 0 0 4px #fbebd2;
         z-index: 15;
-        filter: drop-shadow(0 10px 0 #8b674b);
+        filter: drop-shadow(0 6px 0 #8b674b);
       }
 
-      /* button below wheel - bigger */
+      /* button below wheel - compact */
       .spin-btn-container {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
-        margin: 15px 0 25px;
+        margin: 5px 0 8px;
       }
 
       .btn-spin {
         background: radial-gradient(circle at 30% 30%, #ffefd1, #9e785a);
         border: none;
-        padding: 26px 70px;
-        border-radius: 90px;
-        font-size: 3.2rem;
+        padding: 12px 40px;
+        border-radius: 60px;
+        font-size: 1.9rem;
         font-weight: 900;
         color: #2c1c10;
         cursor: pointer;
         box-shadow:
-          0 18px 0 #4f3727,
-          0 25px 40px #2f1d11,
-          inset 0 -6px 12px rgba(0, 0, 0, 0.4),
-          inset 0 6px 12px rgba(255, 240, 200, 0.9);
-        transition: 0.05s linear;
+          0 10px 0 #4f3727,
+          0 15px 25px #2f1d11,
+          inset 0 -4px 8px rgba(0, 0, 0, 0.4),
+          inset 0 4px 8px rgba(255, 240, 200, 0.9);
+        transition: 0.04s linear;
         display: flex;
         align-items: center;
-        gap: 20px;
-        border: 5px solid #fff0cf;
-        letter-spacing: 10px;
+        gap: 12px;
+        border: 4px solid #fff0cf;
+        letter-spacing: 6px;
       }
 
       .btn-spin i {
-        font-size: 3.2rem;
+        font-size: 1.9rem;
         color: #412e1b;
-        text-shadow: 0 4px 8px #d6a77a;
+        text-shadow: 0 3px 5px #d6a77a;
       }
 
       .btn-spin:active {
-        transform: translateY(16px);
+        transform: translateY(8px);
         box-shadow:
           0 2px 0 #4f3727,
-          0 18px 30px #2f1d11,
-          inset 0 -3px 8px rgba(0, 0, 0, 0.2);
+          0 12px 20px #2f1d11,
+          inset 0 -2px 5px rgba(0, 0, 0, 0.2);
       }
 
-      /* question box - bigger */
+      /* question box - compact */
       .question-box {
         background: #e5cfb5;
-        margin-top: 25px;
-        padding: 35px 45px;
-        border-radius: 120px 50px 120px 50px;
-        border-right: 22px solid #714f36;
-        border-bottom: 22px solid #9e7a60;
+        margin-top: 5px;
+        padding: 14px 20px;
+        border-radius: 50px 30px 50px 30px;
+        border-right: 12px solid #714f36;
+        border-bottom: 12px solid #9e7a60;
         box-shadow:
-          inset 0 0 0 6px #fff8eb,
-          0 20px 30px #38291e;
+          inset 0 0 0 4px #fff8eb,
+          0 12px 20px #38291e;
         color: #281c12;
-        font-size: 2rem;
+        font-size: 1.1rem;
         font-weight: 700;
         text-align: center;
         word-break: break-word;
         background: linear-gradient(145deg, #fbefdf, #ddc2a8);
-        min-height: 160px;
+        min-height: 80px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 3px solid #fff3df;
+        border: 2px solid #fff3df;
+        flex: 0 1 auto;
+        width: 100%;
       }
 
       .question-box i {
-        margin-left: 30px;
+        margin-left: 12px;
         color: #693f25;
-        font-size: 2.8rem;
-        text-shadow: 4px 4px 0 #ebd5b8;
+        font-size: 1.4rem;
+        text-shadow: 2px 2px 0 #ebd5b8;
       }
 
       .selected-q-text {
-        line-height: 1.5;
+        line-height: 1.4;
         flex: 1;
       }
 
-      /* footer empty - removed text */
+      /* footer completely empty */
       .footer-note {
-        text-align: center;
-        margin-top: 25px;
-        color: transparent;
-        font-size: 0.1rem;
-        user-select: none;
+        display: none;
       }
 
-      /* responsive */
-      @media (max-width: 800px) {
-        .canvas-container {
-          width: 450px;
-          height: 450px;
+      /* responsive - perfect fit for any screen */
+      @media (max-width: 600px) {
+        body {
+          padding: 8px;
+        }
+        .main-card {
+          padding: 12px 14px 16px;
+          max-height: 650px;
         }
         h1 {
-          font-size: 2rem;
+          font-size: 1.4rem;
+        }
+        h1 i {
+          font-size: 1.2rem;
+        }
+        .canvas-container {
+          width: min(300px, 40vh);
+          height: min(300px, 40vh);
+        }
+        .pointer {
+          font-size: 38px;
+          top: -16px;
         }
         .btn-spin {
-          font-size: 2.6rem;
-          padding: 22px 50px;
+          font-size: 1.6rem;
+          padding: 10px 30px;
+        }
+        .btn-spin i {
+          font-size: 1.6rem;
         }
         .question-box {
+          font-size: 0.95rem;
+          padding: 12px 16px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .main-card {
+          padding: 10px 12px 14px;
+        }
+        h1 {
+          font-size: 1.2rem;
+        }
+        .canvas-container {
+          width: min(250px, 35vh);
+          height: min(250px, 35vh);
+        }
+        .pointer {
+          font-size: 32px;
+          top: -14px;
+        }
+        .btn-spin {
+          font-size: 1.4rem;
+          padding: 8px 25px;
+        }
+        .question-box {
+          font-size: 0.85rem;
+          padding: 10px 12px;
+        }
+      }
+
+      @media (max-height: 700px) {
+        .main-card {
+          max-height: 600px;
+        }
+        .canvas-container {
+          width: min(320px, 40vh);
+          height: min(320px, 40vh);
+        }
+        .btn-spin {
+          padding: 10px 35px;
           font-size: 1.7rem;
-          padding: 25px 30px;
         }
       }
 
-      @media (max-width: 550px) {
-        .canvas-container {
-          width: 360px;
-          height: 360px;
+      @media (max-height: 600px) {
+        .main-card {
+          max-height: 550px;
+          padding: 10px 12px;
         }
-        .pointer {
-          font-size: 60px;
-          top: -24px;
+        .canvas-container {
+          width: min(280px, 38vh);
+          height: min(280px, 38vh);
+        }
+        h1 {
+          font-size: 1.3rem;
+          margin-bottom: 2px;
         }
         .btn-spin {
-          font-size: 2.2rem;
-          padding: 18px 40px;
-        }
-        .question-box {
+          padding: 8px 30px;
           font-size: 1.5rem;
-          padding: 20px;
         }
-      }
-
-      @media (max-width: 420px) {
-        .canvas-container {
-          width: 300px;
-          height: 300px;
-        }
-        .pointer {
-          font-size: 52px;
-          top: -20px;
-        }
-        .btn-spin {
-          font-size: 1.9rem;
-          padding: 16px 30px;
+        .btn-spin i {
+          font-size: 1.5rem;
         }
       }
     </style>
@@ -284,10 +336,10 @@
           <div class="pointer">
             <i class="fas fa-caret-down"></i>
           </div>
-          <canvas id="wheelCanvas" width="700" height="700"></canvas>
+          <canvas id="wheelCanvas" width="600" height="600"></canvas>
         </div>
 
-        <!-- SPIN button below wheel - big and beautiful -->
+        <!-- SPIN button below wheel - compact -->
         <div class="spin-btn-container">
           <button class="btn-spin" id="spinButton">
             <i class="fas fa-sync-alt"></i> SPIN
@@ -303,7 +355,7 @@
         >
       </div>
 
-      <!-- footer completely empty / no text -->
+      <!-- footer completely empty -->
       <div class="footer-note"></div>
     </div>
 
@@ -321,18 +373,18 @@
 
         // ---------- Brown palette - opened up / brighter & rich browns ----------
         const brownPalette = [
-          "#B5673A", // terracotta brown
-          "#A1582E", // cinnamon
-          "#8C5A3C", // chestnut
-          "#C17B4D", // caramel
-          "#9E6B4E", // walnut
-          "#B47C5A", // light mocha
-          "#7A5B4A", // espresso
-          "#C48A5C", // honey brown
-          "#A5714F", // almond
-          "#8B5E3C", // coffee
-          "#B86138", // burnt sienna
-          "#9F7248", // toffee
+          "#B5673A",
+          "#A1582E",
+          "#8C5A3C",
+          "#C17B4D",
+          "#9E6B4E",
+          "#B47C5A",
+          "#7A5B4A",
+          "#C48A5C",
+          "#A5714F",
+          "#8B5E3C",
+          "#B86138",
+          "#9F7248",
         ];
 
         // canvas elements
@@ -446,17 +498,17 @@
           }
         }
 
-        // ---------- draw big wheel with open brown colors ----------
+        // ---------- draw wheel with perfect scaling ----------
         function drawWheel(angle) {
           const w = canvas.width;
           const h = canvas.height;
           const cx = w / 2;
           const cy = h / 2;
-          const radius = Math.min(w, h) * 0.42; // nice big radius
+          const radius = Math.min(w, h) * 0.4;
 
           ctx.clearRect(0, 0, w, h);
           ctx.shadowColor = "#2b1a0e";
-          ctx.shadowBlur = 18;
+          ctx.shadowBlur = 14;
 
           // draw slices
           for (let i = 0; i < questions.length; i++) {
@@ -472,7 +524,7 @@
             ctx.fill();
 
             ctx.strokeStyle = "#fae6cc";
-            ctx.lineWidth = 3;
+            ctx.lineWidth = 2.5;
             ctx.beginPath();
             ctx.moveTo(cx, cy);
             ctx.arc(cx, cy, radius, start, end);
@@ -482,11 +534,11 @@
 
           ctx.shadowBlur = 0;
 
-          // text short labels
-          ctx.font = 'bold 22px "Cairo", sans-serif';
+          // text short labels - scaled for smaller wheel
+          ctx.font = 'bold 18px "Cairo", sans-serif';
           ctx.fillStyle = "#fffcf2";
           ctx.shadowColor = "#38271a";
-          ctx.shadowBlur = 8;
+          ctx.shadowBlur = 6;
           ctx.textAlign = "center";
           ctx.textBaseline = "middle";
 
@@ -508,25 +560,25 @@
               questions[i].includes("TPK")
             )
               short = "TK/TPK";
-            else if (questions[i].includes("components")) short = "COMPONENTS";
+            else if (questions[i].includes("components")) short = "COMP";
             else short = "TPACK";
 
             ctx.fillText(short, x, y);
           }
 
           // center decoration
-          ctx.shadowBlur = 14;
+          ctx.shadowBlur = 10;
           ctx.beginPath();
-          ctx.arc(cx, cy, radius * 0.21, 0, 2 * Math.PI);
+          ctx.arc(cx, cy, radius * 0.2, 0, 2 * Math.PI);
           ctx.fillStyle = "#e7cfb0";
           ctx.fill();
           ctx.shadowBlur = 0;
           ctx.strokeStyle = "#8f6b4b";
-          ctx.lineWidth = 8;
+          ctx.lineWidth = 6;
           ctx.stroke();
 
           ctx.beginPath();
-          ctx.arc(cx, cy, radius * 0.11, 0, 2 * Math.PI);
+          ctx.arc(cx, cy, radius * 0.1, 0, 2 * Math.PI);
           ctx.fillStyle = "#5b3a23";
           ctx.fill();
         }
@@ -556,7 +608,7 @@
           drawWheel(currentAngle);
           updateQuestionText();
 
-          // play sound while spinning (clear and audible)
+          // play sound while spinning
           if (Math.abs(spinVelocity) > 0.02) {
             playSpinSound(Math.min(Math.abs(spinVelocity) * 0.9, 1.1));
 
@@ -579,7 +631,6 @@
           if (Math.abs(spinVelocity) < minVelocity) {
             spinning = false;
             spinVelocity = 0;
-            // final sound and vibration
             playSpinSound(1.3);
             triggerVibration();
             if (animationFrame) cancelAnimationFrame(animationFrame);
@@ -589,11 +640,10 @@
           }
         }
 
-        // ---------- start spinning (called by button & canvas) ----------
+        // ---------- start spinning ----------
         function startSpin() {
-          initAudio(); // ensure audio context ready
+          initAudio();
 
-          // play strong sound immediately
           if (audioContext) {
             if (audioContext.state === "suspended") {
               audioContext.resume().then(() => {
@@ -604,7 +654,7 @@
             }
           }
 
-          triggerVibration(); // vibration on press
+          triggerVibration();
 
           if (spinning) {
             spinning = false;
@@ -614,7 +664,6 @@
             }
           }
 
-          // random velocity
           spinVelocity = 1.5 + Math.random() * 2.5;
           spinVelocity *= Math.random() > 0.4 ? 1 : -1;
           spinning = true;
@@ -630,7 +679,6 @@
           spinBtn.addEventListener("click", startSpin);
           canvas.addEventListener("click", startSpin);
 
-          // init audio on first touch/click
           document.body.addEventListener(
             "touchstart",
             function initTouch() {
@@ -649,7 +697,7 @@
             { once: true },
           );
 
-          initAudio(); // for desktop
+          initAudio();
 
           canvas.addEventListener("contextmenu", (e) => e.preventDefault());
         }
