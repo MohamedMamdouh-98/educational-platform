@@ -349,10 +349,10 @@
 
       <!-- selected question shows here -->
       <div class="question-box" id="selectedQuestionBox">
-        <i class="fas fa-question"></i>
         <span class="selected-q-text" id="questionText"
           >Press SPIN or tap the wheel</span
         >
+        <i class="fas fa-question"></i>
       </div>
 
       <!-- footer completely empty -->
@@ -485,18 +485,18 @@
         }
 
         // ---------- Vibration for mobile only ----------
-        function triggerVibration() {
-          const isMobile =
-            /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-              navigator.userAgent,
-            );
-          if (isMobile && window.navigator.vibrate) {
-            window.navigator.vibrate(40);
-            setTimeout(() => {
-              window.navigator.vibrate(20);
-            }, 60);
-          }
-        }
+        // function triggerVibration() {
+        //   const isMobile =
+        //     /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        //       navigator.userAgent,
+        //     );
+        //   if (isMobile && window.navigator.vibrate) {
+        //     window.navigator.vibrate(40);
+        //     setTimeout(() => {
+        //       window.navigator.vibrate(20);
+        //     }, 60);
+        //   }
+        // }
 
         // ---------- draw wheel with perfect scaling ----------
         function drawWheel(angle) {
@@ -632,7 +632,6 @@
             spinning = false;
             spinVelocity = 0;
             playSpinSound(1.3);
-            triggerVibration();
             if (animationFrame) cancelAnimationFrame(animationFrame);
             animationFrame = null;
           } else {
@@ -653,8 +652,6 @@
               playSpinSound(1.6);
             }
           }
-
-          triggerVibration();
 
           if (spinning) {
             spinning = false;
