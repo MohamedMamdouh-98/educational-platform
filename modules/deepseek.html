@@ -485,20 +485,6 @@
           } catch (e) {}
         }
 
-        // ---------- Vibration for mobile only ----------
-        // function triggerVibration() {
-        //   const isMobile =
-        //     /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        //       navigator.userAgent,
-        //     );
-        //   if (isMobile && window.navigator.vibrate) {
-        //     window.navigator.vibrate(40);
-        //     setTimeout(() => {
-        //       window.navigator.vibrate(20);
-        //     }, 60);
-        //   }
-        // }
-
         // ---------- draw wheel with perfect scaling ----------
         function drawWheel(angle) {
           const w = canvas.width;
@@ -598,7 +584,7 @@
           questionSpan.textContent = getSelectedQuestion(currentAngle);
         }
 
-        // ---------- spin loop with sound and vibration ----------
+        // ---------- spin loop with sound ONLY (vibration removed) ----------
         function spinLoop() {
           if (!spinning) return;
 
@@ -612,21 +598,6 @@
           // play sound while spinning
           if (Math.abs(spinVelocity) > 0.02) {
             playSpinSound(Math.min(Math.abs(spinVelocity) * 0.9, 1.1));
-
-            // mobile vibration during fast spin
-            if (Math.abs(spinVelocity) > 0.12) {
-              const isMobile =
-                /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-                  navigator.userAgent,
-                );
-              if (
-                isMobile &&
-                window.navigator.vibrate &&
-                Math.random() < 0.25
-              ) {
-                window.navigator.vibrate(12);
-              }
-            }
           }
 
           if (Math.abs(spinVelocity) < minVelocity) {
