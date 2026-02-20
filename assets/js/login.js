@@ -39,6 +39,6 @@ form.addEventListener("submit", function (e) {
     timer: 1500,
     showConfirmButton: false,
   }).then(() => {
-    window.location.href = "../home/index.html";
+    window.location.href = "/modules/"; // Redirect to modules page after login
   });
 });
