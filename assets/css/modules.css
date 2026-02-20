@@ -1,9 +1,8 @@
-/* استايل الكاردات والشريط الدائري */
 .units-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
-  margin-top: 20px;
+  margin: 35px 0;
 }
 
 .unit-card {

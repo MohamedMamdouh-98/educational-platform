@@ -124,3 +124,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  replaceHeaderLogo();
+});
+
+function replaceHeaderLogo() {
+  const logoContainer = document.querySelector(".header__logo");
+
+  if (!logoContainer) return;
+
+  logoContainer.innerHTML = "";
+
+  const img = document.createElement("img");
+  img.src = "../assets/img/logo/logo.png";
+  img.alt = "Logo";
+  img.style.width = "120px";
+  img.style.height = "auto";
+  img.style.objectFit = "contain";
+
+  logoContainer.appendChild(img);
+}
