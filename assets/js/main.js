@@ -131,13 +131,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function replaceHeaderLogo() {
   const logoContainer = document.querySelector(".header__logo");
-
   if (!logoContainer) return;
 
   logoContainer.innerHTML = "";
 
   const img = document.createElement("img");
-  img.src = "../assets/img/logo/logo.png";
+  img.src = "/assets/img/logo/logo.png";
   img.alt = "Logo";
   img.style.width = "120px";
   img.style.height = "auto";
@@ -145,3 +144,5 @@ function replaceHeaderLogo() {
 
   logoContainer.appendChild(img);
 }
+
+document.addEventListener("DOMContentLoaded", replaceHeaderLogo);
