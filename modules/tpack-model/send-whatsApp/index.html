@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+    <style>
+      /* smoother card – refined brown palette */
+      .card {
+        width: 100%;
+        background: #faf3e9; /* warm off-white with brown hue */
+        border-radius: 40px;
+        box-shadow:
+          0 18px 32px -14px rgba(66, 40, 20, 0.4),
+          0 4px 10px rgba(119, 75, 40, 0.1);
+        padding: 2.2rem 2rem;
+        border: 1px solid #dab99b;
+        text-align: center;
+        transition: all 0.2s;
+        margin: 35px 0;
+      }
+
+      /* question slightly smaller, elegant weight */
+      .main-question {
+        font-size: 1.8rem; /* smaller than before */
+        font-weight: 550;
+        color: #321f10; /* rich dark brown */
+        line-height: 1.35;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* sub line refined, smaller */
+      .sub-line {
+        font-size: 1.1rem; /* down from 1.3rem */
+        color: #836545;
+        font-weight: 350;
+        margin: 1rem 0 2.2rem 0;
+        padding-bottom: 0.9rem;
+        border-bottom: 2px solid #e1c7ad;
+        display: inline-block;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+        letter-spacing: 0.2px;
+      }
+
+      /* button wrapper for centering */
+      .button-wrapper {
+        display: flex;
+        justify-content: center;
+        margin: 0.5rem 0 1.5rem 0;
+      }
+
+      /* smaller, nicer whatsapp button — better style */
+      .whatsapp-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: #9e7a5a; /* soft brown */
+        color: white;
+        border: none;
+        padding: 0.9rem 2.5rem; /* smaller padding */
+        font-size: 1.25rem; /* reduced from 1.5rem */
+        font-weight: 540;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+        box-shadow:
+          0 6px 0 #624e38,
+          0 8px 18px rgba(97, 62, 31, 0.25);
+        border: 1px solid #c9a882;
+        letter-spacing: 0.25px;
+        width: auto;
+        min-width: 260px;
+      }
+
+      .whatsapp-btn i {
+        font-size: 1.6rem; /* balanced with text */
+        filter: drop-shadow(0 2px 2px #493723);
+      }
+
+      .whatsapp-btn:hover {
+        background: #8b6846;
+        transform: translateY(4px);
+        box-shadow:
+          0 2px 0 #4d3a27,
+          0 8px 20px #7b592e60;
+      }
+
+      .whatsapp-btn:active {
+        transform: translateY(7px);
+        box-shadow:
+          0 0px 0 #4d3a27,
+          0 8px 18px #7b592e60;
+      }
+
+      /* minimal decoration - subtle */
+      .meta-footer {
+        margin-top: 2.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        color: #b29171;
+        font-size: 0.8rem;
+        font-weight: 300;
+      }
+
+      .meta-footer i {
+        color: #b2895d;
+        font-size: 0.55rem;
+        opacity: 0.8;
+      }
+
+      .meta-footer span {
+        letter-spacing: 0.5px;
+      }
+
+      /* keep everything in warm brown family */
+      hr {
+        border: none;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #dac09f, transparent);
+        width: 160px;
+        margin: 0.5rem auto 0.8rem;
+      }
+
+      /* for smaller screens */
+      @media (max-width: 480px) {
+        .card {
+          padding: 1.8rem 1.2rem;
+        }
+        .main-question {
+          font-size: 1.6rem;
+        }
+        .sub-line {
+          font-size: 1rem;
+        }
+        .whatsapp-btn {
+          font-size: 1.15rem;
+          padding: 0.8rem 1.8rem;
+          min-width: 220px;
+        }
+        .whatsapp-btn i {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo">
+          <i class="ri-cloud-fill"></i>
+          <span>LOGO</span>
+        </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../../assets/img/user.png" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="../home/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+      <div class="container">
+        <div class="card">
+          <!-- only the required question (smaller text) -->
+          <div class="main-question">
+            Which component of the TPACK model<br />do you think as a challenge
+            for you<br />as a student teacher, and why?
+          </div>
+
+          <!-- subline exactly "Send your answer via WhatsApp." -->
+          <div class="sub-line">✦ Send your answer via WhatsApp. ✦</div>
+
+          <!-- smaller, nicer button (improved style) -->
+          <div class="button-wrapper">
+            <button class="whatsapp-btn" id="sendWABtn">
+              <i class="fab fa-whatsapp"></i> send answer
+            </button>
+          </div>
+
+          <!-- quiet brown accent (purely aesthetic) -->
+          <div class="meta-footer">
+            <i class="fas fa-chevron-left"></i>
+            <span> T P A C K • R E F L E C T </span>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+
+        <!-- JavaScript for WhatsApp: sends only the question and encourages answer -->
+        <script>
+          (function () {
+            const waButton = document.getElementById("sendWABtn");
+
+            function buildMessage() {
+              // clean message: includes the exact question, then user adds their reflection
+              const question =
+                "Which component of the TPACK model do you think as a challenge for you as a student teacher, and why?";
+              const instruction =
+                "%0A%0A(type your answer after this line — share your personal challenge)";
+              return question + instruction;
+            }
+
+            waButton.addEventListener("click", function () {
+              const message = buildMessage();
+              // Open WhatsApp web/desktop or app with prefilled text
+              window.open(`https://wa.me/?text=${message}`, "_blank");
+            });
+          })();
+        </script>
+      </div>
+    </main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>

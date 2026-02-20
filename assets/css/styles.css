@@ -44,6 +44,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  user-select: none !important;
 }
 
 body {
@@ -149,6 +150,7 @@ body.dark-theme {
   left: -120%;
   top: 0;
   bottom: 0;
+  /* height: 581px; */
   z-index: var(--z-fixed);
   width: 288px;
   background-color: var(--body-color);

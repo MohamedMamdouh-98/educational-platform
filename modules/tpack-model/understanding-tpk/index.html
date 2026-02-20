@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+    <style>
+      :root {
+        --bg-color: #f4e9d9;
+        --card-bg: #fffbf2;
+        --accent-brown: #6d4c41;
+        --text-color: #4e342e;
+        --header-color: #5d2e17;
+      }
+
+      .pedagogical-knowledge {
+        width: 100%;
+        background: #fef6f2;
+        border: 2px solid var(--border-color);
+        border-radius: 40px;
+        border-top: #8d5d36 5px solid;
+        /* padding: 30px; */
+        margin: 35px 0;
+        box-shadow:
+          0 10px 20px rgba(0, 0, 0, 0.08),
+          0 20px 40px rgba(0, 0, 0, 0.06),
+          0 5px 10px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+      .mopile {
+        display: none;
+      }
+
+      @media screen and (max-width: 768px) {
+        .mopile {
+          display: block;
+        }
+        .not-mopile {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo">
+          <i class="ri-cloud-fill"></i>
+          <span>LOGO</span>
+        </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../../assets/img/user.png" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/home/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+      <div class="container">
+        <div class="pedagogical-knowledge">
+          <img
+            class="not-mopile"
+            width="100%"
+            height="auto"
+            src="../../../assets/img/Picture77.png"
+            alt="Understanding TPK"
+          />
+          <img
+            class="mopile"
+            src="../../../assets/img/ChatGPT Image Feb 19, 2026, 04_33_56 PM.png"
+            alt="Understanding TPK"
+          />
+        </div>
+
+        <section class="quiz-section">
+          <div class="quiz-header">
+            <h2><i class="fas fa-question-circle"></i> Quiz Question</h2>
+            <div class="quiz-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+              </div>
+              <span class="quiz-progress-text">Question 0 of 0</span>
+            </div>
+          </div>
+
+          <div class="question-container">
+            <!-- question-1 -->
+            <div class="quiz-question-item active" data-correct="ZA==">
+              <div class="question">
+                A teacher’s selection of an educational platform that allows
+                discussion and student interaction is an example of:
+              </div>
+
+              <div class="options-grid">
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">A</span>
+                    <span class="option-text">TK</span>
+                  </label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">B</span>
+                    <span class="option-text">PK</span>
+                  </label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">C</span>
+                    <span class="option-text">CK</span>
+                  </label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">D</span>
+                    <span class="option-text">TPK</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button class="quiz-btn check-btn">
+              <i class="fas fa-check-circle"></i> Check Answer
+            </button>
+            <div class="quiz-navigation">
+              <button class="quiz-btn prev-btn">
+                <i class="fas fa-arrow-left"></i> Previous Question
+              </button>
+              <button class="quiz-btn next-btn">
+                Next Question
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="result-container"></div>
+        </section>
+        <a
+          href="/modules/tpack-model/tck-framework-overview/"
+          class="guide-button next-page"
+        >
+          Next Page
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>

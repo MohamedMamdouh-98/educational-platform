@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+    <style>
+      .main-card {
+        width: 100%;
+        background: #f9f3eb;
+        border: 2px solid var(--border-color);
+        border-radius: 40px;
+        border-top: #8d5d36 5px solid;
+        padding: 30px;
+        margin: 35px 0;
+        box-shadow:
+          0 10px 20px rgba(0, 0, 0, 0.08),
+          0 20px 40px rgba(0, 0, 0, 0.06),
+          0 5px 10px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header-section {
+        width: 100%;
+        background: linear-gradient(
+          180deg,
+          #fdf8f0 0%,
+          #f2e9de 50%,
+          #e8decb 100%
+        );
+        border: 3px solid var(--border-color);
+        border-radius: 50px;
+        padding: 10px 30px;
+        display: inline-block;
+        margin-bottom: 25px;
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .header-title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .header-title i {
+        font-size: 1.8rem;
+        color: #b5835a;
+      }
+
+      .header-title h1 {
+        margin: 0;
+        font-size: 1.6rem;
+        color: #3d2b1f;
+      }
+
+      .info-box {
+        background: var(--box-bg);
+        border: 1px dashed #b5a48f;
+        border-radius: 20px;
+        padding: 15px 25px;
+        margin-bottom: 20px;
+        line-height: 1.6;
+        color: #3d2b1f;
+        font-weight: bold;
+      }
+
+      .check-item {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        background: var(--box-bg);
+        border-radius: 20px;
+        margin-bottom: 20px;
+        color: #3d2b1f;
+        font-weight: bold;
+        border: 1px dashed #b5a48f;
+        position: relative;
+      }
+
+      .check-item p {
+        background: #c9b8a291;
+        padding: 15px;
+        padding-left: 50px;
+        border-radius: 25px;
+        margin-inline-start: 164px;
+        margin-inline-end: 10px;
+      }
+
+      .check-item img {
+        width: 200px;
+        position: absolute;
+      }
+
+      @media (max-width: 768px) {
+        .check-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          padding: 10px;
+        }
+
+        .check-item img {
+          width: 100%;
+          max-width: 150px;
+          position: relative;
+          margin: 0 auto;
+        }
+
+        .check-item p {
+          background: #c9b8a291;
+          padding: 10px;
+          padding-left: 20px;
+          border-radius: 20px;
+          margin-inline-start: 0;
+          margin-inline-end: 0;
+          width: 100%;
+          box-sizing: border-box;
+        }
+      }
+
+      .examples-title {
+        text-align: center;
+        margin: 30px 0 20px;
+        position: relative;
+        color: #3d2b1f;
+      }
+
+      .examples-title::before,
+      .examples-title::after {
+        content: "------";
+        color: #b5a48f;
+        margin: 0 10px;
+      }
+
+      .examples-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 15px;
+      }
+
+      .example-card {
+        border-radius: 15px;
+        padding: 15px;
+        text-align: center;
+        color: white;
+        font-size: 0.9rem;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        transition: all 0.3s ease;
+        align-items: center;
+        box-shadow:
+          0 8px 20px rgba(0, 0, 0, 0.25),
+          0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .example-card:hover {
+        transform: translateY(-5px);
+        box-shadow:
+          0 12px 30px rgba(0, 0, 0, 0.35),
+          0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+      .example-card .icon-placeholder {
+        height: 110px;
+      }
+      .example-card img {
+        position: relative;
+        height: 100%;
+        width: 100%;
+      }
+
+      .example-card p {
+        font-size: 18px;
+        font-weight: 500;
+        text-shadow:
+          2px 2px 4px rgba(0, 0, 0, 0.5),
+          0 0 6px rgba(255, 255, 255, 0.2);
+      }
+
+      .green-card,
+      .orange-card,
+      .brown-card,
+      .dark-orange-card {
+        color: white;
+        padding: 20px 10px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .green-card {
+        background-color: #6a8251;
+      }
+
+      .orange-card {
+        background-color: #bc8a5f;
+      }
+
+      .brown-card {
+        background-color: #a47c4b;
+      }
+
+      .dark-orange-card {
+        background-color: #8d5d36;
+      }
+
+      .green-card::before,
+      .orange-card::before,
+      .brown-card::before,
+      .dark-orange-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.5),
+          rgba(255, 255, 255, 0)
+        );
+        pointer-events: none;
+      }
+
+      p {
+        margin: 0.5rem 0;
+      }
+
+      u {
+        text-decoration-style: wavy;
+        text-decoration-color: #8b6b51;
+      }
+    </style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo">
+          <i class="ri-cloud-fill"></i>
+          <span>LOGO</span>
+        </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../../assets/img/user.png" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/home/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+      <div class="container">
+        <div class="main-card">
+          <header class="header-section">
+            <div class="header-title">
+              <img
+                src="../../../assets/img/Screenshot 2026-02-18 225219.png"
+                alt="Content Knowledge Icon"
+              />
+              <h1>Content Knowledge (CK)</h1>
+            </div>
+          </header>
+
+          <section class="info-box definition-box">
+            <p>
+              <strong>Content Knowledge (CK)</strong> refers to the knowledge of
+              the subject matter to be taught, including its core concepts,
+              principles, facts, procedures, and the relationships among them.
+            </p>
+
+            <p>
+              When solving a <strong>linear equation</strong>, the teacher not
+              only applies the steps correctly but also
+              <u>explains why each step is valid</u>, such as why the same
+              operation must be applied to both sides of the equation.
+            </p>
+          </section>
+
+          <section class="check-section">
+            <div class="check-item">
+              <img
+                src="../../../assets/img/Gemini_Generated_Image_9hxr1t9hxr1t9hxr(1).png"
+                alt="Checkmark Icon"
+              />
+              <p>
+                <b>
+                  A teacher demonstrates CK by showing the relationship between
+                  fractions, decimals, and percentages, and <u>explaining</u></b
+                >
+                how these concepts represent the same value in different forms.
+              </p>
+            </div>
+          </section>
+
+          <h2 class="examples-title">Examples:</h2>
+
+          <section class="examples-grid">
+            <div class="example-card green-card">
+              <div class="icon-placeholder">
+                <img
+                  src="../../../assets/img/Screenshot 2026-02-18 224559.png"
+                  alt="Example Icon"
+                />
+              </div>
+              <p>Finding the limit of a function at a given value.</p>
+            </div>
+            <div class="example-card orange-card">
+              <div class="icon-placeholder">
+                <img
+                  src="../../../assets/img/Screenshot 2026-02-18 224722.png"
+                  alt="Example Icon"
+                />
+              </div>
+              <p>Deriving the formula for the area of a triangle.</p>
+            </div>
+            <div class="example-card brown-card">
+              <div class="icon-placeholder">
+                <img
+                  src="../../../assets/img/Screenshot 2026-02-18 225042.png"
+                  alt="Example Icon"
+                />
+              </div>
+              <p>Explaining the concept of simple probability.</p>
+            </div>
+            <div class="example-card dark-orange-card">
+              <div class="icon-placeholder">
+                <img
+                  src="../../../assets/img/Screenshot 2026-02-18 225125.png"
+                  alt="Example Icon"
+                />
+              </div>
+              <p>
+                Explaining the relationship between the angle and the
+                circumference of a circle.
+              </p>
+            </div>
+          </section>
+        </div>
+
+        <section class="quiz-section">
+          <div class="quiz-header">
+            <h2><i class="fas fa-question-circle"></i> Quiz Question</h2>
+            <div class="quiz-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+              </div>
+              <span class="quiz-progress-text">Question 0 of 0</span>
+            </div>
+          </div>
+
+          <div class="question-container">
+            <!-- question-1 -->
+            <div class="quiz-question-item active" data-correct="Qg==">
+              <div class="question">
+                Explaining the concept of the linear equation and its general
+                formula refers to ……….
+              </div>
+
+              <div class="options-grid">
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">A</span>
+                    <span class="option-text">Pk</span>
+                  </label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">B</span>
+                    <span class="option-text">Ck</span>
+                  </label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">C</span>
+                    <span class="option-text">PCK</span>
+                  </label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">D</span>
+                    <span class="option-text">TK</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- question-2 -->
+            <div class="quiz-question-item active" data-correct="Yw==">
+              <div class="question">
+                Which of the following best represents Content Knowledge in a
+                digital mathematics lesson?
+              </div>
+
+              <div class="options-grid">
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">A</span>
+                    <span class="option-text"
+                      >Using an educational platform to present the lesson</span
+                    >
+                  </label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">B</span>
+                    <span class="option-text"
+                      >Choosing a cooperative learning strategy</span
+                    >
+                  </label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">C</span>
+                    <span class="option-text"
+                      >Having a deep understanding of mathematical concepts and
+                      rules</span
+                    >
+                  </label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">D</span>
+                    <span class="option-text"
+                      >Managing classroom discussion</span
+                    >
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- question-3 -->
+            <div class="quiz-question-item active" data-correct="Qg==">
+              <div class="question">
+                When teaching linear functions, which practice indicates strong
+                Content Knowledge?
+              </div>
+
+              <div class="options-grid">
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">A</span>
+                    <span class="option-text"
+                      >Using graphing software only</span
+                    >
+                  </label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">B</span>
+                    <span class="option-text"
+                      >Explaining the meaning of slope and y-intercept and
+                      linking them to the graph</span
+                    >
+                  </label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">C</span>
+                    <span class="option-text"
+                      >Dividing students into groups</span
+                    >
+                  </label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" name="answer0" class="option-input" />
+                  <label class="option-label">
+                    <span class="option-letter">D</span>
+                    <span class="option-text"
+                      >Asking general motivating questions
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button class="quiz-btn check-btn">
+              <i class="fas fa-check-circle"></i> Check Answer
+            </button>
+            <div class="quiz-navigation">
+              <button class="quiz-btn prev-btn">
+                <i class="fas fa-arrow-left"></i> Previous Question
+              </button>
+              <button class="quiz-btn next-btn">
+                Next Question
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="result-container"></div>
+        </section>
+
+        <a
+          href="/modules/tpack-model/pedagogical-knowledge/"
+          class="guide-button next-page"
+        >
+          Next Page
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>

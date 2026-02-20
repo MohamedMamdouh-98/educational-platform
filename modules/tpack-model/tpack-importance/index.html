@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+    <style>
+      /* the section - pure and simple, only text + video */
+      .tpack-section-video {
+        width: 100%;
+        /* background: #fcf6ef; /*warm off-white */
+        background: #fff; /* warm off-white */
+        border-radius: 2.5rem 1rem 2.5rem 1rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        padding: 2.5rem;
+        border-top: 6px solid #956b48;
+        margin: 35px 0;
+      }
+      @media screen and (max-width: 768px) {
+        .tpack-section-video {
+          padding: 10px;
+        }
+        .description-video {
+          font-size: 17px !important;
+        }
+      }
+      /* description text - exactly as requested, only with a subtle icon */
+      .description-video {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.2rem;
+        margin-bottom: 2.5rem;
+        background: #f7ede2;
+        padding: 1.5rem 2rem;
+        border-radius: 2.2rem 0.8rem 2.2rem 0.8rem;
+        border-left: 8px solid #b4815b;
+        color: #3b2b1d;
+        font-size: 1.35rem;
+        line-height: 1.6;
+        font-weight: 400;
+        box-shadow:
+          inset 0 1px 5px #f4e4d6,
+          0 8px 12px -10px #8c6549;
+        font-weight: bold;
+      }
+
+      .description i {
+        font-size: 2.5rem;
+        color: #8f633f;
+        background: #ffffff;
+        padding: 0.8rem;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px #d4b9a4;
+        flex-shrink: 0;
+      }
+
+      .description p {
+        margin: 0;
+      }
+
+      /* video wrapper - clean, just a frame */
+      .video-frame {
+        /* background: #d2bbaa; /*medium brown border */
+        /* border-radius: 2rem 0.7rem 2rem 0.7rem; */
+        border-radius: 10px;
+        /* padding: 0.8rem; */
+        box-shadow:
+          0 0 0 2px #f0e2d4 inset,
+          0 18px 25px -14px #694e38;
+      }
+
+      .video-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        /* border-radius: 1.5rem 0.3rem 1.5rem 0.3rem; */
+        overflow: hidden;
+        background: #1f140e;
+        aspect-ratio: 16 / 9;
+      }
+
+      .video-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
+
+      /* tiny note - barely visible, only to help you replace the link (can be removed) */
+      .drive-hint {
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        color: #aa876b;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        opacity: 0.7;
+      }
+
+      .drive-hint i {
+        color: #8b623f;
+      }
+
+      /* no extra sections, no pillars, no footers - pure minimal */
+      @media (max-width: 600px) {
+        .tpack-section {
+          padding: 1.5rem;
+        }
+        .description {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo">
+          <i class="ri-cloud-fill"></i>
+          <span>LOGO</span>
+        </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../../assets/img/user.png" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/home/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+      <div class="container">
+        <div class="tpack-section-video">
+          <!-- only the text you requested + a subtle brown icon (can be removed if you want no icon) -->
+          <div class="description-video">
+            <i class="fas fa-play-circle" style="color: #9c6f4b"></i>
+            <p>
+              it becomes clear that the value of this model does not lie in its
+              components in isolation, but rather in how they are integrated
+              within the teaching–learning context. <br />
+              Accordingly, the importance of TPACK in the educational process
+              emerges, as it provides a framework that helps teachers integrate
+              content, pedagogical strategies, and technology in a way that
+              promotes effective learning. In this video, we will explore the
+              importance of the TPACK model in educational process.
+            </p>
+          </div>
+
+          <!-- VIDEO: Google Drive iframe (pure, no extra elements) -->
+          <div class="video-frame">
+            <div class="video-container">
+              <iframe
+                src="https://drive.google.com/file/d/14oTXcLeIrQ9VdznhiPBf7ZzC3xEK_y8i/preview"
+                width="100%"
+                height="480"
+                allow="autoplay"
+                allowfullscreen
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+        <a
+          href="/modules/tpack-model/explore-tpack/"
+          class="guide-button next-page"
+        >
+          Next Page
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>

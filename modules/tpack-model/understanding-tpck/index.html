@@ -6,7 +6,7 @@
     <link
       rel="icon"
       type="image/png"
-      href="../../assets/img/favicon/favicon.png"
+      href="../../../assets/img/favicon/favicon.png"
     />
     <!--=============== REMIXICONS ===============-->
     <link
@@ -15,9 +15,8 @@
     />
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="../../assets/css/styles.css" />
-    <!-- <link rel="stylesheet" href="../../assets/css/modules.css" /> -->
-    <link rel="stylesheet" href="../../assets/css/assessments-details.css" />
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
     <!-- Font Awesome 6 -->
     <link
       rel="stylesheet"
@@ -28,7 +27,44 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
-    <title>Pre-Assessment Details</title>
+    <title>Module Details</title>
+    <style>
+      :root {
+        --bg-color: #f4e9d9;
+        --card-bg: #fffbf2;
+        --accent-brown: #6d4c41;
+        --text-color: #4e342e;
+        --header-color: #5d2e17;
+      }
+
+      .pedagogical-knowledge {
+        width: 100%;
+        background: #fef6f2;
+        border: 2px solid var(--border-color);
+        border-radius: 40px;
+        border-top: #8d5d36 5px solid;
+        /* padding: 30px; */
+        margin: 35px 0;
+        box-shadow:
+          0 10px 20px rgba(0, 0, 0, 0.08),
+          0 20px 40px rgba(0, 0, 0, 0.06),
+          0 5px 10px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+      .mopile {
+        display: none;
+      }
+
+      @media screen and (max-width: 768px) {
+        .mopile {
+          display: block;
+        }
+        .not-mopile {
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body>
     <!--=============== HEADER ===============-->
@@ -50,7 +86,7 @@
       <div class="sidebar__container">
         <div class="sidebar__user">
           <div class="sidebar__img">
-            <img src="../../assets/img/user.png" alt="image" />
+            <img src="../../../assets/img/user.png" alt="image" />
           </div>
 
           <div class="sidebar__info">
@@ -64,17 +100,17 @@
             <!-- <h3 class="sidebar__title">MANAGE</h3> -->
 
             <div class="sidebar__list">
-              <a href="../../home/" class="sidebar__link">
+              <a href="/home/" class="sidebar__link">
                 <i class="ri-focus-2-line"></i>
                 <span>Objectives</span>
               </a>
 
-              <a href="/pre-assessments/" class="sidebar__link active-link">
+              <a href="/pre-assessments/" class="sidebar__link">
                 <i class="ri-file-list-3-fill"></i>
                 <span>Pre-Assessments</span>
               </a>
 
-              <a href="/modules/" class="sidebar__link">
+              <a href="/modules/" class="sidebar__link active-link">
                 <i class="ri-book-open-fill"></i>
                 <span>Modules</span>
               </a>
@@ -108,21 +144,33 @@
     <!--=============== MAIN ===============-->
     <main class="main" id="main">
       <div class="container">
-        <div class="units-grid" id="units-grid-assessment"></div>
+        <div class="pedagogical-knowledge">
+          <img
+            class="not-mopile"
+            width="100%"
+            height="auto"
+            src="../../../assets/img/Picture999.png"
+            alt="Understanding TPK Framework Overview"
+          />
+          <img
+            class="mopile"
+            src="../../../assets/img/Image Feb 19, 2026, 05_11_07 PM.png"
+            alt="Understanding TPK Framework Overview"
+          />
+        </div>
+
+        <a href="/modules/tpack-model/book/" class="guide-button next-page">
+          Next Page
+          <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </main>
+
     <button id="scrollTopBtn" aria-label="Scroll to top">
       <i class="fas fa-arrow-up"></i>
     </button>
-
-    <!--=============== MAIN JS ===============-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../assets/js/auth-guard.js"></script>
-
-    <script src="../../data/pre-assessments-data.js"></script>
-    <script src="../../assets/js/main.js"></script>
-    <!-- <script src="../../assets/js/modules.js"></script> -->
-    <script src="../../assets/js/pre-assessment-details.js"></script>
-    <script src="../../assets/js/turn.min.js"></script>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
   </body>
 </html>

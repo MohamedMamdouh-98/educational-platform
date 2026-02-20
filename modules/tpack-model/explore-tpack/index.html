@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+    <style>
+      /* main card – brown tones only, no icons except the button */
+      .activity-card {
+        width: 100%;
+        background-color: #fcf8f2; /* soft parchment */
+        border-radius: 28px;
+        box-shadow:
+          0 18px 36px -10px rgba(87, 55, 29, 0.25),
+          0 0 0 1px #e6dacd inset; /* subtle warm border */
+        padding: 2.2rem 2.5rem;
+        transition: all 0.1s ease;
+        margin: 35px 0;
+      }
+
+      /* all text in English, using brown/deep taupe */
+      .section-tag {
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #9b7e64; /* medium brown */
+        border-bottom: 2px solid #eadbcb;
+        padding-bottom: 0.7rem;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+      }
+
+      h2 {
+        font-size: 2.1rem;
+        font-weight: 600;
+        line-height: 1.2;
+        color: #4e3a29; /* dark brown */
+        margin-bottom: 1.2rem;
+      }
+
+      .highlight-brown {
+        color: #8b5f3c; /* warmer brown */
+      }
+
+      .description {
+        font-size: 20px;
+        color: #4f4236; /* rich taupe */
+        margin-bottom: 1.8rem;
+        line-height: 1.5;
+        font-weight: 500;
+        background: #f7efe5; /* very light brown background */
+        padding: 1.2rem 1.6rem;
+        border-radius: 20px;
+        border-left: 8px solid #b48c63; /* accent brown */
+      }
+
+      .instruction-list {
+        list-style: none;
+        margin: 2rem 0 2.2rem 0;
+      }
+
+      .instruction-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 1.1rem;
+        font-size: 1.12rem;
+        color: #3f3328;
+        font-weight: 400;
+      }
+
+      /* brown bullet (no icon, just a pure css square) */
+      .bullet {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background-color: #aa7a50; /* medium brown */
+        border-radius: 2px;
+        margin-top: 0.6rem;
+        flex-shrink: 0;
+      }
+
+      /* email block – minimal and brown */
+      .email-highlight {
+        background: #ede0d2; /* soft brown base */
+        border-radius: 60px;
+        padding: 0.5rem 1.8rem 0.5rem 2rem;
+        display: inline-flex;
+        align-items: center;
+        margin: 0.5rem 0 1.8rem 0;
+        border: 1px solid #dac09f;
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #4f351e;
+        word-break: break-all;
+      }
+
+      /* envelope icon is allowed ONLY on the button – no other icons */
+      .button-icon {
+        background: linear-gradient(135deg, #b08968, #7f5539);
+        border: none;
+        color: #fff;
+        font-family: "Segoe UI", Roboto, sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 0.9rem 2.3rem;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(94, 63, 42, 0.25);
+        letter-spacing: 0.5px;
+        margin: 10px 0 8px;
+      }
+
+      /* Hover */
+      .button-icon:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(94, 63, 42, 0.35);
+        background: linear-gradient(135deg, #c49a6c, #6f4e37);
+      }
+
+      /* Active */
+      .button-icon:active {
+        transform: translateY(0px);
+        box-shadow: 0 6px 15px rgba(94, 63, 42, 0.25);
+      }
+
+      /* small footnote – optional */
+      .footer-note {
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        color: #b2977e;
+        border-top: 1px dashed #dccbb9;
+        padding-top: 1.4rem;
+        text-align: center;
+      }
+
+      /* no icons anywhere except .button-icon (and the small envelope inside it) */
+      a,
+      .no-icon {
+        text-decoration: none;
+      }
+
+      /* keep everything brown scale */
+      hr {
+        border: 1px solid #e1cfbb;
+        margin: 16px 0;
+      }
+
+      /* researcher email style */
+      .mail-text {
+        background: #e7d9ca;
+        padding: 0.2rem 1rem;
+        border-radius: 40px;
+        color: #432e1d;
+        font-weight: 600;
+        font-size: 1.25rem;
+        border: 1px solid #c5aa8b;
+      }
+      .btn-send {
+        text-decoration: none;
+        display: flex;
+        margin: 0 auto;
+        width: fit-content;
+        text-transform: capitalize;
+      }
+      .btn-send button img {
+        width: 30px;
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo">
+          <i class="ri-cloud-fill"></i>
+          <span>LOGO</span>
+        </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../../assets/img/user.png" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/home/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+      <div class="container">
+        <div class="activity-card">
+          <!-- section label (English only) -->
+          <div class="section-tag">
+            <i class="fa-solid fa-magnifying-glass"></i> student teacher ·
+            inquiry
+          </div>
+
+          <!-- main heading -->
+          <h2>
+            Explore TPACK <span class="highlight-brown">in mathematics</span>
+          </h2>
+
+          <!-- activity description (exactly as given, plus gentle instructions) -->
+          <div class="description">
+            “Dear student teacher, using Google search engine, deduce the
+            importance of the TPACK model in teaching mathematics, then send
+            your answer via the researcher's email.”
+          </div>
+
+          <!-- simple bullet list: clues / steps (no icons, pure brown squares) -->
+
+          <!-- button is the ONLY place with an icon (envelope svg) -->
+          <a
+            class="btn-send"
+            href="mailto:saraelsayed96@mans.edu.eg?subject=TPACK%20reflection%20-%20student%20teacher&body=Dear%20researcher%2C%0D%0A%0D%0AAfter%20searching%20about%20TPACK%20in%20mathematics%20teaching%2C%20here%20are%20my%20findings...%0D%0A%0D%0A"
+          >
+            <button class="button-icon">
+              <!-- envelope icon (svg) – this is the only graphical icon on the whole page, allowed here -->
+              <img src="../../../assets/img/Gmail_Logo_24px.png" alt="Gmail" />
+              send my answer <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </a>
+
+          <!-- subtle reminder: all in brown tones, English only, no extra icons -->
+          <div class="footer-note">⸻ use google · think mathematically ⸻</div>
+          <!-- the small dash ornament uses standard unicode, not an icon font. -->
+        </div>
+
+        <a
+          href="/modules/tpack-model/content-knowledge/"
+          class="guide-button next-page"
+        >
+          Next Page
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>

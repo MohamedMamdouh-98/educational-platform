@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+    <style>
+      /* main poll section */
+      .poll-section {
+        position: relative;
+        width: 100%;
+        margin: 35px 0;
+        border-radius: 2rem;
+        overflow: hidden;
+        box-shadow: 0 18px 35px -10px rgba(65, 40, 24, 0.3);
+      }
+
+      .poll-section__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .poll-section__glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 70% 30%,
+          rgba(180, 130, 95, 0.3) 0%,
+          rgba(100, 60, 35, 0.25) 60%,
+          transparent 90%
+        );
+        z-index: 3;
+        pointer-events: none;
+        mix-blend-mode: soft-light;
+      }
+
+      .poll-section__content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        padding: 3.5rem 1.8rem 4.2rem 1.8rem;
+        width: 100%;
+        min-height: 550px;
+      }
+
+      /* question card */
+      .poll-section__question {
+        /* max-width: 750px; */
+        width: 76%;
+        padding: 1.4rem 2rem 1.6rem 2rem;
+        border-radius: 2.5rem 1.2rem 2.5rem 1.2rem;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 250, 240, 0.8) 10%,
+          rgba(250, 240, 225, 0.65) 50%,
+          rgba(255, 255, 255, 0.85) 100%
+        );
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        box-shadow:
+          0 5px 15px rgba(100, 60, 30, 0.1),
+          0 0 0 1px rgba(255, 245, 230, 0.7) inset,
+          0 0 0 2px rgba(150, 110, 75, 0.1);
+        color: #2c1d12;
+        font-size: 1.5rem;
+        font-weight: 520;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .poll-section__question p {
+        margin: 0;
+        background: transparent;
+        text-shadow: 0 1px 4px rgba(250, 240, 225, 0.6);
+      }
+
+      /* poll options container */
+      .poll-options {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        width: 100%;
+        max-width: 650px;
+        margin: 0.5rem 0 2rem 0;
+      }
+
+      /* option row (label) */
+      .poll-option {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.8rem 1.5rem;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 250, 240, 0.7) 0%,
+          rgba(250, 240, 225, 0.6) 70%,
+          rgba(255, 255, 255, 0.75) 100%
+        );
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        border-radius: 3rem 1rem 3rem 1rem;
+        border: 1px solid rgba(255, 235, 210, 0.6);
+        box-shadow:
+          0 4px 10px rgba(80, 50, 30, 0.08),
+          inset 0 1px 4px #fffefc;
+        cursor: pointer;
+        transition: all 0.18s ease;
+        color: #2f1f14;
+        font-weight: 480;
+        font-size: 1.2rem;
+      }
+
+      .poll-option:hover {
+        background: linear-gradient(
+          145deg,
+          rgba(255, 245, 225, 0.8) 0%,
+          rgba(245, 225, 200, 0.7) 80%,
+          rgba(255, 250, 240, 0.85) 100%
+        );
+        border-color: rgba(170, 130, 90, 0.5);
+        transform: scale(1.01) translateY(-1px);
+        box-shadow: 0 8px 16px -8px #613e28;
+      }
+
+      .poll-option:active {
+        transform: scale(0.99);
+      }
+
+      /* radio button custom */
+      .poll-option input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 1.3rem;
+        height: 1.3rem;
+        border: 2px solid #8b6748;
+        border-radius: 50%;
+        background: rgba(255, 245, 235, 0.7);
+        box-shadow:
+          inset 0 1px 3px #cfa776,
+          0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: 0.12s;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+
+      .poll-option input[type="radio"]:checked {
+        border-color: #5d3e2b;
+        background: #a77c5b;
+        box-shadow:
+          inset 0 1px 4px #fdebd0,
+          0 0 0 2px rgba(255, 230, 200, 0.6);
+      }
+
+      .poll-option input[type="radio"]:checked::after {
+        content: "";
+        display: block;
+        width: 9px;
+        height: 9px;
+        background: #fcf3e7;
+        border-radius: 50%;
+        margin: 3px auto;
+      }
+
+      /* result bar + percentage container (initially hidden) */
+      .option-result {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-left: auto;
+        width: 140px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .poll-option.show-result .option-result {
+        opacity: 1;
+      }
+
+      .result-bar {
+        height: 0.6rem;
+        width: 80px;
+        background: rgba(140, 100, 70, 0.2);
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: inset 0 1px 3px #aa7e5a;
+      }
+
+      .bar-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #9b6f4f, #c4946b);
+        border-radius: 1rem;
+        transition: width 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+        box-shadow: 0 0 6px #eecbad;
+      }
+
+      .result-percent {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #3d2b1b;
+        background: rgba(255, 245, 235, 0.5);
+        padding: 0.2rem 0.5rem;
+        border-radius: 2rem;
+        backdrop-filter: blur(2px);
+        min-width: 3.2rem;
+        text-align: right;
+      }
+
+      /* submit button – exactly as requested */
+      .math-section__button {
+        margin-top: 2.2rem;
+        display: inline-block;
+        background: linear-gradient(125deg, #7b593d, #a57a59);
+        border: none;
+        border-radius: 3rem;
+        padding: 0.8rem 2.8rem 0.9rem 2.8rem;
+        box-shadow:
+          0 9px 18px -7px #4a3323,
+          0 3px 0 0 #4f3726,
+          inset 0 1px 3px #fff3e0;
+        font-size: 1.3rem;
+        font-weight: 570;
+        color: #fcf3e9;
+        letter-spacing: 0.4px;
+        cursor: pointer;
+        transition: 0.12s;
+        border: 1px solid rgba(255, 235, 210, 0.5);
+        transform: translateY(0);
+        backdrop-filter: blur(2px);
+        line-height: 1.3;
+        white-space: nowrap;
+      }
+
+      .math-section__button:hover {
+        background: linear-gradient(125deg, #8b6848, #b48b67);
+        box-shadow:
+          0 12px 22px -8px #523a27,
+          0 3px 0 0 #523a27,
+          inset 0 1px 5px #fff5e6;
+        transform: translateY(-2px);
+        color: white;
+      }
+
+      .math-section__button:active {
+        transform: translateY(3px);
+        box-shadow:
+          0 5px 12px -6px #4e3724,
+          0 1px 0 0 #4e3724;
+      }
+
+      /* responsive */
+      @media (max-width: 600px) {
+        .poll-section__content {
+          padding: 2.5rem 1.2rem;
+        }
+        .poll-section__question {
+          font-size: 1.25rem;
+          padding: 1.2rem;
+        }
+        .poll-option {
+          font-size: 1.1rem;
+          padding: 0.7rem 1.2rem;
+          flex-wrap: wrap;
+        }
+        .option-result {
+          width: 120px;
+        }
+        .result-bar {
+          width: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo">
+          <i class="ri-cloud-fill"></i>
+          <span>LOGO</span>
+        </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../../assets/img/user.png" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/home/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+      <div class="container">
+        <section
+          class="poll-section"
+          aria-label="teaching poll with random results"
+        >
+          <img
+            class="poll-section__bg"
+            src="../../../../assets/img/module-1/Gemini_Generated_Image_ylqv0xylqv0xylqv.png"
+            alt="chalkboard texture"
+            loading="lazy"
+          />
+
+          <div class="poll-section__glow"></div>
+
+          <div class="poll-section__content">
+            <div class="poll-section__question">
+              <p>
+                A mathematics teacher used an advanced digital presentation;
+                however, the students did not demonstrate a clear understanding
+                of the mathematical concept.<br />
+                <b> Where does the problem lie in this situation? </b>
+              </p>
+            </div>
+
+            <!-- poll options (will be populated with result bars via js) -->
+            <div class="poll-options" id="pollOptions">
+              <label class="poll-option" data-option="tool">
+                <input type="radio" name="teaching-poll" value="tool" />
+                <span>The digital tool itself</span>
+                <div class="option-result">
+                  <div class="result-bar">
+                    <div class="bar-fill" id="bar-tool"></div>
+                  </div>
+                  <span class="result-percent" id="pct-tool">0%</span>
+                </div>
+              </label>
+              <label class="poll-option" data-option="content">
+                <input type="radio" name="teaching-poll" value="content" />
+                <span>The mathematical content</span>
+                <div class="option-result">
+                  <div class="result-bar">
+                    <div class="bar-fill" id="bar-content"></div>
+                  </div>
+                  <span class="result-percent" id="pct-content">0%</span>
+                </div>
+              </label>
+              <label class="poll-option" data-option="method">
+                <input type="radio" name="teaching-poll" value="method" />
+                <span>The instructional method</span>
+                <div class="option-result">
+                  <div class="result-bar">
+                    <div class="bar-fill" id="bar-method"></div>
+                  </div>
+                  <span class="result-percent" id="pct-method">0%</span>
+                </div>
+              </label>
+              <label class="poll-option" data-option="students">
+                <input type="radio" name="teaching-poll" value="students" />
+                <span>The students themselves</span>
+                <div class="option-result">
+                  <div class="result-bar">
+                    <div class="bar-fill" id="bar-students"></div>
+                  </div>
+                  <span class="result-percent" id="pct-students">0%</span>
+                </div>
+              </label>
+            </div>
+
+            <!-- submit button (exact requested style) -->
+            <button class="math-section__button" id="submitPoll">Submit</button>
+          </div>
+        </section>
+        <a
+          href="/modules/tpack-model/the-integration-triad/"
+          class="guide-button next-page"
+        >
+          Next Page
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/main.js"></script>
+    <script>
+      (function () {
+        const submitBtn = document.getElementById("submitPoll");
+        const options = document.querySelectorAll(".poll-option");
+
+        // store percentages (will be randomised)
+        let currentPercentages = {
+          tool: 0,
+          content: 0,
+          method: 0,
+          students: 0,
+        };
+
+        // function to generate 4 random percentages that sum to 100
+        function generateRandomPercentages() {
+          // create 3 random splits, then compute 4 parts
+          let a = Math.random() * 30 + 10; // 10–40
+          let b = Math.random() * 30 + 10; // 10–40
+          let c = Math.random() * 30 + 5; // 5–35
+          let d = 100 - (a + b + c);
+
+          // ensure no negative / too low (in case sum >100 readjust)
+          if (d < 5) {
+            // simple redistribution
+            let deficit = 5 - d;
+            a = Math.max(8, a - deficit / 3);
+            b = Math.max(8, b - deficit / 3);
+            c = Math.max(8, c - deficit / 3);
+            d = 100 - (a + b + c);
+          }
+
+          // round to one decimal for cleaner look
+          return {
+            tool: Math.round(a * 10) / 10,
+            content: Math.round(b * 10) / 10,
+            method: Math.round(c * 10) / 10,
+            students: Math.round(d * 10) / 10,
+          };
+        }
+
+        // update UI with given percentages
+        function displayPercentages(pct) {
+          // set bar widths and percent texts
+          document.getElementById("bar-tool").style.width = pct.tool + "%";
+          document.getElementById("pct-tool").textContent = pct.tool + "%";
+
+          document.getElementById("bar-content").style.width =
+            pct.content + "%";
+          document.getElementById("pct-content").textContent =
+            pct.content + "%";
+
+          document.getElementById("bar-method").style.width = pct.method + "%";
+          document.getElementById("pct-method").textContent = pct.method + "%";
+
+          document.getElementById("bar-students").style.width =
+            pct.students + "%";
+          document.getElementById("pct-students").textContent =
+            pct.students + "%";
+        }
+
+        // show result containers for all options
+        function showAllResults() {
+          options.forEach((opt) => {
+            opt.classList.add("show-result");
+          });
+        }
+
+        // handle submit click
+        submitBtn.addEventListener("click", function () {
+          // generate new random percentages
+          const newPct = generateRandomPercentages();
+          currentPercentages = newPct;
+
+          // display them
+          displayPercentages(newPct);
+
+          // make result bars appear (if not already)
+          showAllResults();
+
+          // optional: tiny animation on button to confirm click
+          submitBtn.style.transform = "translateY(3px)";
+          submitBtn.style.boxShadow =
+            "0 5px 12px -6px #4e3724, 0 1px 0 0 #4f3726";
+          setTimeout(() => {
+            submitBtn.style.transform = "";
+            submitBtn.style.boxShadow = "";
+          }, 120);
+        });
+
+        // optional: also show results if any radio is selected? we follow spec: on submit only.
+        // but we can preload nice random stats on page load to look pretty (optional)
+        window.addEventListener("load", function () {
+          // generate initial nice-looking percentages (so it's not all zero)
+          const initial = generateRandomPercentages();
+          currentPercentages = initial;
+          displayPercentages(initial);
+          showAllResults(); // show from start – looks more polished
+        });
+      })();
+    </script>
+  </body>
+</html>

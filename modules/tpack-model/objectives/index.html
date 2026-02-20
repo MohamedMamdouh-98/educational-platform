@@ -6,7 +6,7 @@
     <link
       rel="icon"
       type="image/png"
-      href="../../assets/img/favicon/favicon.png"
+      href="../../../assets/img/favicon/favicon.png"
     />
     <!--=============== REMIXICONS ===============-->
     <link
@@ -15,9 +15,8 @@
     />
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="../../assets/css/styles.css" />
-    <!-- <link rel="stylesheet" href="../../assets/css/modules.css" /> -->
-    <link rel="stylesheet" href="../../assets/css/assessments-details.css" />
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
     <!-- Font Awesome 6 -->
     <link
       rel="stylesheet"
@@ -28,7 +27,7 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
-    <title>Pre-Assessment Details</title>
+    <title>Module Details</title>
   </head>
   <body>
     <!--=============== HEADER ===============-->
@@ -50,7 +49,7 @@
       <div class="sidebar__container">
         <div class="sidebar__user">
           <div class="sidebar__img">
-            <img src="../../assets/img/user.png" alt="image" />
+            <img src="../../../assets/img/user.png" alt="image" />
           </div>
 
           <div class="sidebar__info">
@@ -64,17 +63,17 @@
             <!-- <h3 class="sidebar__title">MANAGE</h3> -->
 
             <div class="sidebar__list">
-              <a href="../../home/" class="sidebar__link">
+              <a href="/home/" class="sidebar__link">
                 <i class="ri-focus-2-line"></i>
                 <span>Objectives</span>
               </a>
 
-              <a href="/pre-assessments/" class="sidebar__link active-link">
+              <a href="/pre-assessments/" class="sidebar__link">
                 <i class="ri-file-list-3-fill"></i>
                 <span>Pre-Assessments</span>
               </a>
 
-              <a href="/modules/" class="sidebar__link">
+              <a href="/modules/" class="sidebar__link active-link">
                 <i class="ri-book-open-fill"></i>
                 <span>Modules</span>
               </a>
@@ -107,8 +106,72 @@
 
     <!--=============== MAIN ===============-->
     <main class="main" id="main">
-      <div class="container">
-        <div class="units-grid" id="units-grid-assessment"></div>
+      <div class="module-details" id="module-details">
+        <div class="container">
+          <div class="lesson-content">
+            <!-- LEARNING OBJECTIVES -->
+            <section class="objectives-section">
+              <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+              <h3>
+                At the end of this module, the student teacher should be able
+                to:
+              </h3>
+              <div class="objectives-container">
+                <ul class="objectives-list" id="module-objectives">
+                  <li><span>Define the TPACK model.</span></li>
+                  <li>
+                    <span
+                      >Determine the dimensions of the TPACK model in the field
+                      of mathematics education.</span
+                    >
+                  </li>
+                  <li>
+                    <span>Distinguish between:</span>
+                    <ul class="objectives-sub">
+                      <li>Content knowledge</li>
+                      <li>Pedagogical knowledge</li>
+                      <li>Technological knowledge</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span
+                      >Explain the importance of the TPACK model in improving
+                      the educational process.</span
+                    >
+                  </li>
+                  <li>
+                    <span>Deduce the mathematical content knowledge.</span>
+                  </li>
+                  <li>
+                    <span
+                      >Deduce the pedagogical knowledge in the teaching and
+                      learning of mathematics.</span
+                    >
+                  </li>
+                  <li>
+                    <span
+                      >Deduce the technological knowledge in the teaching and
+                      learning of mathematics.</span
+                    >
+                  </li>
+                  <li>
+                    <span
+                      >Analyze a mathematics teaching situation in light of the
+                      TPACK model.</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </section>
+            <a
+              href="/modules/tpack-model/math-inquiry/"
+              class="guide-button next-page"
+            >
+              Next Page
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </main>
     <button id="scrollTopBtn" aria-label="Scroll to top">
@@ -116,13 +179,7 @@
     </button>
 
     <!--=============== MAIN JS ===============-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../assets/js/auth-guard.js"></script>
 
-    <script src="../../data/pre-assessments-data.js"></script>
-    <script src="../../assets/js/main.js"></script>
-    <!-- <script src="../../assets/js/modules.js"></script> -->
-    <script src="../../assets/js/pre-assessment-details.js"></script>
-    <script src="../../assets/js/turn.min.js"></script>
+    <script src="../../../assets/js/main.js"></script>
   </body>
 </html>
