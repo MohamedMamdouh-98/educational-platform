@@ -94,6 +94,11 @@ body.dark-theme {
 .container {
   margin-inline: 1.5rem;
 }
+@media screen and (max-width: 768px) {
+  .container {
+    margin-inline: 5px;
+  }
+}
 
 .main {
   padding-top: 5rem;
@@ -307,7 +312,7 @@ body.dark-theme {
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
-@media screen and (max-width: 360px) {
+/* @media screen and (max-width: 360px) {
   .header__container {
     padding-inline: 1rem;
   }
@@ -338,7 +343,7 @@ body.dark-theme {
     padding-inline: 0.5rem;
     margin-inline: auto;
   }
-}
+} */
 
 /* For large devices */
 @media screen and (min-width: 1150px) {
@@ -432,4 +437,12 @@ body.dark-theme {
 #scrollTopBtn:hover {
   background: linear-gradient(135deg, #a47148, #6b4a34);
   transform: translateX(-4px);
+}
+
+.html5-video-player .video-click-tracking,
+.html5-video-player .video-stream {
+  width: 100% !important;
+  height: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
 }

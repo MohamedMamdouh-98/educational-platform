@@ -771,6 +771,10 @@
   .next-btn,
   .prev-btn {
     height: 100%;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 11px;
   }
 
   .next-btn {

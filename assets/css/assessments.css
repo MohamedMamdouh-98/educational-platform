@@ -231,7 +231,7 @@
 @media (max-width: 480px) {
   .units-grid {
     grid-template-columns: 1fr;
-    max-width: 350px;
+    max-width: 100%;
     gap: 20px;
   }
 

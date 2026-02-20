@@ -40,14 +40,6 @@
         border-top: 6px solid #956b48;
         margin: 35px 0;
       }
-      @media screen and (max-width: 768px) {
-        .tpack-section-video {
-          padding: 10px;
-        }
-        .description-video {
-          font-size: 17px !important;
-        }
-      }
 
       /* description text - exactly as requested, only with a subtle icon */
       .description-video {
@@ -67,6 +59,18 @@
           inset 0 1px 5px #f4e4d6,
           0 8px 12px -10px #8c6549;
         font-weight: bold;
+      }
+
+      @media screen and (max-width: 768px) {
+        .tpack-section-video {
+          padding: 10px;
+        }
+        .description-video {
+          font-size: 17px !important;
+          padding: 10px;
+          flex-direction: column;
+          gap: 0.8rem;
+        }
       }
 
       .description i {

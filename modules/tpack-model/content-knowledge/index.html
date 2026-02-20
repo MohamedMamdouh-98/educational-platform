@@ -45,6 +45,12 @@
         overflow: hidden;
       }
 
+      @media screen and (max-width: 768px) {
+        .main-card {
+          padding: 10px;
+        }
+      }
+
       .header-section {
         width: 100%;
         background: linear-gradient(
@@ -76,6 +82,21 @@
         margin: 0;
         font-size: 1.6rem;
         color: #3d2b1f;
+      }
+
+      @media screen and (max-width: 768px) {
+        .header-title {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .header-title h1 {
+          font-size: 1rem;
+        }
+
+        .header-title i {
+          font-size: 1.5rem;
+        }
       }
 
       .info-box {
