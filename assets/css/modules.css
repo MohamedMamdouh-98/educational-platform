@@ -1393,7 +1393,8 @@
   min-width: 240px;
 }
 
-.next-page {
+.next-page,
+.previous-page {
   width: 60%;
   margin-bottom: 30px;
 }
@@ -1613,11 +1614,21 @@
   overflow: hidden;
 }
 
-.book-modal__close {
+/* .book-modal__close {
   position: absolute;
   top: 12px;
   right: 97px;
   font-size: 49px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+} */
+.book-modal__close {
+  position: absolute;
+  top: -15px;
+  right: 14px;
+  font-size: 36px;
   background: none;
   border: none;
   cursor: pointer;
