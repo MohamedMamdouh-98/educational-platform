@@ -1399,6 +1399,10 @@
   margin-bottom: 30px;
 }
 
+.previous-page {
+  background: linear-gradient(135deg, #6d4c41 0%, #8d6e63 100%);
+}
+
 .guide-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 25px rgba(109, 76, 65, 0.25);
