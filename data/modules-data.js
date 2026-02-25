@@ -58,53 +58,53 @@ const modules = [
     ],
   },
 
+  // {
+  //   id: 2,
+  //   module_number: 2,
+  //   name: "Digital Teaching Skills",
+  //   description:
+  //     "This module explains how Learning Management Systems (LMS) help organize and deliver online courses efficiently.",
+  //   progress_rate: 30,
+  //   module_img: "../../assets/img/Picture2.png",
+  //   book_images: ["images/module2/img1.jpg", "images/module2/img2.jpg"],
+  //   video: "videos/module2.mp4",
+  //   quiz: [
+  //     {
+  //       question: "What is an LMS mainly used for?",
+  //       options: [
+  //         "Managing courses",
+  //         "Designing hardware",
+  //         "Writing code only",
+  //         "Creating games",
+  //       ],
+  //       correct_answer: "Managing courses",
+  //       hint: "It helps teachers and students manage learning content.",
+  //     },
+  //     {
+  //       question: "Which feature is common in LMS platforms?",
+  //       options: [
+  //         "Assignments submission",
+  //         "Car engine control",
+  //         "Photo editing",
+  //         "Game rendering",
+  //       ],
+  //       correct_answer: "Assignments submission",
+  //       hint: "Students usually upload their work there.",
+  //     },
+  //   ],
+  //   objectives: [
+  //     "Understand the purpose and functionality of Learning Management Systems",
+  //     "Identify popular LMS platforms and their features",
+  //     "Navigate and use basic LMS functions effectively",
+  //     "Create and manage online courses using LMS tools",
+  //     "Utilize assessment and grading features in LMS",
+  //     "Implement student engagement tools within LMS",
+  //   ],
+  // },
+
   {
     id: 2,
     module_number: 2,
-    name: "Digital Teaching Skills",
-    description:
-      "This module explains how Learning Management Systems (LMS) help organize and deliver online courses efficiently.",
-    progress_rate: 30,
-    module_img: "../../assets/img/Picture2.png",
-    book_images: ["images/module2/img1.jpg", "images/module2/img2.jpg"],
-    video: "videos/module2.mp4",
-    quiz: [
-      {
-        question: "What is an LMS mainly used for?",
-        options: [
-          "Managing courses",
-          "Designing hardware",
-          "Writing code only",
-          "Creating games",
-        ],
-        correct_answer: "Managing courses",
-        hint: "It helps teachers and students manage learning content.",
-      },
-      {
-        question: "Which feature is common in LMS platforms?",
-        options: [
-          "Assignments submission",
-          "Car engine control",
-          "Photo editing",
-          "Game rendering",
-        ],
-        correct_answer: "Assignments submission",
-        hint: "Students usually upload their work there.",
-      },
-    ],
-    objectives: [
-      "Understand the purpose and functionality of Learning Management Systems",
-      "Identify popular LMS platforms and their features",
-      "Navigate and use basic LMS functions effectively",
-      "Create and manage online courses using LMS tools",
-      "Utilize assessment and grading features in LMS",
-      "Implement student engagement tools within LMS",
-    ],
-  },
-
-  {
-    id: 3,
-    module_number: 3,
     name: "Mathematics Content Analysis",
     description:
       "Learn how to create engaging digital content including videos, images, and interactive materials.",
@@ -143,8 +143,8 @@ const modules = [
   },
 
   {
-    id: 4,
-    module_number: 4,
+    id: 3,
+    module_number: 3,
     name: "Behavioral Learning Objectives",
     description:
       "Explore tools and techniques for conducting assessments online effectively.",
@@ -177,8 +177,8 @@ const modules = [
   },
 
   {
-    id: 5,
-    module_number: 5,
+    id: 4,
+    module_number: 4,
     name: "Digital Warm-Up Strategies for Mathematics Lessons",
     description:
       "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
@@ -211,8 +211,8 @@ const modules = [
     ],
   },
   {
-    id: 6,
-    module_number: 6,
+    id: 5,
+    module_number: 5,
     name: "Digital Teaching Strategies",
     description:
       "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
@@ -245,8 +245,8 @@ const modules = [
     ],
   },
   {
-    id: 7,
-    module_number: 7,
+    id: 6,
+    module_number: 6,
     name: "Digital Representation of Mathematical Content",
     description:
       "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
@@ -279,8 +279,8 @@ const modules = [
     ],
   },
   {
-    id: 8,
-    module_number: 8,
+    id: 7,
+    module_number: 7,
     name: "classroom & time management",
     description:
       "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
@@ -313,8 +313,8 @@ const modules = [
     ],
   },
   {
-    id: 9,
-    module_number: 9,
+    id: 8,
+    module_number: 8,
     name: "Digital Lesson Closure methods",
     description:
       "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
@@ -347,8 +347,8 @@ const modules = [
     ],
   },
   {
-    id: 10,
-    module_number: 10,
+    id: 9,
+    module_number: 9,
     name: "Digital Evaluation",
     description:
       "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
