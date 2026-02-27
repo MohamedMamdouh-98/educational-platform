@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+    <style>
+      .main-card {
+        /* background: #faefdd; */
+        padding: 30px 25px 45px;
+        border-radius: 80px 80px 70px 70px;
+        box-shadow:
+          0 18px 32px -14px rgba(66, 40, 20, 0.4),
+          0 4px 10px rgba(119, 75, 40, 0.1);
+        width: 100%;
+        border-top: 10px solid #a67b5b;
+        position: relative;
+        margin: 35px 0;
+        /* height: 1000px; */
+      }
+
+      .main-card::after {
+        content: "⚘⚘⚘";
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #dbbc9e;
+        color: #543b28;
+        font-size: 28px;
+        letter-spacing: 16px;
+        padding: 6px 40px;
+        border-radius: 60px;
+        box-shadow: inset 0 -4px 0 #7a5a44;
+        border: 2px solid #f3dabc;
+      }
+
+      h1 {
+        text-align: center;
+        color: #5a3e2b;
+        font-weight: 800;
+        font-size: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 30px;
+        /* text-shadow: 4px 4px 0 #e7d2b5; */
+        letter-spacing: 2px;
+        word-break: break-word;
+      }
+
+      h1 i {
+        color: #8b5a2b;
+        margin: 0 12px;
+        filter: drop-shadow(2px 4px 2px #b49475);
+      }
+
+      /* wheel container - bigger */
+      .wheel-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .canvas-container {
+        position: relative;
+        width: 550px;
+        /* height: 550px; */
+        margin: 0 auto 30px;
+      }
+
+      canvas {
+        width: 60%;
+        height: 60%;
+        display: block;
+        border-radius: 50%;
+        border: 16px solid #8f6b4b;
+        box-shadow:
+          inset 0 0 0 8px #efdecb,
+          0 22px 35px rgba(44, 26, 8, 0.8);
+        transition: transform 0.08s;
+        background: #b89474;
+        cursor: pointer;
+        margin: 0 auto;
+      }
+
+      canvas:active {
+        transform: scale(0.98);
+      }
+
+      @media screen and (max-width: 768px) {
+        canvas {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .pointer {
+        position: absolute;
+        top: -28px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 70px;
+        color: #62371e;
+        text-shadow:
+          0 14px 10px #2d1e12,
+          0 0 0 6px #fbebd2;
+        z-index: 15;
+        filter: drop-shadow(0 10px 0 #8b674b);
+      }
+
+      /* button below wheel - bigger */
+      .spin-btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 15px 0 25px;
+      }
+
+      .btn-spin {
+        background: radial-gradient(circle at 30% 30%, #ffefd1, #9e785a);
+        border: none;
+        padding: 16px 60px;
+        border-radius: 90px;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #2c1c10;
+        cursor: pointer;
+        box-shadow:
+          0 18px 0 #4f3727,
+          0 25px 40px #2f1d11,
+          inset 0 -6px 12px rgba(0, 0, 0, 0.4),
+          inset 0 6px 12px rgba(255, 240, 200, 0.9);
+        transition: 0.05s linear;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        border: 5px solid #fff0cf;
+        letter-spacing: 10px;
+      }
+
+      .btn-spin i {
+        font-size: 3.2rem;
+        color: #412e1b;
+        text-shadow: 0 4px 8px #d6a77a;
+      }
+
+      .btn-spin:active {
+        transform: translateY(16px);
+        box-shadow:
+          0 2px 0 #4f3727,
+          0 18px 30px #2f1d11,
+          inset 0 -3px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* question box - bigger */
+      .question-box {
+        background: #e5cfb5;
+        margin-top: 25px;
+        padding: 15px 45px;
+        border-radius: 120px 50px 120px 50px;
+        border-right: 22px solid #714f36;
+        border-bottom: 22px solid #9e7a60;
+        box-shadow:
+          inset 0 0 0 6px #fff8eb,
+          0 20px 30px #38291e;
+        color: #281c12;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        word-break: break-word;
+        background: linear-gradient(145deg, #fbefdf, #ddc2a8);
+        min-height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid #fff3df;
+      }
+
+      .question-box i {
+        margin-left: 30px;
+        color: #693f25;
+        font-size: 2.8rem;
+        text-shadow: 4px 4px 0 #ebd5b8;
+      }
+
+      @media screen and (max-width: 768px) {
+        .question-box {
+          padding: 5px;
+          font-size: 17px;
+          border-radius: 81px;
+        }
+        .btn-spin i,
+        .btn-spin {
+          font-size: 1.5rem !important;
+        }
+      }
+
+      .selected-q-text {
+        line-height: 1.5;
+        flex: 1;
+      }
+
+      /* footer empty - removed text */
+      .footer-note {
+        text-align: center;
+        margin-top: 25px;
+        color: transparent;
+        font-size: 0.1rem;
+        user-select: none;
+      }
+
+      /* responsive */
+      @media (max-width: 800px) {
+        .canvas-container {
+          width: 300px;
+          /* height: 450px; */
+        }
+        h1 {
+          font-size: 20px;
+        }
+        .btn-spin {
+          font-size: 2.6rem;
+          padding: 16px 40px;
+        }
+        /* .question-box {
+          font-size: 1.7rem;
+          padding: 25px 30px;
+        } */
+      }
+
+      @media (max-width: 550px) {
+        .canvas-container {
+          width: 100%;
+          /* height: 360px; */
+        }
+        .pointer {
+          font-size: 60px;
+          top: -24px;
+        }
+        .btn-spin {
+          font-size: 2.2rem;
+          padding: 16px 40px;
+        }
+        /* .question-box {
+          font-size: 1.5rem;
+          padding: 20px;
+        } */
+      }
+
+      @media (max-width: 420px) {
+        .canvas-container {
+          /* width: 300px; */
+          /* height: 300px; */
+        }
+        .pointer {
+          font-size: 52px;
+          top: -20px;
+        }
+        .btn-spin {
+          font-size: 1.9rem;
+          padding: 16px 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo"> </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../../assets/img/user.png" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/home/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+      <div class="container">
+        <div class="main-card">
+          <h1>
+            <i class="fas fa-pencil-alt"></i>
+            CONTENT ANALYSIS WHEEL
+            <i class="fas fa-arrow-rotate-left"></i>
+          </h1>
+
+          <div class="wheel-wrapper">
+            <div class="canvas-container" style="position: relative">
+              <div class="pointer">
+                <i class="fas fa-caret-down"></i>
+              </div>
+              <canvas id="wheelCanvas" width="700" height="700"></canvas>
+            </div>
+
+            <div class="spin-btn-container">
+              <button class="btn-spin" id="spinButton">
+                <i class="fas fa-sync-alt"></i> SPIN
+              </button>
+            </div>
+          </div>
+
+          <!-- selected question shows here -->
+          <div class="question-box" id="selectedQuestionBox">
+            <i class="fas fa-question-circle"></i>
+            <span class="selected-q-text" id="questionText">
+              Press SPIN to display one of the content analysis questions
+            </span>
+          </div>
+
+          <div class="footer-note"></div>
+        </div>
+        <div class="buttons-actions">
+          <a
+            href="/modules/mathematics-content-analysis/pedagogical-content-knowledge/"
+            class="guide-button previous-page"
+          >
+            <i class="fas fa-arrow-left"></i>
+            Previous Page
+          </a>
+          <a
+            href="/modules/mathematics-content-analysis/send-gmail/"
+            class="guide-button next-page"
+          >
+            Next Page
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <script>
+          (function () {
+            "use strict";
+
+            // ---------- TPACK questions (English only) ----------
+            const questions = [
+              "What are components of the mathematical content?",
+              "Define the mathematical generalization.",
+              "What is the difference between the concept, the term and the definition?",
+              "What is the difference between concept and skills?",
+            ];
+
+            // ---------- Brown palette ----------
+            const brownPalette = [
+              "#B5673A",
+              "#A1582E",
+              "#8C5A3C",
+              "#C17B4D",
+              "#9E6B4E",
+              "#B47C5A",
+              "#7A5B4A",
+              "#C48A5C",
+              "#A5714F",
+              "#8B5E3C",
+              "#B86138",
+              "#9F7248",
+            ];
+
+            const canvas = document.getElementById("wheelCanvas");
+            const ctx = canvas.getContext("2d");
+            const spinBtn = document.getElementById("spinButton");
+            const questionSpan = document.getElementById("questionText");
+
+            let currentAngle = 0;
+            let spinning = false;
+            let spinVelocity = 0;
+            let spinDecay = 0.985;
+            let minVelocity = 0.008;
+            let animationFrame = null;
+            const sliceAngle = (2 * Math.PI) / questions.length;
+
+            // ---------- Web Audio ----------
+            let audioContext = null;
+
+            function initAudio() {
+              if (audioContext) return;
+              try {
+                audioContext = new (
+                  window.AudioContext || window.webkitAudioContext
+                )();
+                if (audioContext.state === "suspended") {
+                  audioContext.resume();
+                }
+              } catch (e) {
+                console.log("Web Audio API not supported");
+              }
+            }
+
+            function playSpinSound(intensity = 1) {
+              if (!audioContext) {
+                initAudio();
+                if (!audioContext) return;
+              }
+
+              if (audioContext.state === "suspended") {
+                audioContext
+                  .resume()
+                  .then(() => {
+                    generateTick(intensity);
+                  })
+                  .catch(() => {});
+              } else {
+                generateTick(intensity);
+              }
+            }
+
+            function generateTick(intensity = 1) {
+              if (!audioContext) return;
+
+              try {
+                const now = audioContext.currentTime;
+
+                const osc1 = audioContext.createOscillator();
+                const gain1 = audioContext.createGain();
+                osc1.type = "sine";
+                osc1.frequency.value = 200 + Math.random() * 50;
+                gain1.gain.setValueAtTime(0.25 * intensity, now);
+                gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+                osc1.connect(gain1);
+                gain1.connect(audioContext.destination);
+                osc1.start(now);
+                osc1.stop(now + 0.12);
+
+                const osc2 = audioContext.createOscillator();
+                const gain2 = audioContext.createGain();
+                osc2.type = "triangle";
+                osc2.frequency.value = 70 + Math.random() * 20;
+                gain2.gain.setValueAtTime(0.14 * intensity, now);
+                gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
+                osc2.connect(gain2);
+                gain2.connect(audioContext.destination);
+                osc2.start(now);
+                osc2.stop(now + 0.1);
+
+                if (intensity > 0.6) {
+                  const osc3 = audioContext.createOscillator();
+                  const gain3 = audioContext.createGain();
+                  osc3.type = "square";
+                  osc3.frequency.value = 340;
+                  gain3.gain.setValueAtTime(0.07 * intensity, now);
+                  gain3.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+                  osc3.connect(gain3);
+                  gain3.connect(audioContext.destination);
+                  osc3.start(now);
+                  osc3.stop(now + 0.04);
+                }
+              } catch (e) {}
+            }
+
+            // ---------- draw wheel ----------
+            function drawWheel(angle) {
+              const w = canvas.width;
+              const h = canvas.height;
+              const cx = w / 2;
+              const cy = h / 2;
+              const radius = Math.min(w, h) * 0.42;
+
+              ctx.clearRect(0, 0, w, h);
+              ctx.shadowColor = "#2b1a0e";
+              ctx.shadowBlur = 18;
+
+              for (let i = 0; i < questions.length; i++) {
+                const start = angle + i * sliceAngle;
+                const end = start + sliceAngle;
+
+                ctx.beginPath();
+                ctx.moveTo(cx, cy);
+                ctx.arc(cx, cy, radius, start, end);
+                ctx.closePath();
+
+                ctx.fillStyle = brownPalette[i % brownPalette.length];
+                ctx.fill();
+
+                ctx.strokeStyle = "#fae6cc";
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(cx, cy);
+                ctx.arc(cx, cy, radius, start, end);
+                ctx.lineTo(cx, cy);
+                ctx.stroke();
+              }
+
+              ctx.shadowBlur = 0;
+
+              ctx.font = 'bold 22px "Cairo", sans-serif';
+              ctx.fillStyle = "#fffcf2";
+              ctx.shadowColor = "#38271a";
+              ctx.shadowBlur = 8;
+              ctx.textAlign = "center";
+              ctx.textBaseline = "middle";
+
+              for (let i = 0; i < questions.length; i++) {
+                const mid = angle + i * sliceAngle + sliceAngle / 2;
+                const textRadius = radius * 0.7;
+                const x = cx + Math.cos(mid) * textRadius;
+                const y = cy + Math.sin(mid) * textRadius;
+
+                let short = "";
+                if (questions[i].includes("components")) short = "COMPONENTS";
+                else if (questions[i].includes("generalization"))
+                  short = "GENERALIZATION";
+                else if (questions[i].includes("concept, the term"))
+                  short = "CONCEPT vs TERM";
+                else if (questions[i].includes("concept and skills"))
+                  short = "CONCEPT vs SKILLS";
+                else short = "QUESTION";
+
+                ctx.fillText(short, x, y);
+              }
+
+              ctx.shadowBlur = 14;
+              ctx.beginPath();
+              ctx.arc(cx, cy, radius * 0.21, 0, 2 * Math.PI);
+              ctx.fillStyle = "#e7cfb0";
+              ctx.fill();
+              ctx.shadowBlur = 0;
+              ctx.strokeStyle = "#8f6b4b";
+              ctx.lineWidth = 8;
+              ctx.stroke();
+
+              ctx.beginPath();
+              ctx.arc(cx, cy, radius * 0.11, 0, 2 * Math.PI);
+              ctx.fillStyle = "#5b3a23";
+              ctx.fill();
+            }
+
+            function getSelectedQuestion(angle) {
+              let normAngle = angle % (2 * Math.PI);
+              if (normAngle < 0) normAngle += 2 * Math.PI;
+              const pointerRad = (3 * Math.PI) / 2;
+              let diff = (pointerRad - normAngle + 2 * Math.PI) % (2 * Math.PI);
+              let idx = Math.floor(diff / sliceAngle) % questions.length;
+              return questions[idx];
+            }
+
+            function updateQuestionText() {
+              questionSpan.textContent = getSelectedQuestion(currentAngle);
+            }
+
+            function spinLoop() {
+              if (!spinning) return;
+
+              spinVelocity *= spinDecay;
+              currentAngle += spinVelocity;
+              currentAngle %= 2 * Math.PI;
+
+              drawWheel(currentAngle);
+              updateQuestionText();
+
+              if (Math.abs(spinVelocity) > 0.02) {
+                playSpinSound(Math.min(Math.abs(spinVelocity) * 0.9, 1.1));
+              }
+
+              if (Math.abs(spinVelocity) < minVelocity) {
+                spinning = false;
+                spinVelocity = 0;
+                playSpinSound(1.3);
+                if (animationFrame) cancelAnimationFrame(animationFrame);
+                animationFrame = null;
+              } else {
+                animationFrame = requestAnimationFrame(spinLoop);
+              }
+            }
+
+            function startSpin() {
+              initAudio();
+
+              if (audioContext) {
+                if (audioContext.state === "suspended") {
+                  audioContext.resume().then(() => {
+                    playSpinSound(1.6);
+                  });
+                } else {
+                  playSpinSound(1.6);
+                }
+              }
+
+              if (spinning) {
+                spinning = false;
+                if (animationFrame) {
+                  cancelAnimationFrame(animationFrame);
+                  animationFrame = null;
+                }
+              }
+
+              spinVelocity = 1.5 + Math.random() * 2.5;
+              spinVelocity *= Math.random() > 0.4 ? 1 : -1;
+              spinning = true;
+              animationFrame = requestAnimationFrame(spinLoop);
+            }
+
+            function init() {
+              currentAngle = Math.random() * 2 * Math.PI;
+              drawWheel(currentAngle);
+              updateQuestionText();
+
+              spinBtn.addEventListener("click", startSpin);
+              canvas.addEventListener("click", startSpin);
+
+              document.body.addEventListener(
+                "touchstart",
+                function initTouch() {
+                  initAudio();
+                  document.body.removeEventListener("touchstart", initTouch);
+                },
+                { once: true },
+              );
+
+              document.body.addEventListener(
+                "click",
+                function initClick() {
+                  initAudio();
+                  document.body.removeEventListener("click", initClick);
+                },
+                { once: true },
+              );
+
+              initAudio();
+              canvas.addEventListener("contextmenu", (e) => e.preventDefault());
+            }
+
+            init();
+          })();
+        </script>
+      </div>
+    </main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>

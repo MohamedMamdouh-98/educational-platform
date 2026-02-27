@@ -79,6 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
         e.stopPropagation();
         window.location.href = "/modules/tpack-model/objectives/";
       });
+    } else if (index === 1) {
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.location.href =
+          "/modules/mathematics-content-analysis/objectives-analysis/";
+      });
     } else {
       button.disabled = true;
       button.style.opacity = "0.5";
