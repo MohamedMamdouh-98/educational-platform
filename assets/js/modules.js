@@ -85,6 +85,12 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href =
           "/modules/mathematics-content-analysis/objectives-analysis/";
       });
+    } else if (index === 2) {
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.location.href =
+          "/modules/behavioral-learning-objectives/objectives-behavioral/";
+      });
     } else {
       button.disabled = true;
       button.style.opacity = "0.5";

@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+    <style>
+      :root {
+        --bg-color: #f4ece1;
+        --green: rgba(76, 139, 43, 0.7);
+        --purple: rgba(106, 57, 130, 0.7);
+        --blue: rgba(41, 128, 185, 0.7);
+        --brown: #6d4c41;
+      }
+
+      .tpk {
+        max-width: 100%;
+        padding: 40px;
+        margin: 35px 0;
+        border-radius: 20px;
+        border-top: 5px solid transparent;
+
+        background:
+          linear-gradient(#fdf8f0, #fdf8f0) padding-box,
+          linear-gradient(to right, #bc8f8f, #f5deb3, #bc8f8f) border-box;
+
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .tpk header {
+        text-align: center;
+        margin-bottom: 20px;
+        color: var(--brown);
+      }
+
+      .tpk header h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin: 0;
+        color: var(--brown);
+        text-transform: uppercase;
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      .tpk header h1::after {
+        content: "";
+        width: 50%;
+        height: 2px;
+        background: var(--brown);
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      @media screen and (max-width: 768px) {
+        .tpk header h1 {
+          font-size: 2rem;
+        }
+        .tpk header h2 {
+          font-size: 18px;
+        }
+        .tpk {
+          padding: 10px;
+        }
+      }
+
+      .definition .def-box {
+        background: #fff9f0;
+        border: 1px solid #bb7d68;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        color: var(--brown);
+        box-shadow: -1px 0px 10px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .definition .def-box p {
+        padding: 5px 25px;
+        font-size: 20px;
+      }
+      .section-title {
+        text-align: center;
+        margin: 30px 0;
+        position: relative;
+      }
+
+      .section-title::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        height: 2px;
+        border-radius: 20px;
+        background: linear-gradient(
+          to right,
+          #d2b48c 0%,
+          #8b4513 50%,
+          #d2b48c 100%
+        );
+        left: 0;
+        z-index: 1;
+      }
+
+      .section-title span {
+        background: #fdf8f0;
+        padding: 0 15px;
+        position: relative;
+        z-index: 2;
+        font-weight: bold;
+        color: var(--brown);
+        font-size: 25px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .section-title span {
+          font-size: 17px;
+        }
+      }
+
+      /* Venn Diagram Logic */
+      .venn-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* height: 500px; */
+        position: relative;
+      }
+
+      .venn-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      .circle {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+      }
+
+      .green {
+        background: var(--green);
+        top: 0;
+        left: 50px;
+      }
+      .purple {
+        background: var(--purple);
+        top: 0;
+        right: 50px;
+      }
+      .blue {
+        background: var(--blue);
+        bottom: 50px;
+        left: 150px;
+      }
+
+      .tpack-center {
+        position: absolute;
+        top: 100px;
+        left: 200px;
+        width: 200px;
+        height: 150px;
+        background: rgba(109, 76, 65, 0.9);
+        border-radius: 50%;
+        border: 2px dashed #fff;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        z-index: 10;
+      }
+
+      /* Footer Integration */
+      .integration-footer {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 40px;
+      }
+
+      .footer-box {
+        background: #eee3d5;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        text-align: center;
+        min-width: 120px;
+      }
+
+      .main-star {
+        border: 2px solid #d4af37;
+        background: #fff;
+      }
+      .pc {
+        border-radius: 30px;
+      }
+      .phone {
+        display: none;
+      }
+      @media screen and (max-width: 768px) {
+        .phone {
+          display: block;
+        }
+        .pc {
+          display: none;
+        }
+      }
+
+      .button-answer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .math-section__button {
+        margin: 2.2rem auto; /* less space */
+        margin-top: 0;
+        display: inline-block;
+        background: #684830;
+        border: none;
+        border-radius: 3rem;
+        padding: 0.8rem 2.8rem 0.9rem 2.8rem; /* compact */
+        box-shadow:
+          0 9px 18px -7px #4a3323,
+          0 3px 0 0 #4f3726,
+          inset 0 1px 3px #fff3e0;
+        font-size: 1.3rem; /* smaller button text */
+        font-weight: 570;
+        color: #fcf3e9;
+        letter-spacing: 0.4px;
+        cursor: pointer;
+        transition: 0.12s;
+        border: 1px solid rgba(255, 235, 210, 0.5);
+        transform: translateY(0);
+        backdrop-filter: blur(2px);
+        line-height: 1.3;
+        white-space: nowrap; /* keep "Answer Here" in one line */
+      }
+
+      .math-section__button:hover {
+        background: #684830;
+        box-shadow:
+          0 12px 22px -8px #523a27,
+          0 3px 0 0 #523a27,
+          inset 0 1px 5px #fff5e6;
+        transform: translateY(-2px);
+        color: white;
+      }
+
+      .math-section__button:active {
+        transform: translateY(3px);
+        box-shadow:
+          0 5px 12px -6px #4e3724,
+          0 1px 0 0 #4e3724;
+      }
+
+      @media screen and (max-width: 500px) {
+        .math-section__button {
+          padding: 0.7rem 2rem 0.8rem 2rem;
+          font-size: 1.2rem;
+          white-space: normal; /* allow wrap if extremely small */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo"> </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../../../assets/img/user.png" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/home/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+      <div class="container">
+        <section class="tpk">
+          <div class="section-title">
+            <span
+              >Deduce the General Formula for Writing a Behavioral
+              Objective</span
+            >
+          </div>
+
+          <section class="venn-diagram">
+            <div class="venn-container">
+              <!-- lg -->
+              <img
+                class="pc"
+                src="../../../assets/img/module-3/deduce-the-general-formula-lg.png"
+                alt="deduce-the-general-formula"
+              />
+              <!-- sm -->
+              <img
+                class="phone"
+                src="../../../assets/img/module-3/deduce-the-general-formula-sm.png"
+                alt="deduce-the-general-formula"
+              />
+            </div>
+          </section>
+        </section>
+        <div class="button-answer">
+          <a
+            href="https://padlet.com/saraelsayed96/my-distinguished-sandbox-9f6rood1abs858av"
+            target="_blank"
+            class="math-section__button"
+            >Answer Here</a
+          >
+        </div>
+        <div class="buttons-actions">
+          <a
+            href="/modules/behavioral-learning-objectives/knowledge-content/"
+            class="guide-button previous-page"
+          >
+            <i class="fas fa-arrow-left"></i>
+            Previous Page
+          </a>
+          <a
+            href="/modules/behavioral-learning-objectives/the-general-formula/"
+            class="guide-button next-page"
+          >
+            Next Page
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../../assets/js/quiz-section.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+  </body>
+</html>
