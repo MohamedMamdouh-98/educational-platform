@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+    <style>
+      /* refined section styling — cleaner, airy, sophisticated */
+      .padlet-section {
+        width: 100%;
+        background: #fff;
+        border: 2px solid var(--border-color);
+        border-radius: 40px;
+        border-top: #8d5d36 5px solid;
+        padding: 30px;
+        margin: 35px 0;
+        box-shadow:
+          0 10px 20px rgba(0, 0, 0, 0.08),
+          0 20px 40px rgba(0, 0, 0, 0.06),
+          0 5px 10px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .padlet-container {
+        max-width: 1024px;
+        margin: 0 auto;
+      }
+
+      /* title: subtle elegance, balanced weight, slight letter spacing */
+      .padlet-title {
+        font-size: 2rem;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: #1e2a2f;
+        margin-bottom: 2.25rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #795548;
+        display: inline-block;
+        width: auto;
+        font-family: inherit;
+        line-height: 1.25;
+      }
+
+      /* main list container — clean card with refined border and soft shadow */
+      .padlet-list {
+        background: #f9f5f0;
+        border-radius: 28px;
+        box-shadow:
+          0 12px 28px rgba(0, 0, 0, 0.04),
+          0 0 0 1px rgba(0, 0, 0, 0.01);
+        padding: 2rem 2rem 2rem 2.5rem;
+        list-style: none;
+        transition: all 0.2s ease;
+        border: 1px dashed #e3d4c4;
+        border-left: #8d5d36 5px solid;
+      }
+
+      /* each main list item (top-level) */
+      .padlet-list > li {
+        position: relative;
+        margin-bottom: 1.4rem;
+        padding-left: 1.8rem;
+        color: #5d4037;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        font-weight: 500;
+      }
+
+      /* custom bullet for main items — subtle yet refined */
+      .padlet-list > li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.7rem;
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: #b78c5a;
+        border-radius: 1px;
+        opacity: 0.85;
+      }
+
+      /* nested sublist container — distinctive, elegant, visually separated */
+      .prereq-sublist {
+        margin-top: 0.85rem;
+        margin-bottom: 0.25rem;
+        margin-left: 1rem;
+        padding-left: 1.2rem;
+        list-style: none;
+        border-left: 3px solid #e2cfb5;
+      }
+
+      .prereq-sublist li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.7rem;
+        color: #5d4037;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        font-weight: 500;
+      }
+
+      /* refined sub-bullet: small round dot with gentle color */
+      .prereq-sublist li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: #b78c5a;
+        font-weight: 500;
+        font-size: 1rem;
+        top: 0;
+        opacity: 0.8;
+      }
+
+      /* optional hover effect on sublist items */
+      .prereq-sublist li:hover {
+        color: #2c3a3f;
+        transition: color 0.2s;
+      }
+
+      /* highlight for the Padlet title span */
+      .highlight {
+        display: inline-block;
+        background-color: #f2e7db;
+        color: #7a4c2c;
+        font-weight: 500;
+        padding: 0.2rem 0.9rem;
+        border-radius: 40px;
+        font-size: 0.95rem;
+        margin-top: 0.3rem;
+        letter-spacing: -0.2px;
+        border: 1px solid #e3d4c4;
+        backdrop-filter: blur(2px);
+      }
+
+      /* image container with subtle rounding and elegant shadow, no extra icons/text */
+      .step-image {
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .step-image img {
+        width: 100%;
+        max-width: 560px;
+        border-radius: 20px;
+        display: block;
+        box-shadow:
+          0 12px 22px -10px rgba(0, 0, 0, 0.08),
+          0 1px 2px rgba(0, 0, 0, 0.02);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.3s;
+        cursor: pointer;
+      }
+
+      .step-image img:hover {
+        transform: scale(1.01);
+        box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+      }
+
+      /* ensure last list item has proper spacing */
+      .padlet-list > li:last-child {
+        margin-bottom: 0;
+      }
+
+      /* responsiveness: fine-tune for smaller devices */
+      @media (max-width: 680px) {
+        .padlet-section {
+          padding: 2rem 1.2rem;
+        }
+        .padlet-title {
+          font-size: 1.3rem;
+        }
+        .padlet-list {
+          padding: 1.5rem 1.2rem 1.8rem 1.8rem;
+        }
+        .padlet-list > li {
+          font-size: 0.98rem;
+          padding-left: 1.5rem;
+        }
+        .prereq-sublist {
+          margin-left: 0.2rem;
+          padding-left: 0.9rem;
+        }
+        .prereq-sublist li {
+          font-size: 0.92rem;
+        }
+        .highlight {
+          font-size: 0.85rem;
+          padding: 0.2rem 0.7rem;
+        }
+      }
+
+      /* maintain consistent spacing for nested items */
+      .padlet-list li br {
+        display: none;
+      }
+
+      /* clean focus for accessibility */
+      .step-image img:focus-visible {
+        outline: 2px solid #b78c5a;
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo"> </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../../assets/img/user.png" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/home/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+      <div class="container">
+        <section class="padlet-section">
+          <div class="padlet-container">
+            <h2 class="padlet-title">Step 6: Announce the Lesson Topic</h2>
+
+            <ul class="padlet-list">
+              <!-- First bullet -->
+              <li>
+                Write the lesson title on the board or slide:
+                <span class="highlight">Today’s Lesson: Proportion</span>
+              </li>
+
+              <!-- Second bullet -->
+              <li>
+                Then explain that the lesson will include:
+                <ul class="prereq-sublist">
+                  <li>The concept of proportion</li>
+                  <li>Solving problems involving proportion</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <div class="buttons-actions">
+          <a
+            href="/modules/digital-configuration/step-5/"
+            class="guide-button previous-page"
+          >
+            <i class="fas fa-arrow-left"></i>
+            Previous Page
+          </a>
+          <a
+            href="/modules/digital-configuration/activity-1/"
+            class="guide-button next-page"
+          >
+            Next Page
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>

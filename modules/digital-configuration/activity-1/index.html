@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+    <style>
+      /* Activity Section - Elegant and refined, matching previous aesthetic */
+      .activity-section {
+        width: 100%;
+        margin: 35px 0;
+      }
+
+      .activity-container {
+        background: #fff;
+        border: 2px solid var(--border-color);
+        border-radius: 40px;
+        border-top: #8d5d36 5px solid;
+        margin: 35px 0;
+        box-shadow:
+          0 10px 20px rgba(0, 0, 0, 0.08),
+          0 20px 40px rgba(0, 0, 0, 0.06),
+          0 5px 10px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Header / Title area */
+      .activity-header {
+        padding: 2rem 2rem 0 2rem;
+      }
+
+      .activity-title {
+        font-size: 1.9rem;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: #2c3a2f;
+        display: inline-block;
+        padding-bottom: 0.6rem;
+        border-bottom: 2.5px solid #c7a17a;
+        margin-bottom: 0;
+        font-family: inherit;
+      }
+
+      /* Content area - clean, no lists */
+      .activity-content {
+        padding: 1.8rem 2rem 2.2rem 2rem;
+      }
+
+      /* Main activity text - elegant and clear */
+      .activity-text {
+        font-size: 1.12rem;
+        line-height: 1.65;
+        color: #3a4a3f;
+        font-weight: 460;
+        margin-bottom: 2rem;
+        background: #fefaf5;
+        padding: 1.2rem 1.6rem;
+        border-radius: 24px;
+        border: 1px solid #f1e4d8;
+      }
+
+      .activity-text p {
+        margin-bottom: 0.5rem;
+      }
+
+      .activity-text p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* WhatsApp section - subtle and elegant */
+      .whatsapp-container {
+        background: #f8f4ef;
+        border-radius: 20px;
+        padding: 1.2rem 1.6rem;
+        border-left: 4px solid #c7a17a;
+        margin-top: 0.5rem;
+      }
+
+      .whatsapp-label {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #7a684f;
+        letter-spacing: 0.3px;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+      }
+
+      .whatsapp-message {
+        font-size: 1.05rem;
+        color: #2d3e34;
+        font-weight: 480;
+        line-height: 1.5;
+      }
+
+      /* subtle divider */
+      .divider-light {
+        height: 1px;
+        background: #ece0d4;
+        margin: 1.5rem 0 1rem 0;
+      }
+
+      /* No icons, no extra lists, just pure elegant design */
+      @media (max-width: 640px) {
+        body {
+          padding: 1rem;
+        }
+        .activity-header {
+          padding: 1.5rem 1.5rem 0 1.5rem;
+        }
+        .activity-title {
+          font-size: 1.6rem;
+        }
+        .activity-content {
+          padding: 1.2rem 1.5rem 1.8rem 1.5rem;
+        }
+        .activity-text {
+          font-size: 1rem;
+          padding: 1rem 1.2rem;
+        }
+        .whatsapp-message {
+          font-size: 0.95rem;
+        }
+      }
+
+      /* hover effect on container */
+      .activity-container:hover {
+        box-shadow: 0 24px 40px -14px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo"> </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../../assets/img/user.png" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/home/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+      <div class="container">
+        <section class="activity-section">
+          <div class="activity-container">
+            <div class="activity-header">
+              <h2 class="activity-title">Activity :</h2>
+            </div>
+            <div class="activity-content">
+              <div class="activity-text">
+                <p>
+                  Choose a mathematics lesson, then design an appropriate
+                  digital warm-up that can be used at the beginning of the
+                  lesson.
+                </p>
+                <p>Send your answer via WhatsApp</p>
+              </div>
+            </div>
+
+            <hr />
+
+            <div class="activity-header">
+              <h2 class="activity-title">
+                Pedagogical Content Knowledge (PCK)
+              </h2>
+            </div>
+            <div class="activity-content">
+              <div class="activity-text">
+                <p>Work collaboratively with your group to:</p>
+                <ul style="margin-inline-start: 20px">
+                  <li>Choose a mathematics lesson.</li>
+                  <li>Identify the prerequisite knowledge.</li>
+                  <li>Design an appropriate digital warm-up for the lesson.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="buttons-actions">
+          <a
+            href="/modules/digital-configuration/step-6/"
+            class="guide-button previous-page"
+          >
+            <i class="fas fa-arrow-left"></i>
+            Previous Page
+          </a>
+          <a
+            href="/modules/digital-configuration/last-question/"
+            class="guide-button next-page"
+          >
+            Next Page
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>

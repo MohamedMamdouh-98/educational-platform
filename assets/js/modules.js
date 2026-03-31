@@ -91,6 +91,12 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href =
           "/modules/behavioral-learning-objectives/objectives-behavioral/";
       });
+    } else if (index === 3) {
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.location.href =
+          "/modules/digital-configuration/objectives-digital/";
+      });
     } else {
       button.disabled = true;
       button.style.opacity = "0.5";
