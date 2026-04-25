@@ -97,6 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href =
           "/modules/digital-configuration/objectives-digital/";
       });
+    } else if (index === 7) {
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.location.href = "/modules/closure-of-teaching/objectives/";
+      });
     } else {
       button.disabled = true;
       button.style.opacity = "0.5";
