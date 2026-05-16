@@ -97,6 +97,12 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href =
           "/modules/digital-configuration/objectives-digital/";
       });
+    } else if (index === 6) {
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.location.href =
+          "/modules/classroom-time-management/objectives-digital/";
+      });
     } else if (index === 7) {
       button.addEventListener("click", (e) => {
         e.stopPropagation();
