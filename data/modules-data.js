@@ -213,40 +213,6 @@ const modules = [
   {
     id: 5,
     module_number: 5,
-    name: "Digital Teaching Strategies",
-    description:
-      "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
-    progress_rate: 90,
-    module_img: "../../assets/img/Picture6.png",
-    book_images: ["images/module5/img1.jpg", "images/module5/img2.jpg"],
-    video: "videos/module5.mp4",
-    quiz: [
-      {
-        question: "Which method increases student engagement?",
-        options: [
-          "Interactive activities",
-          "Long lectures",
-          "No feedback",
-          "Passive learning",
-        ],
-        correct_answer: "Interactive activities",
-        hint: "Students participate actively here.",
-      },
-    ],
-    objectives: [
-      "Implement interactive learning activities",
-      "Foster online community and collaboration",
-      "Use gamification to enhance engagement",
-      "Design engaging discussion forums",
-      "Create interactive virtual classrooms",
-      "Monitor and measure student engagement levels",
-      "Apply feedback techniques to motivate learners",
-      "Address challenges in digital learning engagement",
-    ],
-  },
-  {
-    id: 6,
-    module_number: 6,
     name: "Digital Representation of Mathematical Content",
     description:
       "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
@@ -278,6 +244,41 @@ const modules = [
       "Address challenges in digital learning engagement",
     ],
   },
+  {
+    id: 6,
+    module_number: 6,
+    name: "Digital Teaching Strategies",
+    description:
+      "This module focuses on strategies to keep students engaged and active during digital learning sessions.",
+    progress_rate: 90,
+    module_img: "../../assets/img/Picture6.png",
+    book_images: ["images/module5/img1.jpg", "images/module5/img2.jpg"],
+    video: "videos/module5.mp4",
+    quiz: [
+      {
+        question: "Which method increases student engagement?",
+        options: [
+          "Interactive activities",
+          "Long lectures",
+          "No feedback",
+          "Passive learning",
+        ],
+        correct_answer: "Interactive activities",
+        hint: "Students participate actively here.",
+      },
+    ],
+    objectives: [
+      "Implement interactive learning activities",
+      "Foster online community and collaboration",
+      "Use gamification to enhance engagement",
+      "Design engaging discussion forums",
+      "Create interactive virtual classrooms",
+      "Monitor and measure student engagement levels",
+      "Apply feedback techniques to motivate learners",
+      "Address challenges in digital learning engagement",
+    ],
+  },
+
   {
     id: 7,
     module_number: 7,
