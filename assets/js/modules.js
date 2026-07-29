@@ -100,7 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (index === 4) {
       button.addEventListener("click", (e) => {
         e.stopPropagation();
-        window.location.href = "/modules/digital-evaluation/objectives/";
+        window.location.href =
+          "/modules/digital-representation-of-mathematical-content/objectives/";
       });
     } else if (index === 6) {
       button.addEventListener("click", (e) => {
@@ -113,7 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
         e.stopPropagation();
         window.location.href = "/modules/closure-of-teaching/objectives/";
       });
-    } else {
+    } else if (index === 8) {
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.location.href = "/modules/digital-evaluation/objectives/";
+      });
+    }else {
       button.disabled = true;
       button.style.opacity = "0.5";
       button.style.cursor = "not-allowed";

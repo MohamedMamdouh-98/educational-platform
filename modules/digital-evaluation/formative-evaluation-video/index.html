@@ -29,40 +29,119 @@
 
     <title>Module Details</title>
     <style>
-      :root {
-        --bg-color: #f4e9d9;
-        --card-bg: #fffbf2;
-        --accent-brown: #6d4c41;
-        --text-color: #4e342e;
-        --header-color: #5d2e17;
+      /* the section - pure and simple, only text + video */
+      .tpack-section-video {
+        width: 100%;
+        /* background: #fcf6ef; /*warm off-white */
+        background: #fff; /* warm off-white */
+        border-radius: 2.5rem 1rem 2.5rem 1rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        padding: 2.5rem;
+        border-top: 6px solid #956b48;
+        margin: 35px 0;
       }
 
-      .pedagogical-knowledge {
-        width: 100%;
-        background: #fef6f2;
-        border: 2px solid var(--border-color);
-        border-radius: 40px;
-        border-top: #8d5d36 5px solid;
-        /* padding: 30px; */
-        margin: 35px 0;
+      /* description text - exactly as requested, only with a subtle icon */
+      .description-video {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem;
+        margin-bottom: 2.5rem;
+        background: #f7ede2;
+        padding: 1.5rem 2rem;
+        border-radius: 2.2rem 0.8rem 2.2rem 0.8rem;
+        border-left: 8px solid #b4815b;
+        color: #3b2b1d;
+        font-size: 1.35rem;
+        line-height: 1.6;
+        font-weight: 400;
         box-shadow:
-          0 10px 20px rgba(0, 0, 0, 0.08),
-          0 20px 40px rgba(0, 0, 0, 0.06),
-          0 5px 10px rgba(0, 0, 0, 0.05);
-        position: relative;
-        overflow: hidden;
-      }
-      .mopile {
-        display: none;
+          inset 0 1px 5px #f4e4d6,
+          0 8px 12px -10px #8c6549;
+        font-weight: bold;
       }
 
       @media screen and (max-width: 768px) {
-        .mopile {
-          display: block;
+        .tpack-section-video {
+          padding: 10px;
         }
-        .not-mopile {
-          display: none;
+        .description-video {
+          font-size: 17px !important;
+          padding: 10px;
+          flex-direction: column;
+          gap: 0.8rem;
         }
+      }
+
+      .description i {
+        font-size: 2.5rem;
+        color: #8f633f;
+        background: #ffffff;
+        padding: 0.8rem;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px #d4b9a4;
+        flex-shrink: 0;
+      }
+
+      .description p {
+        margin: 0;
+      }
+
+      /* video wrapper - clean, just a frame */
+      .video-frame {
+        /* background: #d2bbaa; /*medium brown border */
+        /* border-radius: 2rem 0.7rem 2rem 0.7rem; */
+        border-radius: 10px;
+        /* padding: 0.8rem; */
+        box-shadow:
+          0 0 0 2px #f0e2d4 inset,
+          0 18px 25px -14px #694e38;
+      }
+
+      .video-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        /* border-radius: 1.5rem 0.3rem 1.5rem 0.3rem; */
+        overflow: hidden;
+        background: #1f140e;
+        aspect-ratio: 16 / 9;
+      }
+
+      .video-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
+
+      /* tiny note - barely visible, only to help you replace the link (can be removed) */
+      .drive-hint {
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        color: #aa876b;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        opacity: 0.7;
+      }
+
+      .drive-hint i {
+        color: #8b623f;
+      }
+
+      /* no extra sections, no pillars, no footers - pure minimal */
+      @media (max-width: 600px) {
+        .tpack-section {
+          padding: 1.5rem;
+        }
+        .description {
+          flex-wrap: wrap;
+        }
+      }
+      .description-video ul {
+        padding-inline-start: 20px;
       }
     </style>
   </head>
@@ -141,31 +220,47 @@
     <!--=============== MAIN ===============-->
     <main class="main" id="main">
       <div class="container">
-        <div class="pedagogical-knowledge">
-          <img
-            class="not-mopile"
-            width="100%"
-            height="auto"
-            src="../../../assets/img/module-9/cptt-lg.png"
-            alt="Pedagogical Content Knowledge"
-          />
-          <img
-            class="mopile"
-            src="../../../assets/img/module-9/cptt-sm.jpeg"
-            alt="Pedagogical Content Knowledge"
-          />
+        <div class="tpack-section-video">
+          <!-- only the text you requested + a subtle brown icon (can be removed if you want no icon) -->
+          <div class="description-video">
+            <div
+              class="title-video"
+              style="display: flex; gap: 1.2rem; align-items: center"
+            >
+              <i class="fas fa-play-circle" style="color: #9c6f4b"></i>
+              <h2>Second: Formative Evaluation</h2>
+            </div>
+            <p>
+              Formative evaluation is considered one of the most important types
+              of evaluation used during the learning process, as it aims to
+              continuously monitor students’ progress and provide feedback that
+              helps improve educational performance.
+            </p>
+          </div>
+
+          <!-- VIDEO: Google Drive iframe (pure, no extra elements) -->
+          <div class="video-frame">
+            <div class="video-container">
+              <iframe
+                src="https://drive.google.com/file/d/1KCnS2ZgWZKszQtlm4lP275wdTOen5-kE/preview"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+              >
+              </iframe>
+            </div>
+          </div>
         </div>
 
         <div class="buttons-actions">
           <a
-            href="/modules/digital-evaluation/objectives/"
+            href="/modules/digital-evaluation/evaluation-types/"
             class="guide-button previous-page"
           >
             <i class="fas fa-arrow-left"></i>
             Previous Page
           </a>
           <a
-            href="/modules/digital-evaluation/digital-lesson/"
+            href="/modules/digital-evaluation/summative-evaluation-video/"
             class="guide-button next-page"
           >
             Next Page

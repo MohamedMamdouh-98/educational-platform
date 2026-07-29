@@ -29,40 +29,37 @@
 
     <title>Module Details</title>
     <style>
-      :root {
-        --bg-color: #f4e9d9;
-        --card-bg: #fffbf2;
-        --accent-brown: #6d4c41;
-        --text-color: #4e342e;
-        --header-color: #5d2e17;
-      }
-
-      .pedagogical-knowledge {
-        width: 100%;
-        background: #fef6f2;
-        border: 2px solid var(--border-color);
-        border-radius: 40px;
-        border-top: #8d5d36 5px solid;
-        /* padding: 30px; */
-        margin: 35px 0;
+      .activity-section {
+        margin: 50px 0;
+        background: #f7ede2;
+        padding: 1.5rem 2rem;
+        border-radius: 2.2rem 0.8rem 2.2rem 0.8rem;
+        border-left: 8px solid #b4815b;
+        color: #3b2b1d;
+        font-size: 1.35rem;
+        line-height: 1.6;
+        font-weight: 400;
         box-shadow:
-          0 10px 20px rgba(0, 0, 0, 0.08),
-          0 20px 40px rgba(0, 0, 0, 0.06),
-          0 5px 10px rgba(0, 0, 0, 0.05);
-        position: relative;
-        overflow: hidden;
-      }
-      .mopile {
-        display: none;
+          inset 0 1px 5px #f4e4d6,
+          0 8px 12px -10px #8c6549;
+        font-weight: bold;
       }
 
-      @media screen and (max-width: 768px) {
-        .mopile {
-          display: block;
-        }
-        .not-mopile {
-          display: none;
-        }
+      .activity-title {
+        color: #6b4f38;
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .activity-content {
+        color: #5a4633;
+        font-size: 22px;
+        line-height: 1.9;
+        font-weight: 500;
+      }
+      .activity-section ul {
+        padding-inline-start: 20px;
       }
     </style>
   </head>
@@ -141,31 +138,28 @@
     <!--=============== MAIN ===============-->
     <main class="main" id="main">
       <div class="container">
-        <div class="pedagogical-knowledge">
-          <img
-            class="not-mopile"
-            width="100%"
-            height="auto"
-            src="../../../assets/img/module-9/cptt-lg.png"
-            alt="Pedagogical Content Knowledge"
-          />
-          <img
-            class="mopile"
-            src="../../../assets/img/module-9/cptt-sm.jpeg"
-            alt="Pedagogical Content Knowledge"
-          />
-        </div>
+        <section class="activity-section">
+          <div class="activity-title">Activity:</div>
+
+          <div class="activity-content">
+            Work collaboratively with your group to: <br />
+            <ul style="margin-inline-start: 15px">
+              <li>Create a geometric shape using GeoGebra</li>
+              <li>Apply transformations (rotation – reflection)</li>
+            </ul>
+          </div>
+        </section>
 
         <div class="buttons-actions">
           <a
-            href="/modules/digital-evaluation/objectives/"
+            href="/modules/digital-representation-of-mathematical-content/activity-2/"
             class="guide-button previous-page"
           >
             <i class="fas fa-arrow-left"></i>
             Previous Page
           </a>
           <a
-            href="/modules/digital-evaluation/digital-lesson/"
+            href="/modules/digital-representation-of-mathematical-content/activity-4/"
             class="guide-button next-page"
           >
             Next Page

@@ -28,43 +28,6 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <title>Module Details</title>
-    <style>
-      :root {
-        --bg-color: #f4e9d9;
-        --card-bg: #fffbf2;
-        --accent-brown: #6d4c41;
-        --text-color: #4e342e;
-        --header-color: #5d2e17;
-      }
-
-      .pedagogical-knowledge {
-        width: 100%;
-        background: #fef6f2;
-        border: 2px solid var(--border-color);
-        border-radius: 40px;
-        border-top: #8d5d36 5px solid;
-        /* padding: 30px; */
-        margin: 35px 0;
-        box-shadow:
-          0 10px 20px rgba(0, 0, 0, 0.08),
-          0 20px 40px rgba(0, 0, 0, 0.06),
-          0 5px 10px rgba(0, 0, 0, 0.05);
-        position: relative;
-        overflow: hidden;
-      }
-      .mopile {
-        display: none;
-      }
-
-      @media screen and (max-width: 768px) {
-        .mopile {
-          display: block;
-        }
-        .not-mopile {
-          display: none;
-        }
-      }
-    </style>
   </head>
   <body>
     <!--=============== HEADER ===============-->
@@ -140,46 +103,84 @@
 
     <!--=============== MAIN ===============-->
     <main class="main" id="main">
-      <div class="container">
-        <div class="pedagogical-knowledge">
-          <img
-            class="not-mopile"
-            width="100%"
-            height="auto"
-            src="../../../assets/img/module-9/cptt-lg.png"
-            alt="Pedagogical Content Knowledge"
-          />
-          <img
-            class="mopile"
-            src="../../../assets/img/module-9/cptt-sm.jpeg"
-            alt="Pedagogical Content Knowledge"
-          />
-        </div>
-
-        <div class="buttons-actions">
-          <a
-            href="/modules/digital-evaluation/objectives/"
-            class="guide-button previous-page"
-          >
-            <i class="fas fa-arrow-left"></i>
-            Previous Page
-          </a>
-          <a
-            href="/modules/digital-evaluation/digital-lesson/"
-            class="guide-button next-page"
-          >
-            Next Page
-            <i class="fas fa-arrow-right"></i>
-          </a>
+      <div class="module-details" id="module-details">
+        <div class="container">
+          <div class="lesson-content">
+            <!-- LEARNING OBJECTIVES -->
+            <section class="objectives-section">
+              <h2><i class="fas fa-bullseye"></i> Objectives:</h2>
+              <h3>
+                At the end of this module, the student teacher will be able to:
+              </h3>
+              <div class="objectives-container">
+                <ul class="objectives-list" id="module-objectives">
+                  <li>
+                    <span
+                      >Define the concept of digital representation of
+                      mathematical content.</span
+                    >
+                  </li>
+                  <li>
+                    <span
+                      >Explain the importance of using digital tools in
+                      representing mathematical content.</span
+                    >
+                  </li>
+                  <li>
+                    <span
+                      >Identify different forms of digital representation of
+                      mathematical content.</span
+                    >
+                  </li>
+                  <li>
+                    <span
+                      >Select appropriate digital tools for representing various
+                      mathematical concepts.</span
+                    >
+                  </li>
+                  <li>
+                    <span
+                      >Represent mathematical content using different digital
+                      formats.</span
+                    >
+                  </li>
+                  <li>
+                    <span
+                      >Design mathematical content using digital tools.</span
+                    >
+                  </li>
+                  <li>
+                    <span
+                      >Appreciate the role of digital representation in
+                      simplifying mathematical concepts.</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </section>
+            <div class="buttons-actions">
+              <a href="/modules/" class="guide-button previous-page">
+                <i class="fas fa-arrow-left"></i>
+                Previous Page
+              </a>
+              <a
+                href="/modules/digital-representation-of-mathematical-content/mathematics-teaching-digital/"
+                class="guide-button next-page"
+              >
+                Next Page
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </main>
-
     <button id="scrollTopBtn" aria-label="Scroll to top">
       <i class="fas fa-arrow-up"></i>
     </button>
-    <!-- small note: the page uses only english, as required -->
-    <script src="../../../assets/js/quiz-section.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+
     <script src="../../../assets/js/main.js"></script>
   </body>
 </html>

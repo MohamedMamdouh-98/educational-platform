@@ -64,6 +64,50 @@
           display: none;
         }
       }
+      .title {
+        margin: 30px 0 20px 0;
+        padding: 12px 24px;
+        border-radius: 0 30px 0 30px;
+        background: linear-gradient(135deg, #faefe9 0%, #f7e5db 100%);
+        border-left: 5px solid #e2a17a;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        font-weight: 600;
+        color: #5a3e2b;
+        transition: all 0.3s ease;
+        letter-spacing: 0.5px;
+      }
+      .title-highlight {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        padding: 8px 18px;
+        background: linear-gradient(135deg, #f7e5db 0%, #faefe9 100%);
+        border: 2px solid #e2a17a;
+        border-radius: 20px 0 20px 0;
+        color: #5a3e2b;
+        font-weight: 700;
+        font-size: 1.2em;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .title-highlight i {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #e2a17a;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        box-shadow: 0 2px 6px rgba(226, 161, 122, 0.35);
+      }
+
+      .example-icon {
+        color: #d1844f;
+        margin-right: 6px;
+      }
     </style>
   </head>
   <body>
@@ -146,26 +190,41 @@
             class="not-mopile"
             width="100%"
             height="auto"
-            src="../../../assets/img/module-9/cptt-lg.png"
+            src="../../../assets/img/module-9/evaluation-types-lg.png"
             alt="Pedagogical Content Knowledge"
           />
           <img
             class="mopile"
-            src="../../../assets/img/module-9/cptt-sm.jpeg"
+            src="../../../assets/img/module-9/evaluation-types-sm.png"
             alt="Pedagogical Content Knowledge"
           />
         </div>
 
+        <h2 class="title">
+          <span class="title-highlight">
+            <i class="fas fa-magnifying-glass"></i>
+            First: Diagnostic Evaluation
+          </span>
+
+          Used at the beginning of the lesson to assess students' prior
+          knowledge.
+          <br /><br />
+
+          <i class="fas fa-circle-check example-icon"></i>
+          <strong>Example:</strong> A Google Form quiz to assess understanding
+          of previous math concepts.
+        </h2>
+
         <div class="buttons-actions">
           <a
-            href="/modules/digital-evaluation/objectives/"
+            href="/modules/digital-evaluation/importance-of-digital-evaluation-in-mathematics/"
             class="guide-button previous-page"
           >
             <i class="fas fa-arrow-left"></i>
             Previous Page
           </a>
           <a
-            href="/modules/digital-evaluation/digital-lesson/"
+            href="/modules/digital-evaluation/formative-evaluation-video/"
             class="guide-button next-page"
           >
             Next Page

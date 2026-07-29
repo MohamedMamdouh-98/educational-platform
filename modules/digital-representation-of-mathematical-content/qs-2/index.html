@@ -55,6 +55,53 @@
       .mopile {
         display: none;
       }
+      .button-answer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .math-section__button {
+        margin: 2.2rem auto; /* less space */
+        margin-top: 0;
+        display: inline-block;
+        background: #7b3827;
+        border: none;
+        border-radius: 3rem;
+        padding: 0.8rem 2.8rem 0.9rem 2.8rem; /* compact */
+        box-shadow:
+          0 9px 18px -7px #4a3323,
+          0 3px 0 0 #4f3726,
+          inset 0 1px 3px #fff3e0;
+        font-size: 1.3rem; /* smaller button text */
+        font-weight: 570;
+        color: #fcf3e9;
+        letter-spacing: 0.4px;
+        cursor: pointer;
+        transition: 0.12s;
+        border: 1px solid rgba(255, 235, 210, 0.5);
+        transform: translateY(0);
+        backdrop-filter: blur(2px);
+        line-height: 1.3;
+        white-space: nowrap; /* keep "Answer Here" in one line */
+      }
+
+      .math-section__button:hover {
+        background: #7b3827;
+        box-shadow:
+          0 12px 22px -8px #523a27,
+          0 3px 0 0 #523a27,
+          inset 0 1px 5px #fff5e6;
+        transform: translateY(-2px);
+        color: white;
+      }
+
+      .math-section__button:active {
+        transform: translateY(3px);
+        box-shadow:
+          0 5px 12px -6px #4e3724,
+          0 1px 0 0 #4e3724;
+      }
 
       @media screen and (max-width: 768px) {
         .mopile {
@@ -62,6 +109,14 @@
         }
         .not-mopile {
           display: none;
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        .math-section__button {
+          padding: 0.7rem 2rem 0.8rem 2rem;
+          font-size: 1.2rem;
+          white-space: normal; /* allow wrap if extremely small */
         }
       }
     </style>
@@ -146,26 +201,34 @@
             class="not-mopile"
             width="100%"
             height="auto"
-            src="../../../assets/img/module-9/cptt-lg.png"
+            src="../../../assets/img/module-5/qs-2-lg.png"
             alt="Pedagogical Content Knowledge"
           />
           <img
             class="mopile"
-            src="../../../assets/img/module-9/cptt-sm.jpeg"
+            src="../../../assets/img/module-5/qs-2-sm.png"
             alt="Pedagogical Content Knowledge"
           />
+        </div>
+        <div class="button-answer">
+          <a
+            href="https://padlet.com/saraelsayed96/my-phenomenal-sandbox-9skdln4llkz1y658"
+            target="_blank"
+            class="math-section__button"
+            >Answer Here</a
+          >
         </div>
 
         <div class="buttons-actions">
           <a
-            href="/modules/digital-evaluation/objectives/"
+            href="/modules/digital-representation-of-mathematical-content/digital-lesson/"
             class="guide-button previous-page"
           >
             <i class="fas fa-arrow-left"></i>
             Previous Page
           </a>
           <a
-            href="/modules/digital-evaluation/digital-lesson/"
+            href="/modules/digital-representation-of-mathematical-content/imp/"
             class="guide-button next-page"
           >
             Next Page

@@ -398,14 +398,14 @@
         </div>
         <div class="buttons-actions">
           <a
-            href="/modules/digital-evaluation/pedagogical-content-knowledge/"
+            href="/modules/digital-representation-of-mathematical-content/activity-4/"
             class="guide-button previous-page"
           >
             <i class="fas fa-arrow-left"></i>
             Previous Page
           </a>
           <a
-            href="/modules/digital-evaluation/technological-pedagogical/"
+            href="/modules/digital-representation-of-mathematical-content/technological-pedagogical/"
             class="guide-button next-page"
           >
             Next Page
@@ -418,10 +418,10 @@
 
             // ---------- UPDATED QUESTIONS ----------
             const questions = [
-              "Mention two types of digital evaluation.",
-              "Which digital tool do you prefer? Why?",
-              "What is the most important skill you learned?",
-              "What is the purpose of formative assessment?",
+              "Mention two forms of digital representation.",
+              "In your opinion, which digital tool is the most effective for representing mathematical content? Explain why.",
+              "Explain the importance of digital representation in teaching mathematics.",
+              "What challenges may a teacher face when using digital representation in teaching mathematics?",
             ];
 
             // ---------- Brown palette ----------
@@ -566,7 +566,7 @@
 
               ctx.shadowBlur = 0;
 
-              ctx.font = 'bold 16px "Cairo", sans-serif';
+              ctx.font = 'bold 20px "Cairo", sans-serif';
               ctx.fillStyle = "#fffcf2";
               ctx.shadowColor = "#38271a";
               ctx.shadowBlur = 8;
@@ -580,18 +580,15 @@
                 const y = cy + Math.sin(mid) * textRadius;
 
                 let short = "";
-                if (questions[i].includes("two types of digital evaluation"))
-                  short = "2 TYPES";
+                if (questions[i].includes("two forms")) short = "2 FORMS";
+                else if (questions[i].includes("which digital tool"))
+                  short = "BEST TOOL";
                 else if (
-                  questions[i].includes("Which digital tool do you prefer")
+                  questions[i].includes("importance of digital representation")
                 )
-                  short = "PREFER";
-                else if (questions[i].includes("most important skill"))
-                  short = "SKILL";
-                else if (
-                  questions[i].includes("purpose of formative assessment")
-                )
-                  short = "FORMATIVE";
+                  short = "IMPORTANCE";
+                else if (questions[i].includes("challenges"))
+                  short = "CHALLENGES";
                 else short = "?";
 
                 ctx.fillText(short, x, y);
