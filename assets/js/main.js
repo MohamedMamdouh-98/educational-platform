@@ -146,3 +146,34 @@ function replaceHeaderLogo() {
 }
 
 document.addEventListener("DOMContentLoaded", replaceHeaderLogo);
+
+// Update sidebar user info
+document.addEventListener("DOMContentLoaded", () => {
+  const storedUser = localStorage.getItem("authUser");
+
+  if (!storedUser) {
+    return;
+  }
+
+  try {
+    const user = JSON.parse(storedUser);
+    const sidebarInfo = document.querySelector(".sidebar__info");
+
+    if (!sidebarInfo) {
+      return;
+    }
+
+    const username = sidebarInfo.querySelector("h3");
+    const email = sidebarInfo.querySelector("span");
+
+    if (username) {
+      username.textContent = user.username || "User";
+    }
+
+    if (email) {
+      email.textContent = user.email || "";
+    }
+  } catch (error) {
+    console.error("Invalid authUser data:", error);
+  }
+});
