@@ -157,21 +157,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   try {
     const user = JSON.parse(storedUser);
+
     const sidebarInfo = document.querySelector(".sidebar__info");
+    const sidebarImg = document.querySelector(".sidebar__img img");
 
-    if (!sidebarInfo) {
-      return;
+    // Update username and email
+    if (sidebarInfo) {
+      const username = sidebarInfo.querySelector("h3");
+      const email = sidebarInfo.querySelector("span");
+
+      if (username) {
+        username.textContent = user.username || "User";
+      }
+
+      if (email) {
+        email.textContent = user.email || "";
+      }
     }
 
-    const username = sidebarInfo.querySelector("h3");
-    const email = sidebarInfo.querySelector("span");
-
-    if (username) {
-      username.textContent = user.username || "User";
-    }
-
-    if (email) {
-      email.textContent = user.email || "";
+    // Update user image based on gender
+    if (sidebarImg) {
+      if (user.gender === "male") {
+        sidebarImg.src = "/assets/img/boy.png";
+        sidebarImg.alt = "Male user";
+      } else if (user.gender === "female") {
+        sidebarImg.src = "/assets/img/woman.png";
+        sidebarImg.alt = "Female user";
+      } else {
+        // Default image
+        sidebarImg.src = "/assets/img/user.png";
+        sidebarImg.alt = "User";
+      }
     }
   } catch (error) {
     console.error("Invalid authUser data:", error);

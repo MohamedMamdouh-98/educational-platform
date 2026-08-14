@@ -25,6 +25,7 @@ form.addEventListener("submit", function (e) {
     username: user.username,
     email: user.email,
     role: user.role,
+    gender: user.gender,
     isLoggedIn: true,
   };
 

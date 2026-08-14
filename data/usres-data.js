@@ -6,6 +6,7 @@ const users = [
     email: "mohamed@example.com",
     password: "123456",
     role: "student",
+    gender: "male",
   },
   {
     id: 2,
@@ -13,6 +14,7 @@ const users = [
     email: "sara@example.com",
     password: "abcdef",
     role: "student",
+    gender: "female",
   },
   {
     id: 3,
@@ -20,6 +22,7 @@ const users = [
     email: "ahmed@example.com",
     password: "password123",
     role: "admin",
+    gender: "male",
   },
 ];
 
