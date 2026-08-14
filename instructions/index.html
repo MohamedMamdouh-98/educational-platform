@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <!-- <link rel="stylesheet" href="../assets/css/modules.css" /> -->
+    <link rel="stylesheet" href="../assets/css/assessments.css" />
+
+    <title>Instructions</title>
+    <style>
+      .card {
+        width: 100%;
+        max-width: 100%;
+        background: #fff; /* soft creamy background */
+        border-radius: 42px 42px 42px 42px;
+        box-shadow:
+          0 20px 40px -12px rgba(120, 80, 60, 0.25),
+          0 8px 24px -6px rgba(100, 70, 50, 0.12);
+        padding: 2.8rem 3rem;
+        transition: all 0.2s ease;
+        border: 1px solid #ede3d9;
+        margin: 35px 0;
+      }
+
+      /* warm brown tones */
+      .accent-brown {
+        color: #7f5a4b;
+      }
+
+      .bg-soft-brown {
+        background: #efe4da;
+      }
+
+      /* header */
+      .header-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #e5d5c8;
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        color: #5f3f32;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        box-shadow: 0 4px 8px rgba(140, 100, 80, 0.08);
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #4d3429;
+        margin-top: 0.1rem;
+        margin-bottom: 0.25rem;
+        line-height: 1.2;
+      }
+
+      .subhead {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: #7a5f50;
+        border-left: 4px solid #d4bcae;
+        padding-left: 1rem;
+        margin: 0.75rem 0 1.5rem 0;
+        background: #f3ebe4;
+        border-radius: 20px;
+        padding: 0.9rem 1.4rem;
+        background: #f6efe9;
+      }
+
+      .subhead i {
+        color: #9f7a68;
+        margin-right: 8px;
+      }
+
+      /* instruction list */
+      .instruction-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        margin: 2rem 0 1.8rem 0;
+      }
+
+      .instruction-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        background: #fcf8f4;
+        padding: 1rem 1.5rem 1rem 1.5rem;
+        border-radius: 60px 20px 20px 60px;
+        transition: all 0.15s;
+        border: 1px solid #e9dbd1;
+        box-shadow: 0 2px 6px rgba(160, 120, 100, 0.04);
+      }
+
+      .instruction-item:hover {
+        background: #f8f0e9;
+        border-color: #dac8bb;
+        box-shadow: 0 6px 14px rgba(140, 100, 80, 0.08);
+        transform: translateX(4px);
+      }
+
+      .instruction-icon {
+        flex: 0 0 38px;
+        height: 38px;
+        background: #e8d9cf;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #5e3f32;
+        font-size: 1.1rem;
+        margin-top: 2px;
+      }
+
+      .instruction-text {
+        font-size: 1.02rem;
+        color: #3f2c22;
+        line-height: 1.5;
+        padding-right: 0.25rem;
+      }
+
+      .instruction-text strong {
+        font-weight: 600;
+        color: #4f3326;
+      }
+
+      .instruction-text i {
+        color: #8f6b59;
+        margin: 0 4px;
+      }
+
+      /* highlight special items (pre-test etc) */
+      .highlight-brown {
+        background: #ede1d6;
+        border-radius: 40px;
+        padding: 0.1rem 0.9rem;
+        font-weight: 500;
+        color: #4a3024;
+        display: inline-block;
+      }
+
+      .bullet-muted {
+        color: #8e6f5d;
+        font-weight: 300;
+      }
+
+      /* divider */
+      .divider-light {
+        margin: 1.8rem 0 1.4rem 0;
+        border: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #e2d2c6, #f3e8e0, #e2d2c6);
+        border-radius: 4px;
+      }
+
+      /* footer / wish */
+      .wish-block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background: #efe3d9;
+        padding: 1.1rem 2rem;
+        border-radius: 80px;
+        margin-top: 1.8rem;
+        border: 1px solid #decfc2;
+      }
+
+      .wish-block i {
+        font-size: 2.2rem;
+        color: #7f5846;
+      }
+
+      .wish-text {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #39281f;
+        letter-spacing: 0.3px;
+      }
+
+      .wish-text small {
+        font-weight: 300;
+        font-size: 1rem;
+        color: #5e4032;
+      }
+
+      /* responsive */
+      @media (max-width: 600px) {
+        .card {
+          padding: 1.8rem 1.2rem;
+          border-radius: 32px;
+        }
+        h1 {
+          font-size: 1.8rem;
+        }
+        .instruction-item {
+          padding: 0.9rem 1rem 0.9rem 1rem;
+          border-radius: 30px 12px 12px 30px;
+          gap: 0.8rem;
+        }
+        .instruction-icon {
+          flex: 0 0 32px;
+          height: 32px;
+          font-size: 0.9rem;
+        }
+        .instruction-text {
+          font-size: 0.95rem;
+        }
+        .wish-block {
+          flex-direction: column;
+          text-align: center;
+          padding: 1.2rem 1rem;
+          border-radius: 40px;
+        }
+        .subhead {
+          font-size: 1rem;
+          padding: 0.7rem 1rem;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .card {
+          padding: 1.2rem 0.9rem;
+        }
+        h1 {
+          font-size: 1.6rem;
+        }
+      }
+
+      /* small extra touch */
+      .badge-pill {
+        background: #dccfc4;
+        color: #3b2a1f;
+        padding: 0.2rem 1rem;
+        border-radius: 30px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-right: 8px;
+      }
+
+      .list-dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: #b39787;
+        border-radius: 10px;
+        margin-right: 12px;
+        opacity: 0.5;
+      }
+      .card .fa-regular,
+      .card .fas,
+      .card .far {
+        color: #6f4d3c;
+      }
+
+      .instruction-item .fa-regular,
+      .instruction-item .fas {
+        color: #583f31;
+      }
+
+      /* first letter accent */
+      .first-letter {
+        color: #785b4b;
+      }
+
+      /* decorative */
+      .leaf {
+        color: #a88673;
+        opacity: 0.3;
+        margin-left: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo"> </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../assets/img/user.png" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="../home/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+              <a href="/instructions/" class="sidebar__link active-link">
+                <i class="ri-information-line"></i>
+                <span>Instructions</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+      <div class="container">
+        <div class="card">
+          <!-- header -->
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.75rem;
+              flex-wrap: wrap;
+            "
+          >
+            <div class="header-icon">
+              <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <div>
+              <h1>Dear Mathematics Student Teacher</h1>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                  margin-top: 4px;
+                "
+              >
+                <span
+                  style="
+                    background: #e2d0c2;
+                    padding: 0.2rem 1.2rem;
+                    border-radius: 40px;
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                    color: #4d3226;
+                  "
+                >
+                  <i
+                    class="fas fa-graduation-cap"
+                    style="margin-right: 6px"
+                  ></i>
+                  TPACK model
+                </span>
+                <span style="color: #866c5d; font-size: 0.95rem">
+                  <i
+                    class="fas fa-arrow-right"
+                    style="margin: 0 6px; opacity: 0.6"
+                  ></i>
+                  E-learning program
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- subhead welcome -->
+          <div class="subhead">
+            <i class="fas fa-leaf" style="opacity: 0.7"></i>
+            Welcome to an E- learning Program Based on "TPACK" Model.
+
+            <br />
+
+            <span style="font-weight: 300; font-size: 0.9rem; color: #6d4f3d">
+              Please follow the instructions below:
+            </span>
+          </div>
+
+          <!-- instructions list -->
+          <div class="instruction-grid">
+            <!-- 1 -->
+            <div class="instruction-item">
+              <div class="instruction-icon">
+                <i class="fas fa-pencil-alt"></i>
+              </div>
+              <div class="instruction-text">
+                Before studying the program modules, you must complete the
+                <strong>pre-test</strong>, the <strong>questionnaire</strong>,
+                and the <strong>scale</strong>.
+              </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="instruction-item">
+              <div class="instruction-icon">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <div class="instruction-text">
+                Read the learning objectives of each module before studying its
+                content to identify the knowledge and skills you are expected to
+                acquire.
+              </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="instruction-item">
+              <div class="instruction-icon">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <div class="instruction-text">
+                Study the modules in the recommended sequence and complete each
+                module before moving to the next.
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="instruction-item">
+              <div class="instruction-icon">
+                <i class="fas fa-tasks"></i>
+              </div>
+              <div class="instruction-text">
+                Complete all learning activities and quizzes included in each
+                module.
+              </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="instruction-item">
+              <div class="instruction-icon">
+                <i class="fas fa-clipboard-check"></i>
+              </div>
+              <div class="instruction-text">
+                After completing all the program modules, you must complete the
+                <strong>post-test</strong>, the <strong>questionnaire</strong>,
+                and the <strong>scale</strong>.
+              </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="instruction-item">
+              <div class="instruction-icon">
+                <i class="fas fa-wifi"></i>
+              </div>
+              <div class="instruction-text">
+                Ensure you have a stable internet connection while using the
+                program.
+              </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="instruction-item">
+              <div class="instruction-icon">
+                <i class="fas fa-sync-alt"></i>
+              </div>
+              <div class="instruction-text">
+                If you encounter any technical issues, refresh the page or try
+                again.
+              </div>
+            </div>
+          </div>
+
+          <!-- subtle divider -->
+          <hr class="divider-light" />
+
+          <!-- wish -->
+          <div class="wish-block">
+            <i class="fas fa-heart" style="color: #b28167"></i>
+
+            <div class="wish-text">
+              <strong
+                >We wish you a successful and enjoyable learning
+                experience.</strong
+              >
+            </div>
+
+            <i
+              class="fas fa-smile"
+              style="font-size: 2rem; opacity: 0.6; color: #a47f6b"
+            ></i>
+          </div>
+
+          <!-- extra decorative tiny note (TPACK) -->
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              margin-top: 1.2rem;
+              opacity: 0.4;
+              font-size: 0.75rem;
+              letter-spacing: 1px;
+              color: #624b3d;
+            "
+          >
+            <span>
+              <i
+                class="fas fa-circle"
+                style="
+                  font-size: 0.3rem;
+                  vertical-align: middle;
+                  margin-right: 6px;
+                "
+              ></i>
+              TPACK · e-learning · 2026
+            </span>
+          </div>
+        </div>
+      </div>
+    </main>
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="../assets/js/auth-guard.js"></script>
+
+    <script src="../data/pre-assessments-data.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/pre-assessments.js"></script>
+  </body>
+</html>
