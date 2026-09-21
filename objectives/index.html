@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Objectives</title>
+
+    <style>
+      /* ============ RESET & VARIABLES ============ */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --brown-900: #4a3222;
+        --brown-800: #5c3d26;
+        --brown-700: #7a5230;
+        --brown-600: #8b5e3c;
+        --brown-500: #a9764f;
+        --brown-400: #c9a37b;
+        --brown-300: #ddc4a8;
+        --brown-200: #e8d7c5;
+        --brown-100: #f4ebe1;
+        --brown-50: #fbf6f0;
+        --white: #ffffff;
+        --shadow-sm: 0 6px 18px -14px rgba(92, 61, 38, 0.55);
+        --shadow-md: 0 18px 34px -20px rgba(92, 61, 38, 0.55);
+        --radius: 18px;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          "Poppins",
+          "Cairo",
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        color: var(--brown-900);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* خلفية زخرفية ناعمة */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          radial-gradient(
+            circle at 0% 0%,
+            rgba(201, 163, 123, 0.22),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 100% 100%,
+            rgba(169, 118, 79, 0.16),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 85% 8%,
+            rgba(232, 215, 197, 0.55),
+            transparent 38%
+          );
+        pointer-events: none;
+      }
+
+      .page {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 34px 22px 70px;
+        background: transparent;
+      }
+
+      /* ============ HERO ============ */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        border-radius: 30px;
+        padding: 56px 44px 48px;
+        text-align: center;
+        color: var(--white);
+        background: linear-gradient(
+          135deg,
+          #54371f 0%,
+          #7a5230 45%,
+          #b98a60 100%
+        );
+        box-shadow: 0 30px 60px -28px rgba(84, 55, 31, 0.7);
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .hero::before {
+        width: 320px;
+        height: 320px;
+        top: -140px;
+        right: -90px;
+      }
+
+      .hero::after {
+        width: 220px;
+        height: 220px;
+        bottom: -120px;
+        left: -70px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .hero > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding: 8px 20px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(6px);
+      }
+
+      .hero h1 {
+        margin-top: 22px;
+        font-size: clamp(1.75rem, 4.2vw, 2.6rem);
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        line-height: 1.28;
+      }
+
+      .hero .subtitle {
+        margin: 14px auto 0;
+        max-width: 640px;
+        font-size: clamp(0.9rem, 1.6vw, 1rem);
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.86);
+      }
+
+      .hero-stats {
+        margin-top: 34px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .stat {
+        min-width: 150px;
+        padding: 14px 26px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.13);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        backdrop-filter: blur(6px);
+      }
+
+      .stat .num {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .stat .label {
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      /* ============ SECTION ============ */
+      .section {
+        margin-top: 52px;
+        animation: fadeUp 0.7s ease both;
+      }
+
+      .section.affective {
+        animation-delay: 0.12s;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section-head {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-bottom: 26px;
+        padding-bottom: 20px;
+        border-bottom: 2px dashed var(--brown-200);
+      }
+
+      .section-icon {
+        flex: 0 0 auto;
+        width: 62px;
+        height: 62px;
+        display: grid;
+        place-items: center;
+        font-size: 1.7rem;
+        border-radius: 20px;
+        background: linear-gradient(135deg, var(--brown-100), var(--brown-200));
+        box-shadow:
+          inset 0 0 0 1px rgba(139, 94, 60, 0.16),
+          0 10px 20px -16px rgba(92, 61, 38, 0.8);
+      }
+
+      .section-title {
+        flex: 1 1 320px;
+      }
+
+      .section-title h2 {
+        font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+        font-weight: 600;
+        color: var(--brown-800);
+        letter-spacing: -0.3px;
+      }
+
+      .section-title p {
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: #8a6f5b;
+      }
+
+      .chip {
+        flex: 0 0 auto;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        padding: 8px 18px;
+        border-radius: 999px;
+        color: var(--brown-700);
+        background: var(--white);
+        border: 1px solid var(--brown-200);
+        box-shadow: var(--shadow-sm);
+        white-space: nowrap;
+      }
+
+      /* ============ OBJECTIVES GRID ============ */
+      .obj-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+        gap: 16px;
+      }
+
+      .obj-list > li {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 17px 20px;
+        background: var(--white);
+        border: 1px solid #f1e5d9;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-sm);
+        overflow: hidden;
+        transition:
+          transform 0.28s ease,
+          box-shadow 0.28s ease,
+          border-color 0.28s ease;
+      }
+
+      /* شريط جانبي يظهر عند المرور */
+      .obj-list > li::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 4px;
+        background: linear-gradient(180deg, var(--brown-400), var(--brown-700));
+        opacity: 0;
+        transition: opacity 0.28s ease;
+      }
+
+      .obj-list > li:hover {
+        transform: translateY(-4px);
+        border-color: var(--brown-300);
+        box-shadow: var(--shadow-md);
+      }
+
+      .obj-list > li:hover::before {
+        opacity: 1;
+      }
+
+      .num {
+        flex: 0 0 auto;
+        width: 35px;
+        height: 35px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--brown-600);
+        background: var(--brown-100);
+        border: 1px solid var(--brown-200);
+        transition:
+          background 0.28s ease,
+          color 0.28s ease,
+          border-color 0.28s ease;
+      }
+
+      .obj-list > li:hover .num {
+        color: var(--white);
+        background: linear-gradient(135deg, var(--brown-500), var(--brown-700));
+        border-color: transparent;
+      }
+
+      .text {
+        font-size: 0.925rem;
+        font-weight: 400;
+        color: #4d3a2c;
+        padding-top: 3px;
+      }
+
+      /* قائمة فرعية (للبند رقم 3) */
+      .sub-list {
+        list-style: none;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .sub-list li {
+        position: relative;
+        padding-left: 20px;
+        font-size: 0.86rem;
+        color: #6f5743;
+      }
+
+      .sub-list li::before {
+        content: "";
+        position: absolute;
+        left: 4px;
+        top: 0.62em;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--brown-400);
+        box-shadow: 0 0 0 3px rgba(201, 163, 123, 0.2);
+      }
+
+      /* ============ AFFECTIVE ACCENT ============ */
+      .affective .section-icon {
+        background: linear-gradient(135deg, #fdf2e7, #f2ddc9);
+      }
+
+      .affective .obj-list > li::before {
+        background: linear-gradient(180deg, #d9b48d, #a9764f);
+      }
+
+      .affective .num {
+        color: #9c6b3f;
+        background: #fbf1e7;
+        border-color: #f0dec9;
+      }
+
+      /* ============ FOOTER ============ */
+      .footer {
+        margin-top: 60px;
+        padding-top: 26px;
+        border-top: 2px dashed var(--brown-200);
+        text-align: center;
+        font-size: 0.82rem;
+        font-weight: 300;
+        color: #9b8271;
+        letter-spacing: 0.04em;
+      }
+
+      .footer strong {
+        font-weight: 600;
+        color: var(--brown-600);
+      }
+
+      /* ============ RESPONSIVE ============ */
+      @media (max-width: 720px) {
+        .page {
+          padding: 20px 14px 50px;
+        }
+
+        .hero {
+          padding: 42px 24px 38px;
+          border-radius: 24px;
+        }
+
+        .obj-list {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          gap: 14px;
+        }
+
+        .chip {
+          order: 3;
+        }
+
+        .section-icon {
+          width: 54px;
+          height: 54px;
+          font-size: 1.45rem;
+          border-radius: 16px;
+        }
+      }
+
+      /* ============ PRINT ============ */
+      @media print {
+        body::before,
+        .hero::before,
+        .hero::after {
+          display: none;
+        }
+
+        body {
+          background: #fff;
+        }
+
+        .hero {
+          background: #7a5230 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          box-shadow: none;
+        }
+
+        .obj-list > li {
+          box-shadow: none;
+          break-inside: avoid;
+        }
+
+        .section {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo"> </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/instructions/" class="sidebar__link">
+                <i class="ri-information-line"></i>
+                <span>Instructions</span>
+              </a>
+
+              <a href="/objectives/" class="sidebar__link active-link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+      <div class="page">
+        <!-- ================= HERO ================= -->
+        <header class="hero">
+          <span class="eyebrow">Program Objectives</span>
+          <h1>Objectives of the Program</h1>
+          <p class="subtitle">
+            At the end of this program, the student teacher should be able to
+            achieve the following cognitive and affective objectives.
+          </p>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="num">61</span>
+              <span class="label">Cognitive</span>
+            </div>
+            <div class="stat">
+              <span class="num">21</span>
+              <span class="label">Affective</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- ================= COGNITIVE ================= -->
+        <section class="section cognitive">
+          <div class="section-head">
+            <div class="section-icon">🧠</div>
+            <div class="section-title">
+              <h2>Cognitive Objectives</h2>
+              <p>
+                At the end of this program, the student teacher should be able
+                to:
+              </p>
+            </div>
+            <span class="chip">61 Objectives</span>
+          </div>
+
+          <ol class="obj-list">
+            <li>
+              <span class="num">1</span
+              ><span class="text">Define TPACK model.</span>
+            </li>
+            <li>
+              <span class="num">2</span
+              ><span class="text"
+                >Determine the dimensions of TPACK model in the field of
+                mathematics education.</span
+              >
+            </li>
+            <li>
+              <span class="num">3</span>
+              <div class="text">
+                Distinguish between:
+                <ul class="sub-list">
+                  <li>Content knowledge.</li>
+                  <li>Pedagogical knowledge.</li>
+                  <li>Technological knowledge.</li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <span class="num">4</span
+              ><span class="text"
+                >Explain the importance of TPACK model in improving the
+                educational process.</span
+              >
+            </li>
+            <li>
+              <span class="num">5</span
+              ><span class="text"
+                >Deduce the mathematical content knowledge.</span
+              >
+            </li>
+            <li>
+              <span class="num">6</span
+              ><span class="text"
+                >Deduce the pedagogical knowledge in teaching and learning
+                mathematics.</span
+              >
+            </li>
+            <li>
+              <span class="num">7</span
+              ><span class="text"
+                >Deduce the technological knowledge in teaching and learning
+                mathematics.</span
+              >
+            </li>
+            <li>
+              <span class="num">8</span
+              ><span class="text"
+                >Analyze a mathematics teaching situation in light of TPACK
+                model.</span
+              >
+            </li>
+            <li>
+              <span class="num">9</span
+              ><span class="text"
+                >Define the concept of mathematical content analysis.</span
+              >
+            </li>
+            <li>
+              <span class="num">10</span
+              ><span class="text"
+                >State the importance of content analysis in teaching
+                mathematics.</span
+              >
+            </li>
+            <li>
+              <span class="num">11</span
+              ><span class="text">Define mathematical concepts.</span>
+            </li>
+            <li>
+              <span class="num">12</span
+              ><span class="text"
+                >Distinguish between concept, term, and definition.</span
+              >
+            </li>
+            <li>
+              <span class="num">13</span
+              ><span class="text">Define mathematical generalization.</span>
+            </li>
+            <li>
+              <span class="num">14</span
+              ><span class="text">Define mathematical skills.</span>
+            </li>
+            <li>
+              <span class="num">15</span
+              ><span class="text"
+                >Distinguish between elements of mathematical content.</span
+              >
+            </li>
+            <li>
+              <span class="num">16</span
+              ><span class="text"
+                >Design a digital mind map illustrating the relationships among
+                elements of mathematical content.</span
+              >
+            </li>
+            <li>
+              <span class="num">17</span
+              ><span class="text"
+                >Analyze the content of a mathematics lesson using artificial
+                intelligence applications.</span
+              >
+            </li>
+            <li>
+              <span class="num">18</span
+              ><span class="text"
+                >Define the concept of digital behavioral objectives.</span
+              >
+            </li>
+            <li>
+              <span class="num">19</span
+              ><span class="text"
+                >Determine the components of a digital behavioral
+                objective.</span
+              >
+            </li>
+            <li>
+              <span class="num">20</span
+              ><span class="text"
+                >Classify digital objectives according to Bloom's taxonomy
+                levels.</span
+              >
+            </li>
+            <li>
+              <span class="num">21</span
+              ><span class="text"
+                >Formulate measurable digital behavioral objectives using
+                appropriate digital tools.</span
+              >
+            </li>
+            <li>
+              <span class="num">22</span
+              ><span class="text"
+                >Evaluate the behavioral objectives generated by artificial
+                intelligence applications.</span
+              >
+            </li>
+            <li>
+              <span class="num">23</span
+              ><span class="text"
+                >Define the concept of prerequisite knowledge in
+                mathematics.</span
+              >
+            </li>
+            <li>
+              <span class="num">24</span
+              ><span class="text"
+                >Explain the importance of identifying prerequisite knowledge
+                before teaching mathematics lessons.</span
+              >
+            </li>
+            <li>
+              <span class="num">25</span
+              ><span class="text"
+                >Define the concept of digital warm-up in teaching
+                mathematics.</span
+              >
+            </li>
+            <li>
+              <span class="num">26</span
+              ><span class="text"
+                >Explain the importance of digital warm-up in teaching
+                mathematics.</span
+              >
+            </li>
+            <li>
+              <span class="num">27</span
+              ><span class="text"
+                >Distinguish between different types of digital warm-up suitable
+                for various teaching situations.</span
+              >
+            </li>
+            <li>
+              <span class="num">28</span
+              ><span class="text"
+                >Use digital tools such as Padlet, Mentimeter, and Google Forms
+                to implement lesson warm-up.</span
+              >
+            </li>
+            <li>
+              <span class="num">29</span
+              ><span class="text"
+                >Design digital warm-up activities suitable for mathematics
+                lessons.</span
+              >
+            </li>
+            <li>
+              <span class="num">30</span
+              ><span class="text"
+                >Define the concept of digital representation of mathematical
+                content.</span
+              >
+            </li>
+            <li>
+              <span class="num">31</span
+              ><span class="text"
+                >Explain the importance of using digital tools in representing
+                mathematical content.</span
+              >
+            </li>
+            <li>
+              <span class="num">32</span
+              ><span class="text"
+                >Identify different forms of digital representation of
+                mathematical content.</span
+              >
+            </li>
+            <li>
+              <span class="num">33</span
+              ><span class="text"
+                >Select appropriate digital tools for representing various
+                mathematical concepts.</span
+              >
+            </li>
+            <li>
+              <span class="num">34</span
+              ><span class="text"
+                >Represent mathematical content using different digital
+                formats.</span
+              >
+            </li>
+            <li>
+              <span class="num">35</span
+              ><span class="text"
+                >Design mathematical content using digital tools.</span
+              >
+            </li>
+            <li>
+              <span class="num">36</span
+              ><span class="text"
+                >Define the concept of digital teaching strategies in teaching
+                mathematics.</span
+              >
+            </li>
+            <li>
+              <span class="num">37</span
+              ><span class="text"
+                >Distinguish between Strategy, Method, and Style.</span
+              >
+            </li>
+            <li>
+              <span class="num">38</span
+              ><span class="text"
+                >Explain the importance of using digital teaching strategies in
+                improving mathematics learning.</span
+              >
+            </li>
+            <li>
+              <span class="num">39</span
+              ><span class="text"
+                >Identify different digital teaching strategies used in
+                mathematics teaching.</span
+              >
+            </li>
+            <li>
+              <span class="num">40</span
+              ><span class="text"
+                >Select the appropriate digital teaching strategy according to
+                the lesson objectives and the nature of the content.</span
+              >
+            </li>
+            <li>
+              <span class="num">41</span
+              ><span class="text"
+                >Apply some digital teaching strategies using digital
+                educational tools or platforms.</span
+              >
+            </li>
+            <li>
+              <span class="num">42</span
+              ><span class="text"
+                >Define the concepts of digital classroom management and digital
+                time management.</span
+              >
+            </li>
+            <li>
+              <span class="num">43</span
+              ><span class="text"
+                >Explain the importance of managing classroom and time in
+                digital learning environments.</span
+              >
+            </li>
+            <li>
+              <span class="num">44</span
+              ><span class="text"
+                >Identify appropriate digital tools used for classroom and time
+                management.</span
+              >
+            </li>
+            <li>
+              <span class="num">45</span
+              ><span class="text"
+                >Describe the roles of the teacher and students in a digital
+                classroom.</span
+              >
+            </li>
+            <li>
+              <span class="num">46</span
+              ><span class="text"
+                >Apply digital classroom management strategies using appropriate
+                tools.</span
+              >
+            </li>
+            <li>
+              <span class="num">47</span
+              ><span class="text"
+                >Organize lesson time efficiently using digital tools.</span
+              >
+            </li>
+            <li>
+              <span class="num">48</span
+              ><span class="text"
+                >Design a lesson plan that includes effective time
+                management.</span
+              >
+            </li>
+            <li>
+              <span class="num">49</span
+              ><span class="text"
+                >Manage interaction and discussions in a digital classroom
+                efficiently.</span
+              >
+            </li>
+            <li>
+              <span class="num">50</span
+              ><span class="text"
+                >Define the concept of digital lesson closure in
+                mathematics.</span
+              >
+            </li>
+            <li>
+              <span class="num">51</span
+              ><span class="text"
+                >Explain the importance of closing a lesson in a digital
+                learning environment.</span
+              >
+            </li>
+            <li>
+              <span class="num">52</span
+              ><span class="text"
+                >Identify key characteristics of an effective digital
+                closure.</span
+              >
+            </li>
+            <li>
+              <span class="num">53</span
+              ><span class="text"
+                >Distinguish between different digital strategies used for
+                lesson closure.</span
+              >
+            </li>
+            <li>
+              <span class="num">54</span
+              ><span class="text"
+                >Select appropriate digital tools for closing a mathematics
+                lesson.</span
+              >
+            </li>
+            <li>
+              <span class="num">55</span
+              ><span class="text"
+                >Design an effective digital closure activity for a mathematics
+                lesson.</span
+              >
+            </li>
+            <li>
+              <span class="num">56</span
+              ><span class="text"
+                >Define the concept of digital evaluation in teaching
+                mathematics.</span
+              >
+            </li>
+            <li>
+              <span class="num">57</span
+              ><span class="text"
+                >Differentiate between measurement, assessment, and
+                evaluation.</span
+              >
+            </li>
+            <li>
+              <span class="num">58</span
+              ><span class="text"
+                >Differentiate between types of evaluation (diagnostic,
+                formative, summative).</span
+              >
+            </li>
+            <li>
+              <span class="num">59</span
+              ><span class="text"
+                >Design evaluation activities using digital tools such as Google
+                Forms, Mentimeter, and Quizizz.</span
+              >
+            </li>
+            <li>
+              <span class="num">60</span
+              ><span class="text"
+                >Apply digital evaluation strategies in mathematics
+                lessons.</span
+              >
+            </li>
+            <li>
+              <span class="num">61</span
+              ><span class="text"
+                >Provide immediate feedback using digital tools.</span
+              >
+            </li>
+          </ol>
+        </section>
+
+        <!-- ================= AFFECTIVE ================= -->
+        <section class="section affective">
+          <div class="section-head">
+            <div class="section-icon">💗</div>
+            <div class="section-title">
+              <h2>Affective Objectives</h2>
+              <p>
+                At the end of this program, the student teacher should be able
+                to:
+              </p>
+            </div>
+            <span class="chip">21 Objectives</span>
+          </div>
+
+          <ol class="obj-list">
+            <li>
+              <span class="num">1</span
+              ><span class="text"
+                >Appreciate the importance of formulating digital behavioral
+                objectives in improving the quality of education.</span
+              >
+            </li>
+            <li>
+              <span class="num">2</span
+              ><span class="text"
+                >Appreciate the role of digital representation in simplifying
+                mathematical concepts.</span
+              >
+            </li>
+            <li>
+              <span class="num">3</span
+              ><span class="text"
+                >Appreciate the importance of digital tools in motivating
+                learners.</span
+              >
+            </li>
+            <li>
+              <span class="num">4</span
+              ><span class="text"
+                >Appreciate the importance of organization and discipline in
+                digital classrooms.</span
+              >
+            </li>
+            <li>
+              <span class="num">5</span
+              ><span class="text"
+                >Adhere to digital classroom rules and ethical behavior.</span
+              >
+            </li>
+            <li>
+              <span class="num">6</span
+              ><span class="text"
+                >Take responsibility for managing time effectively during
+                learning.</span
+              >
+            </li>
+            <li>
+              <span class="num">7</span
+              ><span class="text"
+                >Appreciate the importance of digital evaluation in improving
+                students' learning.</span
+              >
+            </li>
+            <li>
+              <span class="num">8</span
+              ><span class="text"
+                >Demonstrate willingness to actively participate in digital
+                teaching activities without hesitation.</span
+              >
+            </li>
+            <li>
+              <span class="num">9</span
+              ><span class="text"
+                >Demonstrate an interest in continuously developing their
+                digital skills to keep pace with technological developments in
+                mathematics education.</span
+              >
+            </li>
+            <li>
+              <span class="num">10</span
+              ><span class="text"
+                >Demonstrate willingness to explore and adopt innovative digital
+                tools and technologies to enhance mathematics teaching.</span
+              >
+            </li>
+            <li>
+              <span class="num">11</span
+              ><span class="text"
+                >Demonstrate willingness to share and exchange digital
+                experiences with peers to improve teaching performance.</span
+              >
+            </li>
+            <li>
+              <span class="num">12</span
+              ><span class="text"
+                >Demonstrate acceptance of feedback on their digital teaching
+                performance and use it to improve their teaching
+                practices.</span
+              >
+            </li>
+            <li>
+              <span class="num">13</span
+              ><span class="text"
+                >Appreciate the importance of employing digital technologies in
+                teaching mathematics and achieving its learning
+                objectives.</span
+              >
+            </li>
+            <li>
+              <span class="num">14</span
+              ><span class="text"
+                >Demonstrate a positive attitude toward using digital tools and
+                applications in teaching mathematics.</span
+              >
+            </li>
+            <li>
+              <span class="num">15</span
+              ><span class="text"
+                >Appreciate the importance of integrating mathematical content
+                knowledge, pedagogical knowledge, and technological knowledge
+                when designing digital instruction.</span
+              >
+            </li>
+            <li>
+              <span class="num">16</span
+              ><span class="text"
+                >Demonstrate a commitment to selecting digital tools appropriate
+                to the nature of mathematical content, lesson objectives, and
+                students' needs.</span
+              >
+            </li>
+            <li>
+              <span class="num">17</span
+              ><span class="text"
+                >Demonstrate a positive attitude toward self-directed learning
+                and utilize digital resources to improve teaching
+                performance.</span
+              >
+            </li>
+            <li>
+              <span class="num">18</span
+              ><span class="text"
+                >Demonstrate confidence in employing digital technologies in
+                planning, implementing, and evaluating mathematics
+                lessons.</span
+              >
+            </li>
+            <li>
+              <span class="num">19</span
+              ><span class="text"
+                >Demonstrate a sense of efficacy in managing digital teaching
+                situations in mathematics lessons.</span
+              >
+            </li>
+            <li>
+              <span class="num">20</span
+              ><span class="text"
+                >Respond positively to errors or technical problems that may
+                arise during mathematics teaching.</span
+              >
+            </li>
+            <li>
+              <span class="num">21</span
+              ><span class="text"
+                >Demonstrate reduced feelings of tension and anxiety associated
+                with teaching mathematics using digital technologies.</span
+              >
+            </li>
+          </ol>
+        </section>
+
+        <!-- ================= FOOTER ================= -->
+        <footer class="footer">
+          <strong>Cognitive &amp; Affective Objectives</strong> — Program
+          Learning Outcomes
+        </footer>
+      </div>
+    </main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>
