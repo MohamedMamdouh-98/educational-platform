@@ -103,6 +103,12 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href =
           "/modules/digital-representation-of-mathematical-content/objectives/";
       });
+    } else if (index === 5) {
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.location.href =
+          "/modules/teaching-strategies/objectives/";
+      });
     } else if (index === 6) {
       button.addEventListener("click", (e) => {
         e.stopPropagation();

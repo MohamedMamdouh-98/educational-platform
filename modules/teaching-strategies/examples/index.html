@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+ <style>
+  /* ============================================================
+     Design Tokens
+     ============================================================ */
+  :root {
+    --border-color: #e1cfb6;
+    --header-color: #5d2e17;
+
+    --brown-50:  #fdfbf8;
+    --brown-100: #f8f2e9;
+    --brown-200: #efe4d4;
+    --brown-300: #e1cfb6;
+    --brown-400: #c9a87c;
+    --brown-500: #b08d62;
+    --brown-600: #8c6a4a;
+    --brown-700: #6b4f3a;
+    --brown-800: #4a3627;
+    --white: #ffffff;
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+
+    --shadow-sm: 0 2px 8px rgba(107, 79, 58, 0.06);
+    --shadow-md: 0 8px 24px rgba(107, 79, 58, 0.10);
+    --shadow-lg: 0 18px 45px rgba(107, 79, 58, 0.16);
+
+    --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ============================================================
+     Section Wrapper
+     ============================================================ */
+  .collab-section {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background: #fef6f2;
+    border: 2px solid var(--border-color);
+    border-top: 5px solid #8d5d36;
+    border-radius: 40px;
+    margin: 35px 0;
+    padding: clamp(2rem, 6vw, 3.5rem) clamp(1rem, 4vw, 2.5rem);
+    box-shadow:
+      0 10px 20px rgba(0, 0, 0, 0.08),
+      0 20px 40px rgba(0, 0, 0, 0.06),
+      0 5px 10px rgba(0, 0, 0, 0.05);
+    font-family: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+    color: var(--brown-800);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .collab-container {
+    width: 100%;
+    max-width: 1120px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  /* ============================================================
+     Header / Title
+     ============================================================ */
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.85rem;
+  }
+
+  .section-header__eyebrow {
+    display: inline-block;
+    font-size: clamp(0.7rem, 1.6vw, 0.8rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown-500);
+    background: var(--white);
+    border: 1px solid var(--brown-300);
+    border-radius: 999px;
+    padding: 0.45rem 1.05rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .section-header__title {
+    margin: 0;
+    font-size: clamp(1.75rem, 5.5vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--header-color);
+  }
+
+  .section-header__rule {
+    display: block;
+    width: clamp(64px, 14vw, 110px);
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--brown-300), var(--brown-500), var(--brown-300));
+  }
+
+  /* ============================================================
+     Info Grid – الموضوع + الأدوات
+     ============================================================ */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(1rem, 3vw, 1.5rem);
+    max-width: 900px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .info-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.15rem 1.35rem;
+    background: linear-gradient(180deg, var(--white) 0%, var(--brown-50) 100%);
+    border: 1px solid var(--brown-200);
+    border-inline-start: 4px solid var(--brown-400);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition),
+                border-color var(--transition);
+  }
+
+  .info-card:hover {
+    transform: translateY(-4px);
+    border-inline-start-color: var(--brown-600);
+    box-shadow: var(--shadow-md);
+  }
+
+  .info-card__icon {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--brown-100), var(--brown-200));
+    border: 1.5px solid var(--brown-300);
+    border-radius: 50%;
+    color: var(--brown-600);
+    font-size: 1.15rem;
+    transition: background var(--transition), color var(--transition),
+                transform var(--transition);
+  }
+
+  .info-card:hover .info-card__icon {
+    background: linear-gradient(135deg, var(--brown-500), var(--brown-600));
+    color: var(--white);
+    transform: rotate(-6deg) scale(1.05);
+  }
+
+  .info-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+
+  .info-card__label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brown-500);
+  }
+
+  .info-card__value {
+    margin: 0;
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    font-weight: 700;
+    color: var(--brown-700);
+    line-height: 1.4;
+  }
+
+  /* ============================================================
+     Content Box – صندوق المحتوى
+     ============================================================ */
+  .content {
+    position: relative;
+    max-width: 950px;
+    margin-inline: auto;
+    width: 100%;
+    padding: clamp(1.5rem, 4vw, 2.25rem) clamp(1.25rem, 4vw, 2.5rem);
+    background: var(--white);
+    border: 1px solid var(--brown-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .content::before {
+    content: "";
+    position: absolute;
+    inset-inline: clamp(1.25rem, 4vw, 2.5rem);
+    top: 0;
+    height: 3px;
+    border-radius: 0 0 999px 999px;
+    background: linear-gradient(90deg, var(--brown-300), var(--brown-500));
+  }
+
+  .content__head {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--brown-200);
+  }
+
+  .content__icon {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brown-100);
+    border: 1px solid var(--brown-300);
+    border-radius: 50%;
+    color: var(--brown-600);
+    font-size: 1rem;
+  }
+
+  .content__title {
+    margin: 0;
+    font-size: clamp(1.05rem, 2.6vw, 1.25rem);
+    font-weight: 800;
+    color: var(--header-color);
+    letter-spacing: -0.01em;
+  }
+
+  /* ============================================================
+     Problem Box – صندوق المسألة
+     ============================================================ */
+  .problem-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(1rem, 3vw, 1.75rem);
+    /* background: linear-gradient(180deg, var(--brown-50) 0%, var(--brown-100) 100%); */
+    /* border: 1px dashed var(--brown-300); */
+    border-radius: var(--radius-md);
+    width: 50%;
+  }
+  @media (max-width: 768px) {
+    .problem-box {
+      width: 100%;
+    }
+  }
+
+  .problem-box__img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ============================================================
+     Procedure List – خطوات التنفيذ
+     ============================================================ */
+  .procedure-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step-counter;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .procedure-list li {
+    counter-increment: step-counter;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.05rem 1.15rem;
+    background: linear-gradient(180deg, var(--white) 0%, var(--brown-50) 100%);
+    border: 1px solid var(--brown-200);
+    border-inline-start: 4px solid var(--brown-400);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    font-size: clamp(0.95rem, 2.2vw, 1.02rem);
+    line-height: 1.7;
+    font-weight: 500;
+    color: var(--brown-700);
+    transition: transform var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition),
+                background var(--transition);
+                font-weight: 700;
+  }
+
+  .procedure-list li strong {
+    color: var(--brown-800);
+    font-weight: 800;
+    background: var(--brown-100);
+    padding: 0.05rem 0.4rem;
+    border-radius: 6px;
+  }
+
+  .procedure-list li::before {
+    content:  counter(step-counter, decimal);
+    flex-shrink: 0;
+    width: 2.35rem;
+    height: 2.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brown-100);
+    border: 1.5px solid var(--brown-300);
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 0.82rem;
+    color: var(--brown-600);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8),
+                0 2px 6px rgba(107, 79, 58, 0.08);
+    transition: background var(--transition), border-color var(--transition),
+                color var(--transition), transform var(--transition);
+  }
+
+  .procedure-list li:hover {
+    transform: translateX(6px);
+    border-inline-start-color: var(--brown-600);
+    border-color: var(--brown-300);
+    background: linear-gradient(180deg, var(--white) 0%, var(--brown-100) 100%);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .procedure-list li:hover::before {
+    background: var(--brown-500);
+    border-color: var(--brown-600);
+    color: var(--white);
+    transform: scale(1.08) rotate(-4deg);
+  }
+
+  /* ============================================================
+     Showcase Figure – صورة توضيحية
+     ============================================================ */
+  .showcase-figure {
+    margin: 0 auto;
+    max-width: 950px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: clamp(0.75rem, 2vw, 1rem);
+    background: var(--white);
+    border: 1px solid var(--brown-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .showcase-figure:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .showcase-figure__frame {
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: var(--brown-100);
+    aspect-ratio: 16 / 8;
+  }
+
+  .showcase-figure__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .showcase-figure:hover .showcase-figure__img {
+    transform: scale(1.05);
+  }
+
+  .showcase-figure__caption {
+    text-align: center;
+    font-size: clamp(0.78rem, 1.8vw, 0.88rem);
+    font-weight: 600;
+    color: var(--brown-600);
+    letter-spacing: 0.02em;
+    padding: 0 0.5rem 0.25rem;
+  }
+
+  /* ============================================================
+     Responsive
+     ============================================================ */
+  @media (max-width: 480px) {
+    .content { padding: 1.25rem 1rem; }
+    .info-card { padding: 0.95rem 1rem; gap: 0.8rem; }
+    .info-card__icon { width: 2.5rem; height: 2.5rem; font-size: 1rem; }
+
+    .procedure-list li {
+      padding: 0.9rem 1rem;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+    }
+    .procedure-list li::before {
+      width: 2rem;
+      height: 2rem;
+      font-size: 0.72rem;
+    }
+
+    .content__head { gap: 0.7rem; }
+    .content__icon { width: 2.15rem; height: 2.15rem; font-size: 0.9rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition-duration: 0.001ms !important;
+      animation-duration: 0.001ms !important;
+    }
+  }
+</style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo"> </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/instructions/" class="sidebar__link">
+                <i class="ri-information-line"></i>
+                <span>Instructions</span>
+              </a>
+
+              <a href="/objectives/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+   <main class="main" id="main">
+  <div class="container">
+
+    <section class="collab-section">
+      <div class="collab-container">
+
+        <!-- ============ Header ============ -->
+        <header class="section-header">
+          <span class="section-header__eyebrow">Practical Application</span>
+          <h1 class="section-header__title">Examples</h1>
+          <span class="section-header__rule" aria-hidden="true"></span>
+        </header>
+
+        <!-- ============ Illustration Image ============ -->
+        <figure class="showcase-figure">
+          <div class="showcase-figure__frame">
+            <img
+              src="../../../assets/img/module-6/image-1.png"
+              alt="Example of a digital collaborative math activity"
+              class="showcase-figure__img"
+              onerror="this.onerror=null; this.src='https://placehold.co/1000x500/F4EFEA/5C4033?text=Digital+Collaborative+Math+Activity';"
+            >
+          </div>
+        </figure>
+
+        <!-- ============ Activity Info: Topic + Tools ============ -->
+        <div class="info-grid">
+
+          <div class="info-card">
+            <span class="info-card__icon">
+              <i class="fa-solid fa-square-root-variable" aria-hidden="true"></i>
+            </span>
+            <div class="info-card__body">
+              <span class="info-card__label">Mathematical Topic</span>
+              <p class="info-card__value">Solving a System of Two Linear Equations</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card__icon">
+              <i class="fa-solid fa-toolbox" aria-hidden="true"></i>
+            </span>
+            <div class="info-card__body">
+              <span class="info-card__label">Digital Tools</span>
+              <p class="info-card__value">Google Meet &amp; Padlet</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ============ Implementation Procedures ============ -->
+        <div class="content">
+          <div class="content__head">
+            <span class="content__icon">
+              <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+            </span>
+            <h2 class="content__title">Implementation Procedures:</h2>
+          </div>
+
+          <ol class="procedure-list">
+            <li>
+              The teacher presents the following problem:
+              <div class="problem-box">
+                <img
+                  src="../../../assets/img/module-6/issue.jpg"
+                  alt="System of two linear equations problem"
+                  class="problem-box__img"
+                >
+              </div>
+            </li>
+
+            <li>
+              The teacher divides learners into three groups using breakout rooms in Google Meet.
+            </li>
+
+            <li>
+              The first group is assigned to use substitution, the second elimination, and the third graphical representation.
+            </li>
+
+            <li>
+              The teacher creates a Padlet board and allocates a section to each group to document its solution steps.
+            </li>
+
+            <li>
+              A representative from each group presents the solution and explains the reasoning.
+            </li>
+
+            <li>
+              The teacher discusses the groups' answers and compares the different methods.
+            </li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ Navigation Buttons ============ -->
+    <div class="buttons-actions">
+      <a
+        href="/modules/teaching-strategies/role-of-the-teacher/"
+        class="guide-button previous-page"
+      >
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        Previous Page
+      </a>
+
+      <a
+        href="/modules/teaching-strategies/digital-flipped-classroom-strategy/"
+        class="guide-button next-page"
+      >
+        Next Page
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+   <style>
+  /* ============================================================
+     1) Design Tokens – المتغيرات (كانت مفقودة)
+     ============================================================ */
+  :root {
+    --bg-color: #f4e9d9;
+    --card-bg: #fffbf2;
+    --accent-brown: #6d4c41;
+    --text-color: #4e342e;
+    --header-color: #5d2e17;
+    --border-color: #e1cfb6;
+
+    --brown-50:  #fdfbf8;
+    --brown-100: #f8f2e9;
+    --brown-200: #efe4d4;
+    --brown-300: #e1cfb6;
+    --brown-400: #c9a87c;
+    --brown-500: #b08d62;
+    --brown-600: #8c6a4a;
+    --brown-700: #6b4f3a;
+    --brown-800: #4a3627;
+    --white: #ffffff;
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+
+    --shadow-sm: 0 2px 8px rgba(107, 79, 58, 0.06);
+    --shadow-md: 0 8px 24px rgba(107, 79, 58, 0.10);
+    --shadow-lg: 0 18px 45px rgba(107, 79, 58, 0.16);
+
+    --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ============================================================
+     2) Section Wrapper – كان مفقودًا
+     ============================================================ */
+  .collab-section {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background: #fef6f2;
+    border: 2px solid var(--border-color);
+    border-top: 5px solid #8d5d36;
+    border-radius: 40px;
+    margin: 35px 0;
+    padding: clamp(2rem, 6vw, 3.5rem) clamp(1rem, 4vw, 2.5rem);
+    box-shadow:
+      0 10px 20px rgba(0, 0, 0, 0.08),
+      0 20px 40px rgba(0, 0, 0, 0.06),
+      0 5px 10px rgba(0, 0, 0, 0.05);
+    font-family: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+    color: var(--brown-800);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .collab-container {
+    width: 100%;
+    max-width: 1120px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+
+  /* ============================================================
+     3) Header / Title – كان مفقودًا
+     ============================================================ */
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.85rem;
+  }
+
+  .section-header__title {
+    margin: 0;
+    font-size: clamp(1.65rem, 5.5vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--header-color);
+    max-width: 100%;
+  }
+
+  .section-header__rule {
+    display: block;
+    width: clamp(64px, 14vw, 110px);
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--brown-300), var(--brown-500), var(--brown-300));
+  }
+
+  /* ============================================================
+     4) Roles Grid – موجود لديك
+     ============================================================ */
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: clamp(1.25rem, 3vw, 2rem);
+    width: 100%;
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+
+  /* ============================================================
+     5) Role Card – موجود لديك
+     ============================================================ */
+  .role-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background: linear-gradient(180deg, var(--white) 0%, var(--brown-50) 100%);
+    border: 1px solid var(--brown-200);
+    border-top: 4px solid var(--brown-400);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition), box-shadow var(--transition),
+                border-color var(--transition);
+  }
+
+  .role-card:hover {
+    transform: translateY(-6px);
+    border-top-color: var(--brown-600);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .role-card__head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--brown-200);
+  }
+
+  .role-card__badge {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--brown-100), var(--brown-200));
+    border: 1.5px solid var(--brown-300);
+    border-radius: 50%;
+    color: var(--brown-600);
+    font-size: 1.25rem;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8),
+                0 3px 8px rgba(107, 79, 58, 0.10);
+    transition: transform var(--transition), color var(--transition),
+                background var(--transition);
+  }
+
+  .role-card:hover .role-card__badge {
+    background: linear-gradient(135deg, var(--brown-500), var(--brown-600));
+    color: var(--white);
+    transform: rotate(-6deg) scale(1.05);
+  }
+
+  .role-card__title {
+    margin: 0;
+    font-size: clamp(1.05rem, 2.6vw, 1.25rem);
+    font-weight: 800;
+    color: var(--header-color);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  /* ============================================================
+     6) Role List – موجود لديك
+     ============================================================ */
+  .role-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .role-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 0.75rem 0.9rem;
+    background: var(--white);
+    border: 1px solid var(--brown-200);
+    border-inline-start: 3px solid var(--brown-300);
+    border-radius: var(--radius-sm);
+    transition: transform var(--transition),
+                border-color var(--transition),
+                box-shadow var(--transition),
+                background var(--transition);
+  }
+
+  .role-list li:hover {
+    transform: translateX(5px);
+    border-inline-start-color: var(--brown-600);
+    border-color: var(--brown-300);
+    background: var(--brown-50);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .role-list__icon {
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brown-100);
+    border: 1px solid var(--brown-300);
+    border-radius: 50%;
+    color: var(--brown-600);
+    font-size: 0.9rem;
+    transition: background var(--transition), color var(--transition),
+                border-color var(--transition), transform var(--transition);
+  }
+
+  .role-list li:hover .role-list__icon {
+    background: var(--brown-500);
+    border-color: var(--brown-600);
+    color: var(--white);
+    transform: scale(1.08);
+  }
+
+  .role-list__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    line-height: 1.45;
+  }
+
+  .role-list__text strong {
+    font-size: clamp(0.9rem, 2vw, 0.98rem);
+    font-weight: 700;
+    color: var(--brown-700);
+  }
+
+  .role-list__text span {
+    font-size: clamp(0.82rem, 1.8vw, 0.9rem);
+    font-weight: 500;
+    color: var(--brown-500);
+  }
+
+  /* ============================================================
+     7) Responsive
+     ============================================================ */
+  @media (max-width: 480px) {
+    .role-card { padding: 1.25rem 1rem; gap: 1rem; }
+    .role-card__badge { width: 2.5rem; height: 2.5rem; font-size: 1.05rem; }
+    .role-list li { padding: 0.65rem 0.75rem; gap: 0.7rem; }
+    .role-list__icon { width: 2rem; height: 2rem; font-size: 0.8rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition-duration: 0.001ms !important;
+      animation-duration: 0.001ms !important;
+    }
+  }
+</style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo"> </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/instructions/" class="sidebar__link">
+                <i class="ri-information-line"></i>
+                <span>Instructions</span>
+              </a>
+
+              <a href="/objectives/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+   <main class="main" id="main">
+  <div class="container">
+
+    <section class="collab-section">
+      <div class="collab-container">
+
+        <!-- Header / Title -->
+        <header class="section-header">
+          <h1 class="section-header__title">Roles in Digital Collaborative Learning</h1>
+          <span class="section-header__rule" aria-hidden="true"></span>
+        </header>
+
+        <!-- Roles Grid -->
+        <div class="roles-grid">
+
+          <!-- ============ Role of the Teacher ============ -->
+          <article class="role-card">
+            <header class="role-card__head">
+              <span class="role-card__badge">
+                <i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i>
+              </span>
+              <h2 class="role-card__title">Role of the Teacher</h2>
+            </header>
+
+            <ul class="role-list">
+              <li>
+                <span class="role-list__icon">
+                  <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+                </span>
+                <div class="role-list__text">
+                  <strong>Planner</strong>
+                  <span>Sets objectives and designs the activity.</span>
+                </div>
+              </li>
+
+              <li>
+                <span class="role-list__icon">
+                  <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
+                </span>
+                <div class="role-list__text">
+                  <strong>Technology Selector</strong>
+                  <span>Chooses the right digital tool.</span>
+                </div>
+              </li>
+
+              <li>
+                <span class="role-list__icon">
+                  <i class="fa-solid fa-users-viewfinder" aria-hidden="true"></i>
+                </span>
+                <div class="role-list__text">
+                  <strong>Facilitator</strong>
+                  <span>Monitors group interaction.</span>
+                </div>
+              </li>
+
+              <li>
+                <span class="role-list__icon">
+                  <i class="fa-solid fa-compass" aria-hidden="true"></i>
+                </span>
+                <div class="role-list__text">
+                  <strong>Guide</strong>
+                  <span>Supports students when needed.</span>
+                </div>
+              </li>
+
+              <li>
+                <span class="role-list__icon">
+                  <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+                </span>
+                <div class="role-list__text">
+                  <strong>Evaluator</strong>
+                  <span>Assesses both group and individual work.</span>
+                </div>
+              </li>
+
+              <li>
+                <span class="role-list__icon">
+                  <i class="fa-solid fa-comments" aria-hidden="true"></i>
+                </span>
+                <div class="role-list__text">
+                  <strong>Feedback Provider</strong>
+                  <span>Gives constructive feedback.</span>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- ============ Role of the Student ============ -->
+          <article class="role-card">
+            <header class="role-card__head">
+              <span class="role-card__badge">
+                <i class="fa-solid fa-user-graduate" aria-hidden="true"></i>
+              </span>
+              <h2 class="role-card__title">Role of the Student</h2>
+            </header>
+
+            <ul class="role-list">
+              <li>
+                <span class="role-list__icon">
+                  <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+                </span>
+                <div class="role-list__text">
+                  <strong>Active Participant</strong>
+                  <span>Engages in the task.</span>
+                </div>
+              </li>
+
+              <li>
+                <span class="role-list__icon">
+                  <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+                </span>
+                <div class="role-list__text">
+                  <strong>Collaborator</strong>
+                  <span>Works with group members.</span>
+                </div>
+              </li>
+
+              <li>
+                <span class="role-list__icon">
+                  <i class="fa-solid fa-computer-mouse" aria-hidden="true"></i>
+                </span>
+                <div class="role-list__text">
+                  <strong>Digital User</strong>
+                  <span>Uses tools effectively.</span>
+                </div>
+              </li>
+
+              <li>
+                <span class="role-list__icon">
+                  <i class="fa-solid fa-brain" aria-hidden="true"></i>
+                </span>
+                <div class="role-list__text">
+                  <strong>Problem Solver</strong>
+                  <span>Contributes ideas.</span>
+                </div>
+              </li>
+
+              <li>
+                <span class="role-list__icon">
+                  <i class="fa-solid fa-bullhorn" aria-hidden="true"></i>
+                </span>
+                <div class="role-list__text">
+                  <strong>Presenter</strong>
+                  <span>Explains group results.</span>
+                </div>
+              </li>
+
+              <li>
+                <span class="role-list__icon">
+                  <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                </span>
+                <div class="role-list__text">
+                  <strong>Responsible Learner</strong>
+                  <span>Is accountable for their role.</span>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Navigation Buttons -->
+    <div class="buttons-actions">
+      <a
+        href="/modules/teaching-strategies/implementation-procedures/"
+        class="guide-button previous-page"
+      >
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        Previous Page
+      </a>
+
+      <a
+        href="/modules/teaching-strategies/examples/"
+        class="guide-button next-page"
+      >
+        Next Page
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>

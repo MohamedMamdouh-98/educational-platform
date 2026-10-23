@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    
+    
+    <title>Module Details</title>
+    <style>
+      :root {
+        --bg-color: #f4e9d9;
+        --card-bg: #fffbf2;
+        --accent-brown: #6d4c41;
+        --text-color: #4e342e;
+        --header-color: #5d2e17;
+      }
+
+      .pedagogical-knowledge {
+        width: 100%;
+        background: #fef6f2;
+        border: 2px solid var(--border-color);
+        border-radius: 40px;
+        border-top: #8d5d36 5px solid;
+        /* padding: 30px; */
+        margin: 35px 0;
+        box-shadow:
+          0 10px 20px rgba(0, 0, 0, 0.08),
+          0 20px 40px rgba(0, 0, 0, 0.06),
+          0 5px 10px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+      .mopile {
+        display: none;
+      }
+
+      @media screen and (max-width: 768px) {
+        .mopile {
+          display: block;
+        }
+        .not-mopile {
+          display: none;
+        }
+      }
+
+      /* ============================================================
+   Design Tokens
+   ============================================================ */
+:root {
+  --brown-50:  #FDFBF8;
+  --brown-100: #F8F2E9;
+  --brown-200: #EFE4D4;
+  --brown-300: #E1CFB6;
+  --brown-400: #C9A87C;
+  --brown-500: #B08D62;
+  --brown-600: #8C6A4A;
+  --brown-700: #6B4F3A;
+  --brown-800: #4A3627;
+
+  --white: #FFFFFF;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --shadow-sm: 0 2px 8px rgba(107, 79, 58, 0.06);
+  --shadow-md: 0 8px 24px rgba(107, 79, 58, 0.10);
+  --shadow-lg: 0 18px 45px rgba(107, 79, 58, 0.16);
+
+  --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================================
+   Section Wrapper
+   ============================================================ */
+.collab-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 4vw, 2.5rem);
+
+  background-color: var(--brown-50);
+
+  box-shadow:
+    0 10px 30px rgba(107, 79, 58, 0.08),
+    0 20px 60px rgba(107, 79, 58, 0.06);
+
+  font-family: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+  color: var(--brown-800);
+  -webkit-font-smoothing: antialiased;
+
+  margin: 35px 0;
+  border-radius: 40px;
+}
+
+.collab-container {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+
+/* ============================================================
+   Images Showcase Grid
+   ============================================================ */
+.showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.showcase__item {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: clamp(0.75rem, 2vw, 1rem);
+  background: var(--white);
+  border: 1px solid var(--brown-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition),
+              border-color var(--transition);
+}
+
+.showcase__item:hover,
+.showcase__item:focus-within {
+  transform: translateY(-6px);
+  border-color: var(--brown-300);
+  box-shadow: var(--shadow-lg);
+}
+
+.showcase__frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--brown-100);
+  aspect-ratio: 3 / 2;
+}
+
+.showcase__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.showcase__item:hover .showcase__img,
+.showcase__item:focus-within .showcase__img {
+  transform: scale(1.06);
+}
+
+.showcase__caption {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: clamp(0.68rem, 1.6vw, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brown-600);
+  background: var(--brown-100);
+  border: 1px solid var(--brown-200);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   Header / Title
+   ============================================================ */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.85rem;
+}
+
+.section-header__eyebrow {
+  display: inline-block;
+  font-size: clamp(0.7rem, 1.6vw, 0.8rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brown-500);
+  background: var(--white);
+  border: 1px solid var(--brown-300);
+  border-radius: 999px;
+  padding: 0.5rem 1.15rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.section-header__title {
+  margin: 0;
+  font-size: clamp(1.65rem, 5.5vw, 2.85rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--brown-800);
+  max-width: 100%;
+}
+
+.section-header__rule {
+  display: block;
+  width: clamp(64px, 14vw, 110px);
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brown-300), var(--brown-500), var(--brown-300));
+}
+
+/* ============================================================
+   Main Content
+   ============================================================ */
+.content {
+  position: relative;
+  max-width: 900px;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 4vw, 2.75rem) clamp(1.25rem, 4vw, 3rem);
+  background: var(--white);
+  border: 1px solid var(--brown-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.content::before {
+  content: "";
+  position: absolute;
+  inset-inline: clamp(1.25rem, 4vw, 3rem);
+  top: 0;
+  height: 3px;
+  border-radius: 0 0 999px 999px;
+  background: linear-gradient(90deg, var(--brown-300), var(--brown-500));
+}
+
+.content__text {
+  margin: 0;
+  font-size: clamp(0.98rem, 2.3vw, 1.15rem);
+  line-height: 1.85;
+  color: var(--brown-700);
+  text-align: center;
+  text-wrap: pretty;
+  font-weight: 700;
+}
+
+/* ============================================================
+   Responsive Tweaks
+   ============================================================ */
+@media (max-width: 480px) {
+  .collab-section {
+    padding-inline: 1rem;
+  }
+
+  .showcase__caption {
+    font-size: 0.66rem;
+    letter-spacing: 0.09em;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .content__text {
+    text-align: left;
+    line-height: 1.75;
+  }
+}
+
+@media (min-width: 1024px) {
+  .showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================================
+   Accessibility / Motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.showcase__item:focus-within,
+.section-header__title:focus-visible {
+  outline: 3px solid var(--brown-400);
+  outline-offset: 4px;
+}
+    </style> 
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo"> </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/instructions/" class="sidebar__link">
+                <i class="ri-information-line"></i>
+                <span>Instructions</span>
+              </a>
+
+              <a href="/objectives/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="main" id="main">
+  <div class="container">
+
+    <section class="collab-section">
+      <div class="collab-container">
+
+        <!-- ===== Header / Title ===== -->
+        <header class="section-header">
+          <span class="section-header__eyebrow">Learning Strategy</span>
+          <h1 class="section-header__title">Digital Collaborative Strategy</h1>
+          <span class="section-header__rule" aria-hidden="true"></span>
+        </header>
+
+        <!-- ===== Images Showcase Grid ===== -->
+        <section
+          class="showcase"
+          aria-label="Digital collaborative learning showcase"
+        >
+
+          <!-- Image 1 -->
+          <figure class="showcase__item">
+            <div class="showcase__frame">
+              <img
+                src="../../../assets/img/module-6/image-1.png"
+                alt="Digital Collaborative Workspace - Math Class Video Call and Whiteboard"
+                class="showcase__img"
+                loading="lazy"
+              >
+            </div>
+          </figure>
+
+          <!-- Image 2 -->
+          <figure class="showcase__item">
+            <div class="showcase__frame">
+              <img
+                src="../../../assets/img/module-6/image-2.png"
+                alt="Google Meet Breakout Rooms and Google Classroom Tasks"
+                class="showcase__img"
+                loading="lazy"
+              >
+            </div>
+          </figure>
+
+        </section>
+
+        <!-- ===== Main Content ===== -->
+        <section class="content">
+          <p class="content__text">
+            Digital collaborative learning is a teaching strategy in which learners work in small
+            groups using shared digital environments and tools to complete a specific learning task.
+            This involves distributing roles, exchanging ideas, discussing solutions, and assuming
+            individual and collective responsibility for learning outcomes.
+          </p>
+        </section>
+
+      </div>
+    </section>
+
+    <!-- ===== Navigation Buttons ===== -->
+    <div class="buttons-actions">
+      <a
+        href="/modules/teaching-strategies/types-of-digital-teaching-strategies/"
+        class="guide-button previous-page"
+      >
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        Previous Page
+      </a>
+
+      <a
+        href="/modules/teaching-strategies/implementation-procedures/"
+        class="guide-button next-page"
+      >
+        Next Page
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>

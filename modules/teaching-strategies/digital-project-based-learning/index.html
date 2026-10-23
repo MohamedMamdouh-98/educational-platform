@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+<style>
+  /* ============================================================
+     Design Tokens
+     ============================================================ */
+  :root {
+    --border-color: #e1cfb6;
+    --header-color: #5d2e17;
+
+    --brown-50:  #fdfbf8;
+    --brown-100: #f8f2e9;
+    --brown-200: #efe4d4;
+    --brown-300: #e1cfb6;
+    --brown-400: #c9a87c;
+    --brown-500: #b08d62;
+    --brown-600: #8c6a4a;
+    --brown-700: #6b4f3a;
+    --brown-800: #4a3627;
+    --white: #ffffff;
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+
+    --shadow-sm: 0 2px 8px rgba(107, 79, 58, 0.06);
+    --shadow-md: 0 8px 24px rgba(107, 79, 58, 0.10);
+    --shadow-lg: 0 18px 45px rgba(107, 79, 58, 0.16);
+
+    --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ============================================================
+     Section Wrapper
+     ============================================================ */
+  .collab-section {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background: #fef6f2;
+    border: 2px solid var(--border-color);
+    border-top: 5px solid #8d5d36;
+    border-radius: 40px;
+    margin: 35px 0;
+    padding: clamp(2rem, 6vw, 3.5rem) clamp(1rem, 4vw, 2.5rem);
+    box-shadow:
+      0 10px 20px rgba(0, 0, 0, 0.08),
+      0 20px 40px rgba(0, 0, 0, 0.06),
+      0 5px 10px rgba(0, 0, 0, 0.05);
+    font-family: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+    color: var(--brown-800);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .collab-container {
+    width: 100%;
+    max-width: 1120px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+
+  /* ============================================================
+     Header / Title
+     ============================================================ */
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.85rem;
+  }
+
+  .section-header__eyebrow {
+    display: inline-block;
+    font-size: clamp(0.7rem, 1.6vw, 0.8rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown-500);
+    background: var(--white);
+    border: 1px solid var(--brown-300);
+    border-radius: 999px;
+    padding: 0.45rem 1.05rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .section-header__title {
+    margin: 0;
+    font-size: clamp(1.65rem, 5.5vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--header-color);
+    max-width: 100%;
+  }
+
+  .section-header__rule {
+    display: block;
+    width: clamp(64px, 14vw, 110px);
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--brown-300), var(--brown-500), var(--brown-300));
+  }
+
+  /* ============================================================
+     Content Box
+     ============================================================ */
+  .content {
+    position: relative;
+    max-width: 950px;
+    margin-inline: auto;
+    width: 100%;
+    padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.25rem, 4vw, 2.5rem);
+    background: var(--white);
+    border: 1px solid var(--brown-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .content::before {
+    content: "";
+    position: absolute;
+    inset-inline: clamp(1.25rem, 4vw, 2.5rem);
+    top: 0;
+    height: 3px;
+    border-radius: 0 0 999px 999px;
+    background: linear-gradient(90deg, var(--brown-300), var(--brown-500));
+  }
+
+  .content__head {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--brown-200);
+  }
+
+  .content__icon {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brown-100);
+    border: 1px solid var(--brown-300);
+    border-radius: 50%;
+    color: var(--brown-600);
+    font-size: 1rem;
+  }
+
+  .content__title {
+    margin: 0;
+    font-size: clamp(1.05rem, 2.6vw, 1.25rem);
+    font-weight: 800;
+    color: var(--header-color);
+    letter-spacing: -0.01em;
+  }
+
+  /* ============================================================
+     Content Text
+     ============================================================ */
+  .content__text {
+    margin: 0;
+    font-size: clamp(0.98rem, 2.3vw, 1.1rem);
+    line-height: 1.85;
+    color: var(--brown-700);
+    text-align: justify;
+    text-wrap: pretty;
+  }
+
+  .content__text strong {
+    color: var(--brown-800);
+    font-weight: 800;
+    background: linear-gradient(transparent 60%, var(--brown-100) 60%);
+    padding: 0 0.15rem;
+    border-radius: 3px;
+  }
+
+  .content__text em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--brown-600);
+    border-bottom: 2px dotted var(--brown-400);
+    padding-bottom: 1px;
+  }
+
+  /* ============================================================
+     Highlights
+     ============================================================ */
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 1rem;
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--brown-200);
+  }
+
+  .highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem 1.1rem;
+    background: linear-gradient(180deg, var(--white) 0%, var(--brown-50) 100%);
+    border: 1px solid var(--brown-200);
+    border-inline-start: 4px solid var(--brown-400);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition),
+                background var(--transition);
+  }
+
+  .highlight-item:hover {
+    transform: translateY(-4px);
+    border-inline-start-color: var(--brown-600);
+    border-color: var(--brown-300);
+    background: linear-gradient(180deg, var(--white) 0%, var(--brown-100) 100%);
+    box-shadow: var(--shadow-md);
+  }
+
+  .highlight-item__icon {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brown-100);
+    border: 1.5px solid var(--brown-300);
+    border-radius: 50%;
+    color: var(--brown-600);
+    font-size: 1rem;
+    transition: background var(--transition), color var(--transition),
+                border-color var(--transition), transform var(--transition);
+  }
+
+  .highlight-item:hover .highlight-item__icon {
+    background: var(--brown-500);
+    border-color: var(--brown-600);
+    color: var(--white);
+    transform: rotate(-6deg) scale(1.08);
+  }
+
+  .highlight-item__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    line-height: 1.5;
+    min-width: 0;
+  }
+
+  .highlight-item__body strong {
+    font-size: clamp(0.92rem, 2vw, 1rem);
+    font-weight: 800;
+    color: var(--brown-700);
+  }
+
+  .highlight-item__body span {
+    font-size: clamp(0.82rem, 1.8vw, 0.9rem);
+    font-weight: 500;
+    color: var(--brown-500);
+  }
+
+  /* ============================================================
+     Responsive
+     ============================================================ */
+  @media (max-width: 480px) {
+    .content__text {
+      text-align: left;
+      line-height: 1.75;
+    }
+
+    .highlights {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 1.35rem;
+      padding-top: 1.15rem;
+    }
+
+    .highlight-item {
+      padding: 0.85rem 0.95rem;
+      gap: 0.7rem;
+    }
+
+    .highlight-item__icon {
+      width: 2.15rem;
+      height: 2.15rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition-duration: 0.001ms !important;
+      animation-duration: 0.001ms !important;
+    }
+  }
+</style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo"> </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/instructions/" class="sidebar__link">
+                <i class="ri-information-line"></i>
+                <span>Instructions</span>
+              </a>
+
+              <a href="/objectives/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    
+    <main class="main" id="main">
+      <div class="container">
+
+       
+
+
+
+
+<section class="collab-section">
+  <div class="collab-container">
+
+    <!-- ============ Header / Title ============ -->
+    <header class="section-header">
+      <span class="section-header__eyebrow">Learning Strategy</span>
+      <h1 class="section-header__title">Digital Project-Based Learning</h1>
+      <span class="section-header__rule" aria-hidden="true"></span>
+    </header>
+
+    <!-- ============ Main Content ============ -->
+    <div class="content">
+      <div class="content__head">
+        <span class="content__icon">
+          <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+        </span>
+        <h2 class="content__title">Overview</h2>
+      </div>
+
+      <p class="content__text">
+        The <strong>Digital Project-Based Learning Strategy</strong> is a learner-centered teaching
+        strategy in which learners use digital tools, online resources, and collaborative platforms
+        to <em>investigate</em> a meaningful question or real-world problem, <em>design and develop</em>
+        a digital product, and <em>present</em> their findings. Throughout the project, the teacher
+        <em>guides</em> learners, <em>monitors</em> their progress, and <em>provides feedback</em> to
+        support knowledge construction, collaboration, critical thinking, and problem-solving.
+      </p>
+
+      
+
+    </div>
+
+  </div>
+</section>
+
+        <!-- ============ Navigation Buttons ============ -->
+        <div class="buttons-actions">
+          <a
+            href="/modules/teaching-strategies/example-in-mathematics-2/"
+            class="guide-button previous-page"
+          >
+            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+            Previous Page
+          </a>
+
+          <a
+            href="/modules/teaching-strategies/steps-for-implementing-the-strategy/"
+            class="guide-button next-page"
+          >
+            Next Page
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>

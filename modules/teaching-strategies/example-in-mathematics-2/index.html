@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../../assets/img/favicon/favicon.png"
+    />
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/modules.css" />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <title>Module Details</title>
+<style>
+  /* ============================================================
+     Design Tokens
+     ============================================================ */
+  :root {
+    --border-color: #e1cfb6;
+    --header-color: #5d2e17;
+
+    --brown-50:  #fdfbf8;
+    --brown-100: #f8f2e9;
+    --brown-200: #efe4d4;
+    --brown-300: #e1cfb6;
+    --brown-400: #c9a87c;
+    --brown-500: #b08d62;
+    --brown-600: #8c6a4a;
+    --brown-700: #6b4f3a;
+    --brown-800: #4a3627;
+    --white: #ffffff;
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+
+    --shadow-sm: 0 2px 8px rgba(107, 79, 58, 0.06);
+    --shadow-md: 0 8px 24px rgba(107, 79, 58, 0.10);
+    --shadow-lg: 0 18px 45px rgba(107, 79, 58, 0.16);
+
+    --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ============================================================
+     Section Wrapper
+     ============================================================ */
+  .collab-section {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background: #fef6f2;
+    border: 2px solid var(--border-color);
+    border-top: 5px solid #8d5d36;
+    border-radius: 40px;
+    margin: 35px 0;
+    padding: clamp(2rem, 6vw, 3.5rem) clamp(1rem, 4vw, 2.5rem);
+    box-shadow:
+      0 10px 20px rgba(0, 0, 0, 0.08),
+      0 20px 40px rgba(0, 0, 0, 0.06),
+      0 5px 10px rgba(0, 0, 0, 0.05);
+    font-family: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+    color: var(--brown-800);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .collab-container {
+    width: 100%;
+    max-width: 1000px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3.5vw, 2rem);
+  }
+
+  /* ============================================================
+     Header / Title
+     ============================================================ */
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.85rem;
+  }
+
+  .section-header__eyebrow {
+    display: inline-block;
+    font-size: clamp(0.7rem, 1.6vw, 0.8rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown-500);
+    background: var(--white);
+    border: 1px solid var(--brown-300);
+    border-radius: 999px;
+    padding: 0.45rem 1.05rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .section-header__title {
+    margin: 0;
+    font-size: clamp(1.5rem, 5vw, 2.35rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--header-color);
+    max-width: 24ch;
+  }
+
+  .section-header__rule {
+    display: block;
+    width: clamp(64px, 14vw, 110px);
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--brown-300), var(--brown-500), var(--brown-300));
+  }
+
+  /* ============================================================
+     Info Grid – Topic + Tools
+     ============================================================ */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: clamp(1rem, 3vw, 1.5rem);
+    width: 100%;
+  }
+
+  .info-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.15rem 1.35rem;
+    background: linear-gradient(180deg, var(--white) 0%, var(--brown-50) 100%);
+    border: 1px solid var(--brown-200);
+    border-inline-start: 4px solid var(--brown-400);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition),
+                border-color var(--transition);
+  }
+
+  .info-card:hover {
+    transform: translateY(-4px);
+    border-inline-start-color: var(--brown-600);
+    box-shadow: var(--shadow-md);
+  }
+
+  .info-card__icon {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--brown-100), var(--brown-200));
+    border: 1.5px solid var(--brown-300);
+    border-radius: 50%;
+    color: var(--brown-600);
+    font-size: 1.15rem;
+    transition: background var(--transition), color var(--transition),
+                transform var(--transition);
+  }
+
+  .info-card:hover .info-card__icon {
+    background: linear-gradient(135deg, var(--brown-500), var(--brown-600));
+    color: var(--white);
+    transform: rotate(-6deg) scale(1.05);
+  }
+
+  .info-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+
+  .info-card__label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brown-500);
+  }
+
+  .info-card__value {
+    margin: 0;
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    font-weight: 700;
+    color: var(--brown-700);
+    line-height: 1.5;
+  }
+
+  /* ============================================================
+     Steps Heading
+     ============================================================ */
+  .steps-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    width: 100%;
+    padding-block: 0.35rem;
+  }
+
+  .steps-heading__icon {
+    flex-shrink: 0;
+    width: 2.85rem;
+    height: 2.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--brown-100), var(--brown-200));
+    border: 1.5px solid var(--brown-300);
+    border-radius: 50%;
+    color: var(--brown-600);
+    font-size: 1.1rem;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8),
+                0 3px 8px rgba(107, 79, 58, 0.10);
+  }
+
+  .steps-heading__title {
+    margin: 0;
+    font-size: clamp(1.1rem, 2.8vw, 1.3rem);
+    font-weight: 800;
+    color: var(--header-color);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  /* ============================================================
+     Row Card
+     ============================================================ */
+  .row-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    padding: clamp(1.15rem, 3vw, 1.5rem) clamp(1.15rem, 3vw, 1.75rem);
+    background: linear-gradient(180deg, var(--white) 0%, var(--brown-50) 100%);
+    border: 1px solid var(--brown-200);
+    border-inline-start: 4px solid var(--brown-400);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition),
+                background var(--transition);
+  }
+
+  .row-card:hover {
+    transform: translateX(6px);
+    border-inline-start-color: var(--brown-600);
+    border-color: var(--brown-300);
+    background: linear-gradient(180deg, var(--white) 0%, var(--brown-100) 100%);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .row-card__head {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .row-card__number {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brown-100);
+    border: 1.5px solid var(--brown-300);
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: var(--brown-600);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8),
+                0 2px 6px rgba(107, 79, 58, 0.08);
+    transition: background var(--transition),
+                border-color var(--transition),
+                color var(--transition),
+                transform var(--transition);
+  }
+
+  .row-card:hover .row-card__number {
+    background: var(--brown-500);
+    border-color: var(--brown-600);
+    color: var(--white);
+    transform: scale(1.08) rotate(-4deg);
+  }
+
+  .row-card__label {
+    font-size: clamp(1rem, 2.4vw, 1.1rem);
+    font-weight: 800;
+    color: var(--brown-800);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .row-card__body {
+    margin: 0;
+    padding-inline-start: 3.35rem;
+    font-size: clamp(0.95rem, 2.2vw, 1.02rem);
+    line-height: 1.8;
+    font-weight: 500;
+    color: var(--brown-700);
+    text-wrap: pretty;
+  }
+
+  /* ============================================================
+     Row List
+     ============================================================ */
+  .row-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    width: 100%;
+  }
+
+  .row-list > li {
+    list-style: none;
+  }
+
+  /* ============================================================
+     Equation Box – صندوق المعادلة
+     ============================================================ */
+  .equation-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-inline-start: 3.35rem;
+    margin-top: 0.25rem;
+    padding: clamp(0.9rem, 2.5vw, 1.25rem) clamp(1rem, 3vw, 1.75rem);
+    background:
+      radial-gradient(120% 100% at 0% 0%, var(--brown-100) 0%, transparent 55%),
+      linear-gradient(180deg, var(--brown-50) 0%, var(--brown-100) 100%);
+    border: 1px dashed var(--brown-400);
+    border-radius: var(--radius-md);
+    text-align: center;
+    transition: border-color var(--transition),
+                box-shadow var(--transition),
+                transform var(--transition);
+  }
+
+  .equation-box:hover {
+    border-color: var(--brown-600);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .equation-box__label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brown-500);
+  }
+
+  .equation-box__math {
+    font-family: "Cambria Math", "Times New Roman", serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+    font-weight: 700;
+    color: var(--brown-800);
+    padding: 0.55rem 1.25rem;
+    background: var(--white);
+    border: 1px solid var(--brown-300);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+  }
+
+  /* ============================================================
+     Responsive
+     ============================================================ */
+  @media (max-width: 480px) {
+    .info-card {
+      padding: 0.95rem 1rem;
+      gap: 0.8rem;
+    }
+
+    .info-card__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1rem;
+    }
+
+    .steps-heading__icon {
+      width: 2.35rem;
+      height: 2.35rem;
+      font-size: 0.9rem;
+    }
+
+    .steps-heading__title {
+      font-size: 1rem;
+    }
+
+    .row-card {
+      padding: 1rem 1rem;
+      gap: 0.6rem;
+    }
+
+    .row-card__number {
+      width: 2.15rem;
+      height: 2.15rem;
+      font-size: 0.72rem;
+    }
+
+    .row-card__label {
+      font-size: 0.98rem;
+    }
+
+    .row-card__body {
+      padding-inline-start: 0;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .equation-box {
+      margin-inline-start: 0;
+    }
+
+    .equation-box__math {
+      width: 100%;
+      padding: 0.5rem 0.85rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition-duration: 0.001ms !important;
+      animation-duration: 0.001ms !important;
+    }
+  }
+  /* ============================================================
+   Equation Box – إضافات النتيجة
+   ============================================================ */
+.equation-box__therefore {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  color: var(--brown-600);
+}
+
+.equation-box__result {
+  font-family: "Cambria Math", "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+  font-weight: 700;
+  color: var(--white);
+  padding: 0.55rem 1.25rem;
+  background: linear-gradient(135deg, var(--brown-500), var(--brown-600));
+  border: 1px solid var(--brown-700);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 14px rgba(107, 79, 58, 0.25);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.equation-box:hover .equation-box__result {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(107, 79, 58, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .equation-box__result {
+    width: 100%;
+    padding: 0.5rem 0.85rem;
+    text-align: center;
+  }
+}
+</style>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <div class="header__container">
+        <a href="#" class="header__logo"> </a>
+
+        <button class="header__toggle" id="header-toggle">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </header>
+
+    <!--=============== SIDEBAR ===============-->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+        <div class="sidebar__user">
+          <div class="sidebar__img">
+            <img src="../../" alt="image" />
+          </div>
+
+          <div class="sidebar__info">
+            <h3>user name</h3>
+            <span>text123@email.com</span>
+          </div>
+        </div>
+
+        <div class="sidebar__content">
+          <div>
+            <!-- <h3 class="sidebar__title">MANAGE</h3> -->
+
+            <div class="sidebar__list">
+              <a href="/instructions/" class="sidebar__link">
+                <i class="ri-information-line"></i>
+                <span>Instructions</span>
+              </a>
+
+              <a href="/objectives/" class="sidebar__link">
+                <i class="ri-focus-2-line"></i>
+                <span>Objectives</span>
+              </a>
+
+              <a href="/pre-assessments/" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Pre-Assessments</span>
+              </a>
+
+              <a href="/modules/" class="sidebar__link active-link">
+                <i class="ri-book-open-fill"></i>
+                <span>Modules</span>
+              </a>
+
+              <a href="#" class="sidebar__link">
+                <i class="ri-file-list-3-fill"></i>
+                <span>Post Assessment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__actions">
+          <button>
+            <i
+              class="ri-moon-clear-fill sidebar__link sidebar__theme"
+              id="theme-button"
+            >
+              <span>Theme</span>
+            </i>
+          </button>
+
+          <button class="sidebar__link" id="btn-log-out">
+            <i class="ri-logout-box-r-fill"></i>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    
+    <main class="main" id="main">
+      <div class="container">
+
+       
+
+
+
+<section class="collab-section">
+  <div class="collab-container">
+
+    <!-- ============ Header / Title ============ -->
+    <header class="section-header">
+      <span class="section-header__eyebrow">Practical Application</span>
+      <h1 class="section-header__title">Example in Mathematics</h1>
+      <span class="section-header__rule" aria-hidden="true"></span>
+    </header>
+
+    <!-- ============ Topic + Tools ============ -->
+    <div class="info-grid">
+
+      <div class="info-card">
+        <span class="info-card__icon">
+          <i class="fa-solid fa-square-root-variable" aria-hidden="true"></i>
+        </span>
+        <div class="info-card__body">
+          <span class="info-card__label">Mathematical Topic</span>
+          <p class="info-card__value">Differentiation Rules</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <span class="info-card__icon">
+          <i class="fa-solid fa-toolbox" aria-hidden="true"></i>
+        </span>
+        <div class="info-card__body">
+          <span class="info-card__label">Digital Tools</span>
+          <p class="info-card__value">
+            Google Classroom, selected educational websites, GeoGebra, and Google Forms.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============ Steps Heading ============ -->
+    <div class="steps-heading">
+      <span class="steps-heading__icon">
+        <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+      </span>
+      <h2 class="steps-heading__title">Implementation Steps</h2>
+    </div>
+
+    <!-- ============ Steps List ============ -->
+    <ol class="row-list">
+
+      <!-- 01 -->
+      <li class="row-card">
+        <div class="row-card__head">
+          <span class="row-card__number">01</span>
+          <span class="row-card__label">Introduction</span>
+        </div>
+        <p class="row-card__body">
+          The teacher presents an engaging question about differentiation using PowerPoint or
+          Canva to introduce the topic and stimulate learners’ curiosity.
+        </p>
+      </li>
+
+      <!-- 02 -->
+      <li class="row-card">
+        <div class="row-card__head">
+          <span class="row-card__number">02</span>
+          <span class="row-card__label">Task</span>
+        </div>
+        <p class="row-card__body">
+          The teacher explains the learning task and divides learners into groups using Google
+          Classroom, assigning each group a differentiation rule to investigate.
+        </p>
+      </li>
+
+      <!-- 03 -->
+      <li class="row-card">
+        <div class="row-card__head">
+          <span class="row-card__number">03</span>
+          <span class="row-card__label">Digital Resources</span>
+        </div>
+        <p class="row-card__body">
+          The teacher shares selected educational websites, explanatory videos, and interactive
+          resources through Google Classroom to guide learners’ research.
+        </p>
+      </li>
+
+      <!-- 04 -->
+      <li class="row-card">
+        <div class="row-card__head">
+          <span class="row-card__number">04</span>
+          <span class="row-card__label">Process</span>
+        </div>
+        <p class="row-card__body">
+          Learners explore digital resources, analyze examples, and solve differentiation problems
+          collaboratively using GeoGebra and Google Docs. For example:
+        </p>
+
+        <div class="equation-box">
+          <span class="equation-box__label">Example</span>
+          <span class="equation-box__math">f(x) = 3x² + 2x − 5</span>
+
+          <span class="equation-box__therefore">Therefore,</span>
+          <span class="equation-box__result">f′(x) = 6x + 2</span>
+        </div>
+      </li>
+
+      <!-- 05 -->
+      <li class="row-card">
+        <div class="row-card__head">
+          <span class="row-card__number">05</span>
+          <span class="row-card__label">Evaluation</span>
+        </div>
+        <p class="row-card__body">
+          Learners complete an online quiz using Google Forms, while the teacher evaluates their
+          mathematical solutions and group presentations using a digital rubric.
+        </p>
+      </li>
+
+      <!-- 06 -->
+      <li class="row-card">
+        <div class="row-card__head">
+          <span class="row-card__number">06</span>
+          <span class="row-card__label">Conclusion</span>
+        </div>
+        <p class="row-card__body">
+          Learners present their findings using Google Slides, and the teacher summarizes the
+          differentiation rules and provides additional exercises through Google Classroom.
+        </p>
+      </li>
+
+    </ol>
+
+  </div>
+</section>
+
+        <!-- ============ Navigation Buttons ============ -->
+        <div class="buttons-actions">
+          <a
+            href="/modules/teaching-strategies/the-webquest-consists-of-six-main/"
+            class="guide-button previous-page"
+          >
+            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+            Previous Page
+          </a>
+
+          <a
+            href="/modules/teaching-strategies/digital-project-based-learning/"
+            class="guide-button next-page"
+          >
+            Next Page
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- small note: the page uses only english, as required -->
+    <script src="../../../assets/js/quiz-section.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </body>
+</html>
